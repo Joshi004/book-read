@@ -1,0 +1,48 @@
+import { useEffect, useState } from 'react'
+import { useLocation } from 'react-router-dom'
+import { Fab, Zoom } from '@mui/material'
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp'
+
+// Resets scroll on route change and shows a floating "back to top" button.
+// `scroller` is the element that actually scrolls (the main content region).
+export default function ScrollToTop({ scroller }) {
+  const { pathname } = useLocation()
+  const [show, setShow] = useState(false)
+
+  const getEl = () => (typeof scroller === 'function' ? scroller() : null)
+
+  useEffect(() => {
+    const el = getEl()
+    if (el) el.scrollTo({ top: 0 })
+    else window.scrollTo({ top: 0 })
+  }, [pathname]) // eslint-disable-line react-hooks/exhaustive-deps
+
+  useEffect(() => {
+    const el = getEl() || window
+    const target = el === window ? document.documentElement : el
+    const onScroll = () => setShow((target.scrollTop || 0) > 400)
+    el.addEventListener('scroll', onScroll, { passive: true })
+    onScroll()
+    return () => el.removeEventListener('scroll', onScroll)
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
+
+  const toTop = () => {
+    const el = getEl()
+    if (el) el.scrollTo({ top: 0, behavior: 'smooth' })
+    else window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
+  return (
+    <Zoom in={show}>
+      <Fab
+        size="small"
+        color="primary"
+        onClick={toTop}
+        aria-label="Back to top"
+        sx={{ position: 'fixed', bottom: 24, right: 24, zIndex: 1200 }}
+      >
+        <KeyboardArrowUpIcon />
+      </Fab>
+    </Zoom>
+  )
+}

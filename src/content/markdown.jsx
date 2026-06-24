@@ -1,0 +1,108 @@
+import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
+import remarkDirective from 'remark-directive'
+import rehypeSlug from 'rehype-slug'
+import Callout from '../components/Callout.jsx'
+import Mermaid from '../components/Mermaid.jsx'
+
+const CALLOUT_NAMES = new Set(['callout', 'definition', 'warning'])
+
+// remark-directive needs the directive name to touch the colons (`:::callout`),
+// but the authored/pandoc style uses a space (`::: callout`). Normalize a copy of
+// the body so the chapter source can stay in the format the skill emits.
+export function normalizeFencedDivs(body) {
+  return String(body).replace(/^(:{3,})[ \t]+([A-Za-z][\w-]*)[ \t]*$/gm, '$1$2')
+}
+
+// Strip HTML comments before the markdown reaches the renderer.
+// react-markdown has no rehype-raw, so <!-- ... --> leaks through as visible text
+// instead of being silently discarded. This covers multi-line comment blocks used
+// for editor-only content (change logs, citation flags, ASR notes).
+function stripHtmlComments(body) {
+  return String(body).replace(/<!--[\s\S]*?-->/g, '')
+}
+
+// Map our container directives (:::callout / :::definition / :::warning) onto
+// custom elements that the `components` table renders as <Callout>.
+function remarkCalloutDirectives() {
+  const visit = (node) => {
+    if (node.type === 'containerDirective' && CALLOUT_NAMES.has(node.name)) {
+      const data = node.data || (node.data = {})
+      data.hName = node.name
+    }
+    if (Array.isArray(node.children)) node.children.forEach(visit)
+  }
+  return (tree) => visit(tree)
+}
+
+function resolveAsset(src = '') {
+  if (/^(https?:)?\/\//.test(src) || src.startsWith('data:')) return src
+  const i = src.indexOf('assets/')
+  const rel = i >= 0 ? src.slice(i) : src.replace(/^\.?\/*/, '')
+  return import.meta.env.BASE_URL + rel
+}
+
+function mermaidFromPre(node) {
+  const code = node?.children?.[0]
+  if (!code || code.tagName !== 'code') return null
+  const cls = code.properties?.className || []
+  if (!(Array.isArray(cls) ? cls : [cls]).includes('language-mermaid')) return null
+  return code.children?.map((c) => c.value || '').join('') || ''
+}
+
+const components = {
+  // Render :::callout / :::definition / :::warning as styled boxes.
+  callout: ({ node, ...props }) => <Callout variant="callout" {...props} />,
+  definition: ({ node, ...props }) => <Callout variant="definition" {...props} />,
+  warning: ({ node, ...props }) => <Callout variant="warning" {...props} />,
+
+  // Fenced ```mermaid blocks → live client-side diagram.
+  pre: ({ node, children, ...props }) => {
+    const chart = mermaidFromPre(node)
+    if (chart != null) return <Mermaid chart={chart} />
+    return <pre {...props}>{children}</pre>
+  },
+
+  // Lone images become <figure> with the alt text as the caption. Unwrap the
+  // paragraph react-markdown would otherwise wrap a solitary image in.
+  p: ({ node, children, ...props }) => {
+    const kids = node?.children || []
+    if (kids.length === 1 && kids[0].tagName === 'img') return <>{children}</>
+    return <p {...props}>{children}</p>
+  },
+  img: ({ node, src, alt, ...props }) => (
+    <figure className="figure-diagram">
+      <img src={resolveAsset(src)} alt={alt || ''} loading="lazy" {...props} />
+      {alt ? <figcaption>{alt}</figcaption> : null}
+    </figure>
+  ),
+
+  // External links open in a new tab; same-page hashes are avoided in nav (HashRouter).
+  a: ({ node, href = '', children, ...props }) => {
+    const external = /^https?:\/\//.test(href)
+    return (
+      <a
+        href={href}
+        {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+        {...props}
+      >
+        {children}
+      </a>
+    )
+  },
+}
+
+const remarkPlugins = [remarkGfm, remarkDirective, remarkCalloutDirectives]
+const rehypePlugins = [rehypeSlug]
+
+export default function MarkdownContent({ body }) {
+  return (
+    <ReactMarkdown
+      remarkPlugins={remarkPlugins}
+      rehypePlugins={rehypePlugins}
+      components={components}
+    >
+      {stripHtmlComments(normalizeFencedDivs(body))}
+    </ReactMarkdown>
+  )
+}
