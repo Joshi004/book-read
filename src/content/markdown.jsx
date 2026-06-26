@@ -77,6 +77,13 @@ const components = {
     </figure>
   ),
 
+  // Wide tables scroll horizontally instead of overflowing into the sidebar.
+  table: ({ node, children, ...props }) => (
+    <div style={{ overflowX: 'auto', width: '100%' }}>
+      <table {...props}>{children}</table>
+    </div>
+  ),
+
   // External links open in a new tab; same-page hashes are avoided in nav (HashRouter).
   a: ({ node, href = '', children, ...props }) => {
     const external = /^https?:\/\//.test(href)

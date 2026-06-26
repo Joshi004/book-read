@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 700 530" width="700" height="530"
+     font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">
+
+  <!-- Axis spoke lines from center to each vertex -->
+  <line x1="350" y1="265" x2="350" y2="98"  stroke="#C9C2B2" stroke-width="1.5" stroke-dasharray="5,4"/>
+  <line x1="350" y1="265" x2="494" y2="181" stroke="#C9C2B2" stroke-width="1.5" stroke-dasharray="5,4"/>
+  <line x1="350" y1="265" x2="494" y2="349" stroke="#C9C2B2" stroke-width="1.5" stroke-dasharray="5,4"/>
+  <line x1="350" y1="265" x2="350" y2="432" stroke="#C9C2B2" stroke-width="1.5" stroke-dasharray="5,4"/>
+  <line x1="350" y1="265" x2="206" y2="349" stroke="#C9C2B2" stroke-width="1.5" stroke-dasharray="5,4"/>
+  <line x1="350" y1="265" x2="206" y2="181" stroke="#C9C2B2" stroke-width="1.5" stroke-dasharray="5,4"/>
+
+  <!-- Hexagon outline connecting all six nodes -->
+  <polygon points="350,98 494,181 494,349 350,432 206,349 206,181"
+           fill="rgba(46,90,135,0.05)" stroke="#2E5A87" stroke-width="1.5"
+           stroke-dasharray="8,5" opacity="0.65"/>
+
+  <!-- CENTER CIRCLE -->
+  <circle cx="350" cy="265" r="62" fill="#F4F1EA" stroke="#C9C2B2" stroke-width="1.5"/>
+  <text x="350" y="252" text-anchor="middle" fill="#2E5A87" font-size="13" font-weight="bold">3 of 6</text>
+  <text x="350" y="269" text-anchor="middle" fill="#5B5B5B" font-size="10">axes required</text>
+  <text x="350" y="284" text-anchor="middle" fill="#5B5B5B" font-size="10">for influence</text>
+
+  <!-- NODE 0: Focus (top) -->
+  <circle cx="350" cy="98" r="54" fill="#1E3D5C"/>
+  <text x="350" y="88"  text-anchor="middle" fill="white"                  font-size="15" font-weight="bold">Focus</text>
+  <text x="350" y="106" text-anchor="middle" fill="rgba(255,255,255,0.78)" font-size="9.5">Sustain attention,</text>
+  <text x="350" y="119" text-anchor="middle" fill="rgba(255,255,255,0.78)" font-size="9.5">exclude competing stimuli</text>
+
+  <!-- NODE 1: Connection (upper-right) -->
+  <circle cx="494" cy="181" r="54" fill="#2E5A87"/>
+  <text x="494" y="172" text-anchor="middle" fill="white"                  font-size="15" font-weight="bold">Connection</text>
+  <text x="494" y="189" text-anchor="middle" fill="rgba(255,255,255,0.78)" font-size="9.5">Social bond +</text>
+  <text x="494" y="203" text-anchor="middle" fill="rgba(255,255,255,0.78)" font-size="9.5">desire for future contact</text>
+
+  <!-- NODE 2: Compliance (lower-right) -->
+  <circle cx="494" cy="349" r="54" fill="#4A7BAD"/>
+  <text x="494" y="340" text-anchor="middle" fill="white"                  font-size="15" font-weight="bold">Compliance</text>
+  <text x="494" y="357" text-anchor="middle" fill="rgba(255,255,255,0.78)" font-size="9.5">Follow directed</text>
+  <text x="494" y="371" text-anchor="middle" fill="rgba(255,255,255,0.78)" font-size="9.5">action</text>
+
+  <!-- NODE 3: Expectancy (bottom) -->
+  <circle cx="350" cy="432" r="54" fill="#4A7BAD"/>
+  <text x="350" y="423" text-anchor="middle" fill="white"                  font-size="15" font-weight="bold">Expectancy</text>
+  <text x="350" y="440" text-anchor="middle" fill="rgba(255,255,255,0.78)" font-size="9.5">Predict what comes next</text>
+  <text x="350" y="454" text-anchor="middle" fill="rgba(255,255,255,0.78)" font-size="9.5">and look forward to it</text>
+
+  <!-- NODE 4: Openness (lower-left) -->
+  <circle cx="206" cy="349" r="54" fill="#2E5A87"/>
+  <text x="206" y="340" text-anchor="middle" fill="white"                  font-size="15" font-weight="bold">Openness</text>
+  <text x="206" y="357" text-anchor="middle" fill="rgba(255,255,255,0.78)" font-size="9.5">Vulnerability, no fear</text>
+  <text x="206" y="371" text-anchor="middle" fill="rgba(255,255,255,0.78)" font-size="9.5">of social repercussion</text>
+
+  <!-- NODE 5: Suggestibility (upper-left) -->
+  <circle cx="206" cy="181" r="54" fill="#1E3D5C"/>
+  <text x="206" y="169" text-anchor="middle" fill="white"                  font-size="14" font-weight="bold">Suggest-</text>
+  <text x="206" y="184" text-anchor="middle" fill="white"                  font-size="14" font-weight="bold">ibility</text>
+  <text x="206" y="200" text-anchor="middle" fill="rgba(255,255,255,0.78)" font-size="9.5">Accept &amp; act on</text>
+  <text x="206" y="214" text-anchor="middle" fill="rgba(255,255,255,0.78)" font-size="9.5">a suggestion</text>
+
+</svg>
