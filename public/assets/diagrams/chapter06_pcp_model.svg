@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" width="720" height="360"
+     font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">
+  <defs>
+    <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#C9C2B2"/>
+    </marker>
+  </defs>
+
+  <!-- Header bar -->
+  <rect x="0" y="0" width="720" height="58" fill="#1E3D5C"/>
+  <text x="360" y="30" text-anchor="middle" fill="white" font-size="19" font-weight="700" letter-spacing="3">PCP MODEL</text>
+  <text x="360" y="49" text-anchor="middle" fill="rgba(255,255,255,0.70)" font-size="11">Perception · Context · Permission — Foundation of All Influence</text>
+
+  <!-- Panel 1: Perception (#2E5A87) -->
+  <rect x="0" y="58" width="240" height="242" fill="#2E5A87"/>
+  <!-- Panel 2: Context (#4A7BAD) -->
+  <rect x="240" y="58" width="240" height="242" fill="#4A7BAD"/>
+  <!-- Panel 3: Permission (#6B9EC7) -->
+  <rect x="480" y="58" width="240" height="242" fill="#6B9EC7"/>
+
+  <!-- Panel dividers -->
+  <line x1="240" y1="58" x2="240" y2="300" stroke="rgba(255,255,255,0.22)" stroke-width="1"/>
+  <line x1="480" y1="58" x2="480" y2="300" stroke="rgba(255,255,255,0.22)" stroke-width="1"/>
+
+  <!-- Perception panel -->
+  <text x="120" y="118" text-anchor="middle" fill="rgba(255,255,255,0.18)" font-size="62" font-weight="900">P</text>
+  <text x="120" y="165" text-anchor="middle" fill="white" font-size="20" font-weight="700" letter-spacing="1">Perception</text>
+  <line x1="52" y1="175" x2="188" y2="175" stroke="rgba(255,255,255,0.28)" stroke-width="1"/>
+  <text x="120" y="197" text-anchor="middle" fill="rgba(255,255,255,0.88)" font-size="13">How subjects interpret</text>
+  <text x="120" y="215" text-anchor="middle" fill="rgba(255,255,255,0.88)" font-size="13">meaning and form</text>
+  <text x="120" y="233" text-anchor="middle" fill="rgba(255,255,255,0.88)" font-size="13">behavioral assumptions</text>
+  <text x="120" y="265" text-anchor="middle" fill="rgba(255,255,255,0.60)" font-size="11" font-style="italic">Initial catalyst for</text>
+  <text x="120" y="281" text-anchor="middle" fill="rgba(255,255,255,0.60)" font-size="11" font-style="italic">deep-level persuasion</text>
+
+  <!-- Context panel -->
+  <text x="360" y="118" text-anchor="middle" fill="rgba(255,255,255,0.18)" font-size="62" font-weight="900">C</text>
+  <text x="360" y="165" text-anchor="middle" fill="white" font-size="20" font-weight="700" letter-spacing="1">Context</text>
+  <line x1="292" y1="175" x2="428" y2="175" stroke="rgba(255,255,255,0.28)" stroke-width="1"/>
+  <text x="360" y="197" text-anchor="middle" fill="rgba(255,255,255,0.88)" font-size="13">The environment that</text>
+  <text x="360" y="215" text-anchor="middle" fill="rgba(255,255,255,0.88)" font-size="13">defines which behaviors</text>
+  <text x="360" y="233" text-anchor="middle" fill="rgba(255,255,255,0.88)" font-size="13">are allowable</text>
+  <text x="360" y="265" text-anchor="middle" fill="rgba(255,255,255,0.60)" font-size="11" font-style="italic">Modify the context and</text>
+  <text x="360" y="281" text-anchor="middle" fill="rgba(255,255,255,0.60)" font-size="11" font-style="italic">any behavior becomes possible</text>
+
+  <!-- Permission panel -->
+  <text x="600" y="118" text-anchor="middle" fill="rgba(255,255,255,0.18)" font-size="62" font-weight="900">P</text>
+  <text x="600" y="165" text-anchor="middle" fill="white" font-size="20" font-weight="700" letter-spacing="1">Permission</text>
+  <line x1="532" y1="175" x2="668" y2="175" stroke="rgba(255,255,255,0.28)" stroke-width="1"/>
+  <text x="600" y="197" text-anchor="middle" fill="rgba(255,255,255,0.88)" font-size="13">The license to act on</text>
+  <text x="600" y="215" text-anchor="middle" fill="rgba(255,255,255,0.88)" font-size="13">a suggestion without</text>
+  <text x="600" y="233" text-anchor="middle" fill="rgba(255,255,255,0.88)" font-size="13">fear of judgment</text>
+  <text x="600" y="265" text-anchor="middle" fill="rgba(255,255,255,0.60)" font-size="11" font-style="italic">Diffuses personal</text>
+  <text x="600" y="281" text-anchor="middle" fill="rgba(255,255,255,0.60)" font-size="11" font-style="italic">responsibility for action</text>
+
+  <!-- Bottom flow strip -->
+  <rect x="0" y="300" width="720" height="60" fill="#F4F1EA"/>
+
+  <!-- Flow step labels -->
+  <text x="120" y="324" text-anchor="middle" fill="#2E5A87" font-size="12" font-weight="600">① Shift Perception</text>
+  <text x="360" y="324" text-anchor="middle" fill="#4A7BAD" font-size="12" font-weight="600">② Modify Context</text>
+  <text x="600" y="324" text-anchor="middle" fill="#1E3D5C" font-size="12" font-weight="600">③ Grant Permission</text>
+
+  <!-- Sub-descriptors -->
+  <text x="120" y="342" text-anchor="middle" fill="#5B5B5B" font-size="10">raise suggestibility</text>
+  <text x="360" y="342" text-anchor="middle" fill="#5B5B5B" font-size="10">normalize target behavior</text>
+  <text x="600" y="342" text-anchor="middle" fill="#5B5B5B" font-size="10">reduce inhibition &amp; resistance</text>
+
+  <!-- Arrows between flow steps -->
+  <line x1="200" y1="321" x2="250" y2="321" stroke="#C9C2B2" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="440" y1="321" x2="490" y2="321" stroke="#C9C2B2" stroke-width="1.5" marker-end="url(#arr)"/>
+</svg>
