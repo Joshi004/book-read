@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 600 410" width="600" height="410"
+     font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">
+
+  <!-- Layer 1: Definition (apex — hardest to bypass) -->
+  <polygon points="245,20 355,20 415,108 185,108" fill="#1E3D5C"/>
+
+  <!-- Layer 2: Perception -->
+  <polygon points="185,112 415,112 475,200 125,200" fill="#2E5A87"/>
+
+  <!-- Layer 3: Beliefs -->
+  <polygon points="125,204 475,204 535,292 65,292" fill="#4A7BAD"/>
+
+  <!-- Layer 4: Expectation (base — easiest to bypass) -->
+  <polygon points="65,296 535,296 565,380 35,380" fill="#6B9EC7"/>
+
+  <!-- Divider lines between layers -->
+  <line x1="185" y1="110" x2="415" y2="110" stroke="rgba(255,255,255,0.30)" stroke-width="1.5"/>
+  <line x1="125" y1="202" x2="475" y2="202" stroke="rgba(255,255,255,0.30)" stroke-width="1.5"/>
+  <line x1="65"  y1="294" x2="535" y2="294" stroke="rgba(255,255,255,0.30)" stroke-width="1.5"/>
+
+  <!-- Layer 1 text — Definition -->
+  <text x="300" y="56" text-anchor="middle" fill="white" font-size="13" font-weight="bold" letter-spacing="1.2">DEFINITION</text>
+  <text x="300" y="74" text-anchor="middle" fill="rgba(255,255,255,0.75)" font-size="9.5">What's absolutely true is…</text>
+  <text x="300" y="92" text-anchor="middle" fill="rgba(255,255,255,0.55)" font-size="8.5" font-style="italic">Hardest to bypass</text>
+
+  <!-- Layer 2 text — Perception -->
+  <text x="300" y="146" text-anchor="middle" fill="white" font-size="13" font-weight="bold" letter-spacing="1.2">PERCEPTION</text>
+  <text x="300" y="165" text-anchor="middle" fill="rgba(255,255,255,0.75)" font-size="9.5">What's true about this is…</text>
+
+  <!-- Layer 3 text — Beliefs -->
+  <text x="300" y="237" text-anchor="middle" fill="white" font-size="13" font-weight="bold" letter-spacing="1.2">BELIEFS</text>
+  <text x="300" y="256" text-anchor="middle" fill="rgba(255,255,255,0.75)" font-size="9.5">What's probably true about this situation is…</text>
+
+  <!-- Layer 4 text — Expectation -->
+  <text x="300" y="326" text-anchor="middle" fill="white" font-size="13" font-weight="bold" letter-spacing="1.2">EXPECTATION</text>
+  <text x="300" y="345" text-anchor="middle" fill="rgba(255,255,255,0.75)" font-size="9.5">What's probably going to happen is…</text>
+  <text x="300" y="363" text-anchor="middle" fill="rgba(255,255,255,0.55)" font-size="8.5" font-style="italic">Easiest to bypass</text>
+
+  <!-- Caption -->
+  <text x="300" y="402" text-anchor="middle" fill="#5B5B5B" font-size="10.5">Subvert from base to apex — each corner makes the next easier to collapse</text>
+
+</svg>
