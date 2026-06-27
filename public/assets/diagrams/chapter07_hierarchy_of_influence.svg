@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400"
+     font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">
+
+  <!-- Layer 1: Impulse / DNA (bottom) — most powerful -->
+  <polygon points="99,270 501,270 560,355 40,355" fill="#B23A48"/>
+
+  <!-- Layer 2: Behavioral Patterns -->
+  <polygon points="158,185 442,185 501,270 99,270" fill="#C4536B"/>
+
+  <!-- Layer 3: Chemical / Emotions -->
+  <polygon points="216,100 384,100 442,185 158,185" fill="#4A7BAD"/>
+
+  <!-- Layer 4: Electric / Thoughts (top) — least powerful -->
+  <polygon points="275,18 325,18 384,100 216,100" fill="#2E5A87"/>
+
+  <!-- Subtle dividers between layers -->
+  <line x1="99"  y1="270" x2="501" y2="270" stroke="white" stroke-width="1" opacity="0.25"/>
+  <line x1="158" y1="185" x2="442" y2="185" stroke="white" stroke-width="1" opacity="0.25"/>
+  <line x1="216" y1="100" x2="384" y2="100" stroke="white" stroke-width="1" opacity="0.25"/>
+
+  <!-- Outer outline -->
+  <polygon points="275,18 325,18 560,355 40,355" fill="none" stroke="rgba(0,0,0,0.12)" stroke-width="1.5" stroke-linejoin="round"/>
+
+  <!-- Layer 4 label — Electric / Thoughts (center y ≈ 59) -->
+  <text x="300" y="53" text-anchor="middle" fill="white" font-size="9.5" font-weight="700">Electric — Thoughts</text>
+  <text x="300" y="67" text-anchor="middle" fill="rgba(255,255,255,0.72)" font-size="7.5">Gateway only; least powerful driver</text>
+
+  <!-- Layer 3 label — Chemical / Emotions (center y ≈ 142) -->
+  <text x="300" y="136" text-anchor="middle" fill="white" font-size="12" font-weight="700">Chemical — Emotions</text>
+  <text x="300" y="151" text-anchor="middle" fill="rgba(255,255,255,0.78)" font-size="9">We decide emotionally; justify logically</text>
+
+  <!-- Layer 2 label — Behavioral Patterns (center y ≈ 227) -->
+  <text x="300" y="222" text-anchor="middle" fill="white" font-size="13" font-weight="700">Behavioral Patterns</text>
+  <text x="300" y="238" text-anchor="middle" fill="rgba(255,255,255,0.78)" font-size="9.5">Formed in childhood; govern much of our lives</text>
+
+  <!-- Layer 1 label — Impulse / DNA (center y ≈ 312) -->
+  <text x="300" y="305" text-anchor="middle" fill="white" font-size="14" font-weight="700">Impulse / DNA</text>
+  <text x="300" y="322" text-anchor="middle" fill="rgba(255,255,255,0.78)" font-size="10">Ancestral programming — most powerful driver</text>
+
+  <!-- "LEAST POWERFUL" annotation at top -->
+  <text x="300" y="8" text-anchor="middle" fill="#5B5B5B" font-size="8" font-style="italic" letter-spacing="0.5">▲ LEAST POWERFUL</text>
+
+  <!-- "MOST POWERFUL" annotation at bottom -->
+  <text x="300" y="378" text-anchor="middle" fill="#5B5B5B" font-size="8" font-style="italic" letter-spacing="0.5">▼ MOST POWERFUL</text>
+
+  <!-- Side brace labels -->
+  <text x="22" y="190" text-anchor="middle" fill="#5B5B5B" font-size="8" font-style="italic" opacity="0.8">Influence</text>
+  <text x="22" y="202" text-anchor="middle" fill="#5B5B5B" font-size="8" font-style="italic" opacity="0.8">Depth</text>
+
+</svg>

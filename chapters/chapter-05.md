@@ -79,13 +79,13 @@ flowchart LR
     end
     active --> R["⚡ Outcome\nLethal-level obedience\nfrom a stranger's command\nin under an hour"]
 
-    style F  fill:#F4F1EA,stroke:#B23A48
-    style S  fill:#F4F1EA,stroke:#B23A48
-    style C  fill:#F4F1EA,stroke:#B23A48
-    style CN fill:#F4F1EA,stroke:#C9C2B2
-    style O  fill:#F4F1EA,stroke:#C9C2B2
-    style E  fill:#F4F1EA,stroke:#C9C2B2
-    style R  fill:#F4F1EA,stroke:#1E3D5C,font-weight:bold
+    style F  fill:#F4F1EA,stroke:#B23A48,color:#1A1A1A
+    style S  fill:#F4F1EA,stroke:#B23A48,color:#1A1A1A
+    style C  fill:#F4F1EA,stroke:#B23A48,color:#1A1A1A
+    style CN fill:#F4F1EA,stroke:#C9C2B2,color:#1A1A1A
+    style O  fill:#F4F1EA,stroke:#C9C2B2,color:#1A1A1A
+    style E  fill:#F4F1EA,stroke:#C9C2B2,color:#1A1A1A
+    style R  fill:#F4F1EA,stroke:#1E3D5C,color:#1A1A1A,font-weight:bold
 ```
 
 *Figure 5.2 — The Milgram experiment mapped onto the 6 Axis Model. Three axes were elevated to extreme levels; three were entirely absent. The result: profound, life-altering obedience from a stranger's command.*

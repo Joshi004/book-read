@@ -108,11 +108,11 @@ flowchart TD
     C --> D
     D --> E
 
-    style A fill:#F4F1EA,stroke:#2E5A87
-    style B fill:#F4F1EA,stroke:#2E5A87
-    style C fill:#F4F1EA,stroke:#2E5A87
-    style D fill:#F4F1EA,stroke:#B23A48
-    style E fill:#F4F1EA,stroke:#2E5A87
+    style A fill:#F4F1EA,stroke:#2E5A87,color:#1A1A1A
+    style B fill:#F4F1EA,stroke:#2E5A87,color:#1A1A1A
+    style C fill:#F4F1EA,stroke:#2E5A87,color:#1A1A1A
+    style D fill:#F4F1EA,stroke:#B23A48,color:#1A1A1A
+    style E fill:#F4F1EA,stroke:#2E5A87,color:#1A1A1A
 ```
 
 *Figure 4.2 — The ancestral memory pipeline. Survival-critical behaviors encoded in our DNA surface through the brain stem and fire without conscious consent.*
@@ -171,12 +171,12 @@ flowchart LR
         L1 --> L2 --> L3
     end
 
-    style A1 fill:#F4F1EA,stroke:#B23A48
-    style A2 fill:#F4F1EA,stroke:#B23A48
-    style A3 fill:#F4F1EA,stroke:#B23A48
-    style L1 fill:#F4F1EA,stroke:#2E5A87
-    style L2 fill:#F4F1EA,stroke:#2E5A87
-    style L3 fill:#F4F1EA,stroke:#2E5A87
+    style A1 fill:#F4F1EA,stroke:#B23A48,color:#1A1A1A
+    style A2 fill:#F4F1EA,stroke:#B23A48,color:#1A1A1A
+    style A3 fill:#F4F1EA,stroke:#B23A48,color:#1A1A1A
+    style L1 fill:#F4F1EA,stroke:#2E5A87,color:#1A1A1A
+    style L2 fill:#F4F1EA,stroke:#2E5A87,color:#1A1A1A
+    style L3 fill:#F4F1EA,stroke:#2E5A87,color:#1A1A1A
 ```
 
 *Figure 4.4 — The two script types. Ancestral scripts fire from inherited DNA; life scripts are built from personal experience.*
@@ -327,13 +327,13 @@ flowchart TD
     T --> T5["5. Socially enforce compliance with group norms\n(mock, shun, punish, exile non-conformers)"]
     T --> T6["6. Continuously monitor your own behavior\nto avoid triggering social consequences"]
 
-    style T fill:#F4F1EA,stroke:#2E5A87,font-weight:bold
-    style T1 fill:#F4F1EA,stroke:#C9C2B2
-    style T2 fill:#F4F1EA,stroke:#C9C2B2
-    style T3 fill:#F4F1EA,stroke:#C9C2B2
-    style T4 fill:#F4F1EA,stroke:#C9C2B2
-    style T5 fill:#F4F1EA,stroke:#B23A48
-    style T6 fill:#F4F1EA,stroke:#C9C2B2
+    style T fill:#F4F1EA,stroke:#2E5A87,color:#1A1A1A,font-weight:bold
+    style T1 fill:#F4F1EA,stroke:#C9C2B2,color:#1A1A1A
+    style T2 fill:#F4F1EA,stroke:#C9C2B2,color:#1A1A1A
+    style T3 fill:#F4F1EA,stroke:#C9C2B2,color:#1A1A1A
+    style T4 fill:#F4F1EA,stroke:#C9C2B2,color:#1A1A1A
+    style T5 fill:#F4F1EA,stroke:#B23A48,color:#1A1A1A
+    style T6 fill:#F4F1EA,stroke:#C9C2B2,color:#1A1A1A
 ```
 
 *Figure 4.7 — The six elements of the Tribe Script. These run automatically when any group context is detected.*

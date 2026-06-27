@@ -61,10 +61,10 @@ flowchart TD
 
     A --> B --> C --> D
 
-    style A fill:#F4F1EA,stroke:#2E5A87
-    style B fill:#F4F1EA,stroke:#2E5A87
-    style C fill:#F4F1EA,stroke:#B23A48
-    style D fill:#F4F1EA,stroke:#B23A48
+    style A fill:#F4F1EA,stroke:#2E5A87,color:#1A1A1A
+    style B fill:#F4F1EA,stroke:#2E5A87,color:#1A1A1A
+    style C fill:#F4F1EA,stroke:#B23A48,color:#1A1A1A
+    style D fill:#F4F1EA,stroke:#B23A48,color:#1A1A1A
 ```
 
 *Figure 3.2 — The Distance Scale. Every level represents behavior that would not otherwise have occurred.*

@@ -113,6 +113,19 @@ Author as a ` ```mermaid ` fenced block. The React app renders it live in the br
 and themes it to the book palette automatically — no files, no build step.
 Keep flowcharts compact so they read well on mobile.
 
+**Dark-mode rule — mandatory:** Whenever you add a `style` block that sets `fill:` to a
+light color (e.g. `fill:#F4F1EA`), you **must** also set `color:#1A1A1A` on the same line.
+Without it, Mermaid inherits the dark-mode ink token (`#E9E4D8`) as the text color —
+light text on a light background, invisible in dark mode. Every node style must look like:
+
+```
+    style A fill:#F4F1EA,stroke:#2E5A87,color:#1A1A1A
+    style B fill:#F4F1EA,stroke:#2E5A87,color:#1A1A1A,font-weight:bold
+```
+
+Nodes that use the theme's default color (no explicit `fill:`) inherit correctly and
+do not need `color:` set.
+
 ---
 
 #### Option B — SVG diagrams
