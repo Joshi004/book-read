@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useParams, Navigate } from 'react-router-dom'
+import { useParams, Navigate, useOutletContext } from 'react-router-dom'
 import { Box } from '@mui/material'
 import ChapterReader from '../components/ChapterReader.jsx'
 import PrevNextNav from '../components/PrevNextNav.jsx'
@@ -9,6 +9,7 @@ import { getChapter, getNeighbors } from '../content/chapters.js'
 export default function ChapterPage() {
   const { number } = useParams()
   const [headings, setHeadings] = useState([])
+  const { focusMode } = useOutletContext() ?? {}
   const chapter = getChapter(number)
 
   if (!chapter) return <Navigate to="/404" replace />
@@ -25,7 +26,7 @@ export default function ChapterPage() {
         py: { xs: 3, sm: 5 },
       }}
     >
-      <Box sx={{ flex: 1, maxWidth: '46rem', minWidth: 0 }}>
+      <Box sx={{ flex: 1, maxWidth: focusMode ? '60rem' : '46rem', minWidth: 0, transition: 'max-width 0.25s ease' }}>
         <ChapterReader
           key={chapter.number}
           chapter={chapter}
@@ -37,7 +38,7 @@ export default function ChapterPage() {
         sx={{
           width: '15rem',
           flexShrink: 0,
-          display: { xs: 'none', lg: 'block' },
+          display: focusMode ? 'none' : { xs: 'none', lg: 'block' },
         }}
       >
         <OnThisPage headings={headings} />

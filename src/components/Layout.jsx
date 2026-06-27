@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Outlet, Link as RouterLink } from 'react-router-dom'
 import {
   AppBar,
@@ -8,9 +8,11 @@ import {
   Drawer,
   Typography,
   Button,
+  Snackbar,
 } from '@mui/material'
 import MenuIcon from '@mui/icons-material/Menu'
 import SearchIcon from '@mui/icons-material/Search'
+import CenterFocusStrongIcon from '@mui/icons-material/CenterFocusStrong'
 import Sidebar from './Sidebar.jsx'
 import ThemeToggle from './ThemeToggle.jsx'
 import SearchDialog from './SearchDialog.jsx'
@@ -22,8 +24,22 @@ const DRAWER_WIDTH = 280
 export default function Layout() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [searchOpen, setSearchOpen] = useState(false)
+  const [focusMode, setFocusMode] = useState(false)
+  const [toastOpen, setToastOpen] = useState(false)
 
   const closeMobile = () => setMobileOpen(false)
+
+  const enterFocus = () => {
+    setFocusMode(true)
+    setToastOpen(true)
+  }
+
+  useEffect(() => {
+    if (!focusMode) return
+    const onKey = (e) => { if (e.key === 'Escape') setFocusMode(false) }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [focusMode])
 
   return (
     <Box sx={{ display: 'flex' }}>
@@ -32,6 +48,7 @@ export default function Layout() {
         color="default"
         elevation={0}
         sx={{
+          display: focusMode ? 'none' : 'flex',
           zIndex: (t) => t.zIndex.drawer + 1,
           borderBottom: '1px solid',
           borderColor: 'divider',
@@ -77,6 +94,14 @@ export default function Layout() {
           >
             <SearchIcon />
           </IconButton>
+          <IconButton
+            onClick={enterFocus}
+            color="inherit"
+            aria-label="Enter focus mode"
+            title="Focus mode (Esc to exit)"
+          >
+            <CenterFocusStrongIcon />
+          </IconButton>
           <ThemeToggle />
         </Toolbar>
       </AppBar>
@@ -84,7 +109,11 @@ export default function Layout() {
       {/* Navigation: temporary drawer on mobile, permanent on desktop. */}
       <Box
         component="nav"
-        sx={{ width: { md: DRAWER_WIDTH }, flexShrink: { md: 0 } }}
+        sx={{
+          display: focusMode ? 'none' : undefined,
+          width: { md: DRAWER_WIDTH },
+          flexShrink: { md: 0 },
+        }}
         aria-label="Chapters"
       >
         <Drawer
@@ -122,16 +151,24 @@ export default function Layout() {
         component="main"
         sx={{
           flexGrow: 1,
-          width: { md: `calc(100% - ${DRAWER_WIDTH}px)` },
+          width: focusMode ? '100%' : { md: `calc(100% - ${DRAWER_WIDTH}px)` },
           minHeight: '100vh',
+          transition: 'width 0.25s ease',
         }}
       >
-        <Toolbar />
-        <Outlet />
+        <Toolbar sx={{ display: focusMode ? 'none' : undefined }} />
+        <Outlet context={{ focusMode, setFocusMode }} />
       </Box>
 
       <SearchDialog open={searchOpen} onClose={() => setSearchOpen(false)} />
       <ScrollToTop />
+      <Snackbar
+        open={toastOpen}
+        autoHideDuration={2500}
+        onClose={() => setToastOpen(false)}
+        message="Press Esc to exit focus mode"
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+      />
     </Box>
   )
 }
