@@ -1,15 +1,18 @@
 # reference/ — the source of truth
 
-Drop the authoritative materials here. The `format-chapter` skill reads everything
-in this folder to **fix factual/terminology errors** in transcripts without
-inventing anything.
+**There is no original Behavior Ops manuscript, and there will never be one.**
+The spoken transcripts in `transcripts/` are the only source material this book
+has ever had. The `format-chapter` skill does not wait for, or ask the user for,
+an original manual — don't put one here and don't expect one to appear.
 
-Put here:
+What actually lives here:
 
-- **The original Behavior Ops manual** (PDF, docx, md, or txt). This is the
-  ultimate authority when a transcript and the manual disagree.
-- **Concept notes / glossary** — key terms, frameworks, and their correct names.
 - **`style-guide.md`** — the book's design & editorial system (already here).
+- Any glossary/concept notes you want to add for cross-chapter consistency.
 
-If a chapter's relevant source material is missing, the skill will tell you and
-ask for it before making factual corrections.
+For fixing factual/terminology errors, the skill instead relies on (in order):
+1. Terminology already established in previously published `chapters/*.md` files.
+2. Web search, for real-world proper nouns, book titles, dates, and established
+   psychology/influence terminology.
+
+See `.claude/skills/format-chapter/SKILL.md` for the full workflow.

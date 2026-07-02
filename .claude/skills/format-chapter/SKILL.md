@@ -1,6 +1,6 @@
 ---
 name: format-chapter
-description: Turn a raw chapter transcript for the book "Behavior Ops" by Charles Huge into a polished, web-ready book chapter rendered by the React app. Reads the transcript, corrects transcription/factual errors against the original manual and the underlying concepts WITHOUT omitting any of the author's content, reorganizes it into proper book structure, and augments it with diagrams, charts, tables, callouts, and other comprehension aids. Use whenever the user drops a new transcript into transcripts/ or asks to format/build a chapter.
+description: Turn a raw chapter transcript for the book "Behavior Ops" by Charles Huge into a polished, web-ready book chapter rendered by the React app. Reads the transcript, corrects transcription/factual errors if introduced during transcription against real-world knowledge (via web search) and prior chapters WITHOUT omitting any of the author's content, reorganizes it into proper book structure, and augments it with diagrams, charts, tables, callouts, and other comprehension aids. Use whenever the user drops a new transcript into transcripts/ or asks to format/build a chapter.
 ---
 
 # Format Chapter — Behavior Ops
@@ -26,7 +26,7 @@ What you ARE allowed to change (this is "fixing issues," not "omitting"):
 | ASR / transcription errors | "behavior ops" misheard as "behave your ops"; homophones; wrong word boundaries |
 | Pure speech filler & false starts | "um", "uh", "like, you know", "so, so, so the…", repeated restarts |
 | Grammar / punctuation that impedes reading | run-on sentences split into readable ones |
-| Factual errors that contradict the source | a term, number, or model named wrong vs. the original manual |
+| Factual errors that contradict reality | a real person's name, book title, date, or established term misheard — verified via web search or against a prior chapter |
 
 What you must NEVER do:
 
@@ -37,12 +37,27 @@ What you must NEVER do:
 
 ## Before you start — load the source of truth
 
-1. Read everything in `reference/` — especially the **original manual** and any
-   **concept notes**. This is your authority for fixing factual/terminology errors.
-2. Read `reference/style-guide.md` for the book's design system and editorial rules.
-3. If `reference/` is empty or the original manual for this chapter's topic is
-   missing, **tell the user and ask for it** before making any factual "fixes."
-   You may still format and enrich, but flag any term you were unsure about.
+**There is no original manuscript for this book, and there will never be one.**
+Charles Huge's manual only exists as the spoken transcripts you're given — do not
+tell the user it's missing or ask them for a copy. Your authority for fixing
+factual/terminology errors only if introduced during the process of transcription is, in this order:
+
+1. **`reference/style-guide.md`** — the book's design system and editorial rules.
+2. **Prior chapters in `chapters/*.md`** — this book builds its own vocabulary
+   chapter over chapter (the Four Corners of the Frame from Ch. 9, the Pillars of
+   Human Influence laid out in Ch. 4, the BTE from Ch. 7, etc.). When the new
+   transcript touches a concept already named and defined earlier in the book,
+   that earlier chapter's spelling and definition wins — skim `chapters/` for the
+   term before guessing.
+3. **Web search, for anything real-world** — proper nouns (researchers, authors,
+   book titles), historical facts, dates, and established terminology in
+   psychology/influence/neuroscience are all independently verifiable. When a
+   transcript passage names a real person, book, study, or theory, search for it
+   and correct the transcription to match reality rather than guessing from sound
+   alone.
+4. When something is genuinely ambiguous and none of the above settles it, keep
+   the author's wording as-is and flag it with the `<!-- ASR? verify: ... -->`
+   comment from step 5 — don't block the chapter on it.
 
 ## Workflow
 
@@ -51,12 +66,15 @@ What you must NEVER do:
 - Read it fully, start to finish, before writing anything. Note the chapter's
   arc, its key concepts, examples, and any place the transcription looks garbled.
 
-### 2. Reconcile against the manual
-- Cross-check terminology, names, numbers, and frameworks against `reference/`.
-- When the transcript and the manual disagree, the **manual wins** — correct the
-  transcript.
-- When something is ambiguous and the manual doesn't settle it, keep the author's
-  wording as-is.
+### 2. Reconcile against prior chapters and reality
+- Cross-check terminology, names, and frameworks against **prior chapters** in
+  `chapters/*.md` first — if this book already named and defined a concept, reuse
+  its exact spelling and definition rather than re-deriving it.
+- For real-world proper nouns, book titles, historical facts, and established
+  psychology/influence terminology, **use web search** to verify before
+  correcting. Fix confidently once confirmed (e.g., a researcher's real name).
+- When something is ambiguous and neither prior chapters nor a web search settle
+  it, keep the author's wording as-is and flag it (see step 5).
 
 ### 3. Restructure into a chapter
 Produce `chapters/chapter-NN.md` with this skeleton (adapt to the content):
@@ -192,14 +210,14 @@ Check specifically for:
 | **Non-grammatical noun phrases** | e.g. "commanded people's heads", "enservating a reflex" — a verb + object combination that no fluent speaker would write |
 | **Wrong register for the field** | A term that exists but does not belong in behavioral science, e.g. "cultivated" where "captivated" is needed, "sacred memories" where "ancestral memories" is needed |
 | **Broken rhetorical patterns** | If surrounding sentences form a list or triplet ("No X. No Y. No Z."), every item must fit the same pattern — a misfit item is almost always an ASR error |
-| **Proper nouns / model names** | Names of researchers, experiments, and proprietary frameworks are high-risk ASR targets — confirm spelling against `reference/` or flag for verification |
+| **Proper nouns / model names** | Names of researchers, experiments, and book titles are high-risk ASR targets — confirm spelling with a **web search**; confirm proprietary Behavior Ops framework names against `chapters/*.md`; flag for verification only if both come up empty |
 | **Numerals and enumeration** | ASR often misreads spoken numbers as words like "Right." — confirm every numbered list is complete and sequential |
 
 For each suspicious phrase:
 1. State what the phrase currently says.
 2. Reason about what the author most likely intended, given the surrounding sentences and subject matter.
 3. Apply the most conservative fix that restores meaning without adding new claims.
-4. If the correct word is genuinely uncertain and the manual does not settle it, leave the phrase as-is and add a `<!-- ASR? verify: [your best guess] -->` HTML comment inline so a human reviewer can spot it.
+4. If the correct word is genuinely uncertain after a web search and prior chapters don't settle it, leave the phrase as-is and add a `<!-- ASR? verify: [your best guess] -->` HTML comment inline so a human reviewer can spot it.
 
 Document every change found in this pass in the change log table at the end of the chapter, alongside the changes from step 2.
 
@@ -267,7 +285,7 @@ Record every ASR correction (from step 2 and step 5) in a change log table, but 
 Do not use Markdown footnote syntax (`[^1]` / `[^1]: ...`) — these render visibly in the UI. If a citation or verification note is needed, embed it as an HTML comment at the point of use:
 
 ```markdown
-<!-- Citation: claim about inherited phobias — likely Dias (2015) and Ressler (2014); verify against original manual before publication -->
+<!-- Citation: claim about inherited phobias — likely Dias (2015) and Ressler (2014); verify via web search before publication -->
 ```
 
 ### Inline uncertainty markers (from step 5)
