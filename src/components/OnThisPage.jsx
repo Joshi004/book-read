@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Box, List, ListItemButton, ListItemText, Typography } from '@mui/material'
 import { SANS } from '../theme.js'
 
@@ -7,6 +7,7 @@ import { SANS } from '../theme.js'
 // currently in view.
 export default function OnThisPage({ headings }) {
   const [active, setActive] = useState(null)
+  const listRef = useRef(null)
 
   useEffect(() => {
     if (!headings?.length) return undefined
@@ -28,6 +29,14 @@ export default function OnThisPage({ headings }) {
     return () => observer.disconnect()
   }, [headings])
 
+  // Keep the active entry visible inside the TOC's own scroll region (never
+  // the window) as `active` changes above — a no-op when it's already in view.
+  useEffect(() => {
+    if (!active) return
+    const item = listRef.current?.querySelector(`[data-heading-id="${CSS.escape(active)}"]`)
+    item?.scrollIntoView({ block: 'nearest' })
+  }, [active])
+
   if (!headings?.length) return null
 
   const jump = (id) => {
@@ -42,7 +51,13 @@ export default function OnThisPage({ headings }) {
     <Box
       component="nav"
       aria-label="On this page"
-      sx={{ position: 'sticky', top: 88 }}
+      sx={{
+        position: 'sticky',
+        top: 88,
+        maxHeight: 'calc(100vh - 88px - 24px)',
+        display: 'flex',
+        flexDirection: 'column',
+      }}
     >
       <Typography
         sx={{
@@ -54,35 +69,48 @@ export default function OnThisPage({ headings }) {
           color: 'text.secondary',
           mb: 1,
           pl: 1.5,
+          flexShrink: 0,
         }}
       >
         On this page
       </Typography>
-      <List dense disablePadding>
-        {headings.map((h) => (
-          <ListItemButton
-            key={h.id}
-            onClick={() => jump(h.id)}
-            selected={active === h.id}
-            sx={{
-              borderLeft: '2px solid',
-              borderColor: active === h.id ? 'primary.main' : 'divider',
-              py: 0.25,
-              pl: h.level === 3 ? 3 : 1.5,
-            }}
-          >
-            <ListItemText
-              primary={h.text}
-              primaryTypographyProps={{
-                fontFamily: SANS,
-                fontSize: '0.8rem',
-                color: active === h.id ? 'primary.main' : 'text.secondary',
-                fontWeight: active === h.id ? 600 : 400,
+      <Box
+        ref={listRef}
+        sx={{
+          flex: 1,
+          minHeight: 0,
+          overflowY: 'auto',
+          pr: 0.5,
+          scrollbarGutter: 'stable',
+        }}
+      >
+        <List dense disablePadding>
+          {headings.map((h) => (
+            <ListItemButton
+              key={h.id}
+              data-heading-id={h.id}
+              onClick={() => jump(h.id)}
+              selected={active === h.id}
+              sx={{
+                borderLeft: '2px solid',
+                borderColor: active === h.id ? 'primary.main' : 'divider',
+                py: 0.25,
+                pl: h.level === 3 ? 3 : 1.5,
               }}
-            />
-          </ListItemButton>
-        ))}
-      </List>
+            >
+              <ListItemText
+                primary={h.text}
+                primaryTypographyProps={{
+                  fontFamily: SANS,
+                  fontSize: '0.8rem',
+                  color: active === h.id ? 'primary.main' : 'text.secondary',
+                  fontWeight: active === h.id ? 600 : 400,
+                }}
+              />
+            </ListItemButton>
+          ))}
+        </List>
+      </Box>
     </Box>
   )
 }
