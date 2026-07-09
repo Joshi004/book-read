@@ -17,6 +17,7 @@ import Sidebar from './Sidebar.jsx'
 import ThemeToggle from './ThemeToggle.jsx'
 import SearchDialog from './SearchDialog.jsx'
 import ScrollToTop from './ScrollToTop.jsx'
+import UpdatePrompt from './UpdatePrompt.jsx'
 import { SERIF } from '../theme.js'
 
 const DRAWER_WIDTH = 280
@@ -169,6 +170,7 @@ export default function Layout() {
         message="Press Esc to exit focus mode"
         anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
       />
+      <UpdatePrompt />
     </Box>
   )
 }
