@@ -5,6 +5,7 @@ import { ThemeProvider, CssBaseline } from '@mui/material'
 import App from './App.jsx'
 import { getTheme } from './theme.js'
 import { ColorModeContext } from './colorMode.js'
+import { ReadingPrefsProvider } from './readingPrefs.jsx'
 
 const STORAGE_KEY = 'behavior-ops-color-mode'
 
@@ -44,14 +45,16 @@ function Root() {
   const theme = useMemo(() => getTheme(mode), [mode])
 
   return (
-    <ColorModeContext.Provider value={colorMode}>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <HashRouter>
-          <App />
-        </HashRouter>
-      </ThemeProvider>
-    </ColorModeContext.Provider>
+    <ReadingPrefsProvider>
+      <ColorModeContext.Provider value={colorMode}>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <HashRouter>
+            <App />
+          </HashRouter>
+        </ThemeProvider>
+      </ColorModeContext.Provider>
+    </ReadingPrefsProvider>
   )
 }
 

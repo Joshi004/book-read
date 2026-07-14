@@ -13,11 +13,13 @@ import {
 import MenuIcon from '@mui/icons-material/Menu'
 import SearchIcon from '@mui/icons-material/Search'
 import CenterFocusStrongIcon from '@mui/icons-material/CenterFocusStrong'
+import FormatSizeIcon from '@mui/icons-material/FormatSize'
 import Sidebar from './Sidebar.jsx'
 import ThemeToggle from './ThemeToggle.jsx'
 import SearchDialog from './SearchDialog.jsx'
 import ScrollToTop from './ScrollToTop.jsx'
 import UpdatePrompt from './UpdatePrompt.jsx'
+import ReadingPrefsPanel from './ReadingPrefsPanel.jsx'
 import { SERIF } from '../theme.js'
 
 const DRAWER_WIDTH = 280
@@ -27,6 +29,7 @@ export default function Layout() {
   const [searchOpen, setSearchOpen] = useState(false)
   const [focusMode, setFocusMode] = useState(false)
   const [toastOpen, setToastOpen] = useState(false)
+  const [prefsAnchor, setPrefsAnchor] = useState(null)
 
   const closeMobile = () => setMobileOpen(false)
 
@@ -96,6 +99,14 @@ export default function Layout() {
             <SearchIcon />
           </IconButton>
           <IconButton
+            onClick={(e) => setPrefsAnchor(e.currentTarget)}
+            color="inherit"
+            aria-label="Reading preferences"
+            title="Text size & line spacing"
+          >
+            <FormatSizeIcon />
+          </IconButton>
+          <IconButton
             onClick={enterFocus}
             color="inherit"
             aria-label="Enter focus mode"
@@ -162,6 +173,7 @@ export default function Layout() {
       </Box>
 
       <SearchDialog open={searchOpen} onClose={() => setSearchOpen(false)} />
+      <ReadingPrefsPanel anchorEl={prefsAnchor} onClose={() => setPrefsAnchor(null)} />
       <ScrollToTop />
       <Snackbar
         open={toastOpen}

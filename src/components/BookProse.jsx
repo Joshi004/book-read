@@ -21,8 +21,8 @@ const BookProse = styled('div')(({ theme }) => {
   return {
     fontFamily: SERIF,
     color: b.ink,
-    lineHeight: 1.6,
-    fontSize: '1.0625rem',
+    lineHeight: 'var(--bops-line-height, 1.6)',
+    fontSize: 'var(--bops-font-size, 1.0625rem)',
     textAlign: 'justify',
     hyphens: 'auto',
     [theme.breakpoints.down('sm')]: { textAlign: 'left', hyphens: 'manual' },
