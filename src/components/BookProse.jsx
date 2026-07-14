@@ -49,6 +49,17 @@ const BookProse = styled('div')(({ theme }) => {
       textAlign: 'left',
       scrollMarginTop: '84px', // clear the sticky AppBar on anchored jumps
     },
+    '& [data-block-id]': {
+      scrollMarginTop: '84px', // same, for search-result jumps to a specific block
+    },
+
+    // --- Temporary highlight after landing on a search result ---
+    '& mark.search-hit-highlight': {
+      background: b.accent,
+      color: '#fff',
+      padding: '0.05em 0.15em',
+      borderRadius: 2,
+    },
     '& h2': {
       fontSize: '1.4rem',
       fontWeight: 700,

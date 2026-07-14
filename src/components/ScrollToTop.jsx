@@ -1,21 +1,28 @@
 import { useEffect, useState } from 'react'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useSearchParams } from 'react-router-dom'
 import { Fab, Zoom } from '@mui/material'
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp'
 
 // Resets scroll on route change and shows a floating "back to top" button.
 // `scroller` is the element that actually scrolls (the main content region).
 export default function ScrollToTop({ scroller }) {
-  const { pathname } = useLocation()
+  const location = useLocation()
+  const { pathname } = location
+  const [searchParams] = useSearchParams()
   const [show, setShow] = useState(false)
 
   const getEl = () => (typeof scroller === 'function' ? scroller() : null)
 
+  // A search result hands a chapter route a specific block to scroll to
+  // (ChapterReader.jsx) — don't fight that with an unconditional reset-to-top.
+  const hasPendingTarget = Boolean(location.state?.blockId || searchParams.get('block'))
+
   useEffect(() => {
+    if (hasPendingTarget) return
     const el = getEl()
     if (el) el.scrollTo({ top: 0 })
     else window.scrollTo({ top: 0 })
-  }, [pathname]) // eslint-disable-line react-hooks/exhaustive-deps
+  }, [pathname, hasPendingTarget]) // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     const el = getEl() || window

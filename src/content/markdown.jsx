@@ -4,36 +4,8 @@ import remarkDirective from 'remark-directive'
 import rehypeSlug from 'rehype-slug'
 import Callout from '../components/Callout.jsx'
 import Mermaid from '../components/Mermaid.jsx'
-
-const CALLOUT_NAMES = new Set(['callout', 'definition', 'warning'])
-
-// remark-directive needs the directive name to touch the colons (`:::callout`),
-// but the authored/pandoc style uses a space (`::: callout`). Normalize a copy of
-// the body so the chapter source can stay in the format the skill emits.
-export function normalizeFencedDivs(body) {
-  return String(body).replace(/^(:{3,})[ \t]+([A-Za-z][\w-]*)[ \t]*$/gm, '$1$2')
-}
-
-// Strip HTML comments before the markdown reaches the renderer.
-// react-markdown has no rehype-raw, so <!-- ... --> leaks through as visible text
-// instead of being silently discarded. This covers multi-line comment blocks used
-// for editor-only content (change logs, citation flags, ASR notes).
-function stripHtmlComments(body) {
-  return String(body).replace(/<!--[\s\S]*?-->/g, '')
-}
-
-// Map our container directives (:::callout / :::definition / :::warning) onto
-// custom elements that the `components` table renders as <Callout>.
-function remarkCalloutDirectives() {
-  const visit = (node) => {
-    if (node.type === 'containerDirective' && CALLOUT_NAMES.has(node.name)) {
-      const data = node.data || (node.data = {})
-      data.hName = node.name
-    }
-    if (Array.isArray(node.children)) node.children.forEach(visit)
-  }
-  return (tree) => visit(tree)
-}
+import { normalizeFencedDivs, stripHtmlComments, remarkCalloutDirectives } from './markdownPipeline.js'
+import { blockIdPlugin } from './blockIds.js'
 
 function resolveAsset(src = '') {
   if (/^(https?:)?\/\//.test(src) || src.startsWith('data:')) return src
@@ -99,7 +71,7 @@ const components = {
   },
 }
 
-const remarkPlugins = [remarkGfm, remarkDirective, remarkCalloutDirectives]
+const remarkPlugins = [remarkGfm, remarkDirective, remarkCalloutDirectives, blockIdPlugin]
 const rehypePlugins = [rehypeSlug]
 
 export default function MarkdownContent({ body }) {

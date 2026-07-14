@@ -6,6 +6,10 @@ dist/
 dist-ssr/
 build/
 
+# Generated at build time (scripts/generate-search-index.mjs) — regenerated every build
+src/generated/
+public/search-index/
+
 # Local env files
 *.local
 .env

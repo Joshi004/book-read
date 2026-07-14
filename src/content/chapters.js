@@ -1,42 +1,22 @@
+import manifest from '../generated/chapters-manifest.json'
 import { parseFrontmatter } from './frontmatter.js'
 
-// Eagerly pull every chapter's raw Markdown at build time. Dropping a new
-// chapters/chapter-NN.md (with `chapter: NN` frontmatter) makes it appear in the
-// TOC, routing, search, and prev/next automatically — no code change needed.
-const modules = import.meta.glob('../../chapters/*.md', {
+// Chapter metadata (title, subtitle, number, ...) is a small, static, eagerly
+// imported manifest generated at build time (scripts/generate-search-index.mjs)
+// from the same chapters/*.md frontmatter this module used to parse itself.
+// Dropping a new chapters/chapter-NN.md still makes it appear everywhere
+// automatically — the manifest just gets regenerated on the next build.
+//
+// The chapter BODY (the actual markdown prose) is loaded lazily, per chapter,
+// on route visit — not bundled eagerly into every page's JS like before.
+const bodyLoaders = import.meta.glob('../../chapters/*.md', {
   query: '?raw',
   import: 'default',
-  eager: true,
 })
 
-function buildManifest() {
-  const list = Object.entries(modules).map(([path, raw]) => {
-    const { data, body } = parseFrontmatter(raw)
-    const fileSlug = path.split('/').pop().replace(/\.md$/, '') // e.g. "chapter-03"
-    const number = data.chapter != null ? Number(data.chapter) : NaN
-    return {
-      path,
-      slug: fileSlug,
-      number,
-      title: data.title || fileSlug,
-      subtitle: data.subtitle || '',
-      book: data.book || 'Behavior Ops',
-      author: data.author || '',
-      body,
-    }
-  })
+const bodyCache = new Map()
 
-  // Sort by chapter number; entries without a numeric chapter sink to the end.
-  list.sort((a, b) => {
-    const an = Number.isNaN(a.number) ? Infinity : a.number
-    const bn = Number.isNaN(b.number) ? Infinity : b.number
-    return an - bn
-  })
-
-  return list
-}
-
-export const chapters = buildManifest()
+export const chapters = manifest
 
 export function getChapter(number) {
   const n = Number(number)
@@ -50,4 +30,17 @@ export function getNeighbors(number) {
     prev: idx > 0 ? chapters[idx - 1] : null,
     next: idx < chapters.length - 1 ? chapters[idx + 1] : null,
   }
+}
+
+export function loadChapterBody(number) {
+  const chapter = getChapter(number)
+  if (!chapter) return Promise.resolve(null)
+  if (!bodyCache.has(chapter.number)) {
+    const loader = bodyLoaders[chapter.path]
+    const promise = loader
+      ? loader().then((raw) => parseFrontmatter(raw).body)
+      : Promise.resolve('')
+    bodyCache.set(chapter.number, promise)
+  }
+  return bodyCache.get(chapter.number)
 }

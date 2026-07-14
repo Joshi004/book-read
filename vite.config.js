@@ -49,6 +49,21 @@ export default defineConfig({
               cacheableResponse: { statuses: [0, 200] },
             },
           },
+          {
+            // Fetched lazily on first search-dialog open (not precached via
+            // globPatterns — that would defeat the point). Serve instantly
+            // from cache (works offline), refresh in the background: content
+            // only changes via infrequent git-commit-triggered deploys, so an
+            // index one deploy behind is a non-issue, self-healing on the
+            // next open.
+            urlPattern: /\/search-index\/corpus\.json$/,
+            handler: 'StaleWhileRevalidate',
+            options: {
+              cacheName: 'search-index',
+              expiration: { maxEntries: 2, maxAgeSeconds: 60 * 60 * 24 * 30 },
+              cacheableResponse: { statuses: [0, 200] },
+            },
+          },
         ],
       },
     }),

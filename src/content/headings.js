@@ -1,38 +1,24 @@
-// Helpers for full-text search snippets. The on-this-page nav reads heading ids
-// straight from the rendered DOM (so anchors always match rehype-slug), so this
-// module only needs to support search.
+// Search-snippet helper. Operates on already-plain-text block content (the
+// search index's bodyText is extracted via hast-util-to-string at build time,
+// so there's no markdown syntax left to strip here).
 
-/** Strip the most common Markdown syntax so search snippets read as plain prose. */
-export function stripMarkdown(text) {
-  return String(text)
-    .replace(/^---[\s\S]*?---/, '') // frontmatter (defensive; body is already split)
-    .replace(/```[\s\S]*?```/g, ' ') // fenced code / mermaid blocks
-    .replace(/^:::.*$/gm, ' ') // fenced-div markers
-    .replace(/!\[[^\]]*\]\([^)]*\)/g, ' ') // images
-    .replace(/\[([^\]]*)\]\([^)]*\)/g, '$1') // links → link text
-    .replace(/[#>*_`|]/g, ' ') // residual markdown punctuation
-    .replace(/\s+/g, ' ')
-    .trim()
-}
+import { findOccurrences } from './textMatch.js'
 
 /**
- * Build a context snippet around the first case-insensitive match of `query`.
- * Returns null when there's no match.
+ * Build a context snippet around the Nth occurrence of `term` in `text`.
+ * Returns null when that occurrence doesn't exist.
  * @returns {{ before: string, match: string, after: string } | null}
  */
-export function makeSnippet(body, query, radius = 90) {
-  const plain = stripMarkdown(body)
-  const haystack = plain.toLowerCase()
-  const needle = query.trim().toLowerCase()
-  if (!needle) return null
-  const idx = haystack.indexOf(needle)
-  if (idx === -1) return null
+export function makeSnippet(text, term, occurrence = 1, radius = 90) {
+  const plain = String(text ?? '')
+  const target = findOccurrences(plain, term)[Math.max(1, occurrence) - 1]
+  if (!target) return null
 
-  const start = Math.max(0, idx - radius)
-  const end = Math.min(plain.length, idx + needle.length + radius)
+  const start = Math.max(0, target.start - radius)
+  const end = Math.min(plain.length, target.end + radius)
   return {
-    before: (start > 0 ? '… ' : '') + plain.slice(start, idx),
-    match: plain.slice(idx, idx + needle.length),
-    after: plain.slice(idx + needle.length, end) + (end < plain.length ? ' …' : ''),
+    before: (start > 0 ? '… ' : '') + plain.slice(start, target.start),
+    match: plain.slice(target.start, target.end),
+    after: plain.slice(target.end, end) + (end < plain.length ? ' …' : ''),
   }
 }
