@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400"
+     font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">
+
+  <!-- Tier 1: Greetings (base) — lowest social stress -->
+  <polygon points="87,288 513,288 560,355 40,355" fill="#6B9EC7"/>
+
+  <!-- Tier 2: Compliments -->
+  <polygon points="134,220 466,220 513,288 87,288" fill="#4A7BAD"/>
+
+  <!-- Tier 3: Conversations & Advice -->
+  <polygon points="181,153 419,153 466,220 134,220" fill="#2E5A87"/>
+
+  <!-- Tier 4: Public Exposure -->
+  <polygon points="228,86 372,86 419,153 181,153" fill="#C4536B"/>
+
+  <!-- Tier 5: Take Charge (apex) — highest social stress -->
+  <polygon points="275,18 325,18 372,86 228,86" fill="#B23A48"/>
+
+  <!-- Subtle dividers between tiers -->
+  <line x1="87"  y1="288" x2="513" y2="288" stroke="white" stroke-width="1" opacity="0.25"/>
+  <line x1="134" y1="220" x2="466" y2="220" stroke="white" stroke-width="1" opacity="0.25"/>
+  <line x1="181" y1="153" x2="419" y2="153" stroke="white" stroke-width="1" opacity="0.25"/>
+  <line x1="228" y1="86"  x2="372" y2="86"  stroke="white" stroke-width="1" opacity="0.25"/>
+
+  <!-- Outer outline -->
+  <polygon points="275,18 325,18 560,355 40,355" fill="none" stroke="rgba(0,0,0,0.12)" stroke-width="1.5" stroke-linejoin="round"/>
+
+  <!-- Tier 5 label — Take Charge (center y ≈ 52) -->
+  <text x="300" y="49" text-anchor="middle" fill="white" font-size="9" font-weight="700">Take Charge</text>
+  <text x="300" y="61" text-anchor="middle" fill="rgba(255,255,255,0.78)" font-size="7">Lead a group of strangers</text>
+
+  <!-- Tier 4 label — Public Exposure (center y ≈ 119) -->
+  <text x="300" y="114" text-anchor="middle" fill="white" font-size="11" font-weight="700">Public Exposure</text>
+  <text x="300" y="128" text-anchor="middle" fill="rgba(255,255,255,0.78)" font-size="8.5">Deliver a speech · ask for a date directly</text>
+
+  <!-- Tier 3 label — Conversations & Advice (center y ≈ 186) -->
+  <text x="300" y="181" text-anchor="middle" fill="white" font-size="12" font-weight="700">Conversations &amp; Advice</text>
+  <text x="300" y="196" text-anchor="middle" fill="rgba(255,255,255,0.78)" font-size="9">Start conversations · ask strangers for advice</text>
+
+  <!-- Tier 2 label — Compliments (center y ≈ 254) -->
+  <text x="300" y="248" text-anchor="middle" fill="white" font-size="13" font-weight="700">Compliments</text>
+  <text x="300" y="264" text-anchor="middle" fill="rgba(255,255,255,0.78)" font-size="9.5">Layer eye contact, silence, questions, contact</text>
+
+  <!-- Tier 1 label — Greetings (center y ≈ 321) -->
+  <text x="300" y="315" text-anchor="middle" fill="white" font-size="14" font-weight="700">Greetings</text>
+  <text x="300" y="332" text-anchor="middle" fill="rgba(255,255,255,0.78)" font-size="10">Say hello with a smile, posture, and eye contact</text>
+
+  <!-- Annotation at top -->
+  <text x="300" y="8" text-anchor="middle" fill="#5B5B5B" font-size="8" font-style="italic" letter-spacing="0.5">▲ HIGHEST SOCIAL STRESS</text>
+
+  <!-- Annotation at bottom -->
+  <text x="300" y="378" text-anchor="middle" fill="#5B5B5B" font-size="8" font-style="italic" letter-spacing="0.5">▼ START HERE — SLIGHTLY OUTSIDE YOUR COMFORT ZONE</text>
+
+  <!-- Side label -->
+  <text x="22" y="190" text-anchor="middle" fill="#5B5B5B" font-size="8" font-style="italic" opacity="0.8">Escalating</text>
+  <text x="22" y="202" text-anchor="middle" fill="#5B5B5B" font-size="8" font-style="italic" opacity="0.8">discomfort</text>
+
+</svg>
