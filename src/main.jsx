@@ -6,6 +6,7 @@ import App from './App.jsx'
 import { getTheme } from './theme.js'
 import { ColorModeContext } from './colorMode.js'
 import { ReadingPrefsProvider } from './readingPrefs.jsx'
+import { ReadingTrackerProvider } from './reading/ReadingTrackerContext.jsx'
 
 const STORAGE_KEY = 'behavior-ops-color-mode'
 
@@ -46,14 +47,16 @@ function Root() {
 
   return (
     <ReadingPrefsProvider>
-      <ColorModeContext.Provider value={colorMode}>
-        <ThemeProvider theme={theme}>
-          <CssBaseline />
-          <HashRouter>
-            <App />
-          </HashRouter>
-        </ThemeProvider>
-      </ColorModeContext.Provider>
+      <ReadingTrackerProvider>
+        <ColorModeContext.Provider value={colorMode}>
+          <ThemeProvider theme={theme}>
+            <CssBaseline />
+            <HashRouter>
+              <App />
+            </HashRouter>
+          </ThemeProvider>
+        </ColorModeContext.Provider>
+      </ReadingTrackerProvider>
     </ReadingPrefsProvider>
   )
 }

@@ -7,6 +7,7 @@ import MarkdownContent from '../content/markdown.jsx'
 import { stripLeadingH1 } from '../content/markdownPipeline.js'
 import { loadChapterBody } from '../content/chapters.js'
 import { highlightOccurrence } from './highlightBlock.js'
+import { useReadingTracker } from '../reading/useReadingTracker.js'
 
 export default function ChapterReader({ chapter, onHeadings }) {
   const ref = useRef(null)
@@ -26,6 +27,9 @@ export default function ChapterReader({ chapter, onHeadings }) {
   }, [chapter.number])
 
   const body = rawBody == null ? null : stripLeadingH1(rawBody)
+
+  // Track genuine reading of this chapter once its prose is in the DOM.
+  useReadingTracker(chapter.number, ref, body != null)
 
   // After the Markdown renders, read the real heading ids (assigned by
   // rehype-slug) so the on-this-page nav anchors always match. `body` is a

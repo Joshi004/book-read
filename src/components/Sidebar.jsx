@@ -8,8 +8,10 @@ import {
   Divider,
 } from '@mui/material'
 import MenuBookIcon from '@mui/icons-material/MenuBook'
+import InsightsIcon from '@mui/icons-material/Insights'
 import { chapters } from '../content/chapters.js'
 import { SANS, SERIF } from '../theme.js'
+import ReadingBadge from '../reading/ReadingBadge.jsx'
 
 const linkSx = {
   '&.active': {
@@ -56,6 +58,18 @@ export default function Sidebar({ onNavigate }) {
             primaryTypographyProps={{ fontFamily: SANS, fontWeight: 600 }}
           />
         </ListItemButton>
+        <ListItemButton
+          component={NavLink}
+          to="/dashboard"
+          onClick={onNavigate}
+          sx={linkSx}
+        >
+          <InsightsIcon fontSize="small" sx={{ mr: 1.25, color: 'text.secondary' }} />
+          <ListItemText
+            primary="Reading Dashboard"
+            primaryTypographyProps={{ fontFamily: SANS, fontWeight: 600 }}
+          />
+        </ListItemButton>
         <Divider />
         <List disablePadding>
           {chapters.map((c) => (
@@ -72,6 +86,7 @@ export default function Sidebar({ onNavigate }) {
                 primaryTypographyProps={{ fontFamily: SANS, fontSize: '0.92rem' }}
                 secondaryTypographyProps={{ fontFamily: SANS, fontSize: '0.72rem' }}
               />
+              <ReadingBadge chapterNumber={c.number} variant="compact" />
             </ListItemButton>
           ))}
         </List>

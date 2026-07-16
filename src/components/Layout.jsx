@@ -14,6 +14,7 @@ import MenuIcon from '@mui/icons-material/Menu'
 import SearchIcon from '@mui/icons-material/Search'
 import CenterFocusStrongIcon from '@mui/icons-material/CenterFocusStrong'
 import FormatSizeIcon from '@mui/icons-material/FormatSize'
+import InsightsIcon from '@mui/icons-material/Insights'
 import Sidebar from './Sidebar.jsx'
 import ThemeToggle from './ThemeToggle.jsx'
 import SearchDialog from './SearchDialog.jsx'
@@ -97,6 +98,15 @@ export default function Layout() {
             aria-label="Search"
           >
             <SearchIcon />
+          </IconButton>
+          <IconButton
+            component={RouterLink}
+            to="/dashboard"
+            color="inherit"
+            aria-label="Reading dashboard"
+            title="Reading dashboard"
+          >
+            <InsightsIcon />
           </IconButton>
           <IconButton
             onClick={(e) => setPrefsAnchor(e.currentTarget)}

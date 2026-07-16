@@ -10,6 +10,7 @@ import {
 import ChevronRightIcon from '@mui/icons-material/ChevronRight'
 import { chapters } from '../content/chapters.js'
 import { SERIF, SANS, MONO } from '../theme.js'
+import ReadingBadge from '../reading/ReadingBadge.jsx'
 
 // Corner-bracket "framed document" mark — evokes a stamped field-manual cover
 // rather than a generic hero. Four L-shaped ticks at the corners of the hero.
@@ -201,6 +202,9 @@ export default function HomePage() {
                             {c.subtitle}
                           </Typography>
                         ) : null}
+                      </Box>
+                      <Box sx={{ flexShrink: 0, display: 'flex', alignItems: 'center' }} onClick={(e) => e.stopPropagation()}>
+                        <ReadingBadge chapterNumber={c.number} />
                       </Box>
                       <ChevronRightIcon color="action" sx={{ flexShrink: 0 }} />
                     </Box>
