@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 660 400" width="660" height="400"
+     font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">
+  <defs>
+    <marker id="arrowBlue" viewBox="0 0 10 10" refX="8" refY="5"
+            markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2E5A87"/>
+    </marker>
+    <marker id="arrowRed" viewBox="0 0 10 10" refX="8" refY="5"
+            markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#C4536B"/>
+    </marker>
+  </defs>
+
+  <!-- Forward flow label -->
+  <text x="330" y="42" text-anchor="middle" fill="#2E5A87"
+        font-size="17" font-weight="bold" letter-spacing="0.5">Care &amp; gifts flow forward</text>
+
+  <!-- Forward arcs (blue): Past -> Present -> Future -->
+  <path d="M 150 140 Q 217 82 283 140" fill="none" stroke="#2E5A87"
+        stroke-width="3" marker-end="url(#arrowBlue)"/>
+  <path d="M 375 140 Q 442 82 508 140" fill="none" stroke="#2E5A87"
+        stroke-width="3" marker-end="url(#arrowBlue)"/>
+
+  <!-- Past Self block -->
+  <rect x="20" y="140" width="170" height="110" rx="12" fill="#4A7BAD"/>
+  <text x="105" y="188" text-anchor="middle" fill="white" font-size="20" font-weight="bold">Past Self</text>
+  <text x="105" y="216" text-anchor="middle" fill="rgba(255,255,255,0.82)" font-size="13">sets you up —</text>
+  <text x="105" y="234" text-anchor="middle" fill="rgba(255,255,255,0.82)" font-size="13">the butler's work</text>
+
+  <!-- Present Self block -->
+  <rect x="245" y="140" width="170" height="110" rx="12" fill="#2E5A87"/>
+  <text x="330" y="182" text-anchor="middle" fill="white" font-size="20" font-weight="bold">Present Self</text>
+  <text x="330" y="208" text-anchor="middle" fill="rgba(255,255,255,0.82)" font-size="13">thanks the past,</text>
+  <text x="330" y="226" text-anchor="middle" fill="rgba(255,255,255,0.82)" font-size="13">works for the future</text>
+
+  <!-- Future Self block -->
+  <rect x="470" y="140" width="170" height="110" rx="12" fill="#1E3D5C"/>
+  <text x="555" y="188" text-anchor="middle" fill="white" font-size="20" font-weight="bold">Future Self</text>
+  <text x="555" y="216" text-anchor="middle" fill="rgba(255,255,255,0.82)" font-size="13">receives the gift,</text>
+  <text x="555" y="234" text-anchor="middle" fill="rgba(255,255,255,0.82)" font-size="13">feels gratitude</text>
+
+  <!-- Backward arcs (red): Future -> Present -> Past -->
+  <path d="M 508 250 Q 442 308 376 250" fill="none" stroke="#C4536B"
+        stroke-width="3" marker-end="url(#arrowRed)"/>
+  <path d="M 283 250 Q 217 308 151 250" fill="none" stroke="#C4536B"
+        stroke-width="3" marker-end="url(#arrowRed)"/>
+
+  <!-- Backward flow label -->
+  <text x="330" y="366" text-anchor="middle" fill="#C4536B"
+        font-size="17" font-weight="bold" letter-spacing="0.5">Gratitude flows back</text>
+</svg>
