@@ -5,6 +5,8 @@ import { createTheme } from '@mui/material/styles'
 export const SERIF =
   '"Iowan Old Style", "Palatino Linotype", "Palatino", "Gentium Book Plus", "Georgia", serif'
 export const SANS = '"Avenir Next", "Helvetica Neue", "Inter", Arial, sans-serif'
+export const MONO =
+  '"SF Mono", "IBM Plex Mono", Menlo, ui-monospace, "Courier New", monospace'
 
 // Editorial palette ported verbatim from build/template/book.css (:root), with a
 // dark-mode counterpart derived from the same hues.
