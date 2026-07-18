@@ -21,7 +21,6 @@ export function emptyChapter() {
     manualStatus: null, // null | 'read' | 'unread' — override wins over auto
     totalWords: 0,
     totalBlocks: 0, // live block count captured by the engine when rendered
-    wordsRead: 0,
     activeMs: 0,
     readBlockIds: [], // stored as array; treated as a set
     lastBlockId: null,
@@ -145,34 +144,24 @@ export function chapterProgress(chapter) {
   return Math.min(1, readCount / total)
 }
 
-// Words-per-minute from accrued words + active time. Guards tiny denominators.
-export function wpm(wordsRead, activeMs) {
-  if (!activeMs || activeMs < 1000 || !wordsRead) return 0
-  return Math.round(wordsRead / (activeMs / 60000))
-}
-
 // Whole-book roll-up used by the dashboard stat tiles.
 export function aggregateStats(state, totalChapters) {
   const chapters = state.chapters || {}
   let read = 0
   let started = 0
-  let wordsRead = 0
   let activeMs = 0
   for (const key of Object.keys(chapters)) {
     const ch = chapters[key]
     const status = effectiveStatus(ch)
     if (status === 'read') read += 1
     if (status !== 'unread') started += 1
-    wordsRead += ch.wordsRead || 0
     activeMs += ch.activeMs || 0
   }
   return {
     chaptersRead: read,
     chaptersStarted: started,
     totalChapters: totalChapters ?? Object.keys(chapters).length,
-    wordsRead,
     activeMs,
-    avgWpm: wpm(wordsRead, activeMs),
   }
 }
 
@@ -217,13 +206,11 @@ export function dailySeries(state, days) {
   for (let i = days - 1; i >= 0; i--) {
     const date = addDays(today, -i)
     const key = dayKey(date)
-    const rec = daily[key] || { activeMs: 0, wordsRead: 0, chapters: [] }
+    const rec = daily[key] || { activeMs: 0, chapters: [] }
     out.push({
       key,
       date,
       activeMs: rec.activeMs || 0,
-      wordsRead: rec.wordsRead || 0,
-      wpm: wpm(rec.wordsRead || 0, rec.activeMs || 0),
       chapters: rec.chapters || [],
     })
   }
@@ -255,7 +242,6 @@ export function evaluateBadges(state, totalChapters) {
     { id: 'streak-3', icon: '🔥', label: 'On a Roll', hint: 'Read 3 days in a row', earned: streak.longest >= 3 },
     { id: 'streak-7', icon: '⚡', label: 'Unstoppable', hint: 'Read 7 days in a row', earned: streak.longest >= 7 },
     { id: 'marathon', icon: '⏱️', label: 'Marathon', hint: 'Read 60 min in one day', earned: maxDailyMs >= 60 * 60000 },
-    { id: 'speed-reader', icon: '🚀', label: 'Speed Reader', hint: 'Average over 300 WPM', earned: agg.avgWpm >= 300 },
   ]
   return defs
 }

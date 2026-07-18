@@ -134,7 +134,7 @@ export function useReadingTracker(chapterNumber, containerRef, ready) {
         dwell.set(id, accrued)
         if (!readLocally.has(id) && accrued >= expectedMs(b.words) * READ_FRACTION) {
           readLocally.add(id)
-          newReadBlocks.push({ id, words: b.words })
+          newReadBlocks.push(id)
         }
       }
 

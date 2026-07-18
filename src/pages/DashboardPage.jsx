@@ -28,7 +28,6 @@ import {
   evaluateBadges,
   effectiveStatus,
   chapterProgress,
-  wpm,
   formatDuration,
   dayKey,
 } from '../reading/readingStore.js'
@@ -224,52 +223,6 @@ function MinutesBarChart({ series, theme }) {
   )
 }
 
-function SpeedLineChart({ series, theme }) {
-  const W = 560
-  const H = 150
-  const padB = 20
-  const padT = 8
-  const accent = theme.palette.primary.main
-  const axis = theme.palette.divider
-  const plotH = H - padB
-  const n = series.length
-  const slot = W / n
-  const withData = series.map((d, i) => ({ ...d, i, x: slot * i + slot / 2 }))
-  const maxWpm = Math.max(1, ...withData.map((d) => d.wpm))
-  const yFor = (v) => padT + (1 - v / maxWpm) * (plotH - padT)
-
-  // Connect only consecutive days that both have a reading speed.
-  const segments = []
-  for (let i = 1; i < withData.length; i++) {
-    const a = withData[i - 1]
-    const b = withData[i]
-    if (a.wpm > 0 && b.wpm > 0) segments.push({ a, b, key: b.key })
-  }
-
-  return (
-    <Box sx={{ overflowX: 'auto' }}>
-      <svg viewBox={`0 0 ${W} ${H}`} width="100%" style={{ maxWidth: '100%', height: 'auto' }} role="img" aria-label="Reading speed per day in words per minute, last 14 days">
-        <line x1={0} y1={plotH} x2={W} y2={plotH} stroke={axis} strokeWidth={1} />
-        {segments.map((s) => (
-          <line key={s.key} x1={s.a.x} y1={yFor(s.a.wpm)} x2={s.b.x} y2={yFor(s.b.wpm)} stroke={accent} strokeWidth={2} strokeLinecap="round" />
-        ))}
-        {withData.map((d) =>
-          d.wpm > 0 ? (
-            <circle key={d.key} cx={d.x} cy={yFor(d.wpm)} r={4} fill={accent}>
-              <title>{`${d.key}: ${d.wpm} WPM`}</title>
-            </circle>
-          ) : null,
-        )}
-        {withData.map((d) => (
-          <text key={`x-${d.key}`} x={d.x} y={H - 6} textAnchor="middle" fill={theme.palette.text.secondary} fontFamily={MONO} fontSize={8}>
-            {d.date.getDate()}
-          </text>
-        ))}
-      </svg>
-    </Box>
-  )
-}
-
 // ---------------------------------------------------------------------------
 // Per-chapter row with manual override controls
 // ---------------------------------------------------------------------------
@@ -278,7 +231,6 @@ function ChapterRow({ chapter, record, onSetStatus, onClear }) {
   const status = effectiveStatus(record)
   const progress = chapterProgress(record)
   const time = record?.activeMs || 0
-  const speed = wpm(record?.wordsRead || 0, record?.activeMs || 0)
   const canContinue = status !== 'read' && record?.lastBlockId
 
   return (
@@ -326,7 +278,6 @@ function ChapterRow({ chapter, record, onSetStatus, onClear }) {
           )}
           <Typography sx={{ fontFamily: MONO, fontSize: '0.7rem', color: 'text.secondary' }}>
             {formatDuration(time)}
-            {speed > 0 ? ` · ${speed} WPM` : ''}
           </Typography>
           {record?.manualStatus ? (
             <Typography sx={{ fontFamily: SANS, fontSize: '0.66rem', color: 'text.disabled', fontStyle: 'italic' }}>
@@ -408,7 +359,7 @@ export default function DashboardPage() {
         >
           <Typography sx={{ fontFamily: SERIF, fontSize: '1.3rem', fontWeight: 700 }}>No reading tracked yet</Typography>
           <Typography sx={{ fontFamily: SANS, color: 'text.secondary', mt: 1, mb: 2.5 }}>
-            Open a chapter and start reading — your progress, time, speed, and streak will appear here.
+            Open a chapter and start reading — your progress, time, and streak will appear here.
           </Typography>
           <Button variant="contained" component={RouterLink} to={`/chapter/${chapters[0]?.number ?? 1}`} sx={{ textTransform: 'none' }}>
             Start reading
@@ -420,7 +371,6 @@ export default function DashboardPage() {
       <Box sx={{ display: 'flex', gap: 1.5, flexWrap: 'wrap', mt: 3 }}>
         <StatTile label="Chapters read" value={agg.chaptersRead} unit={`/ ${agg.totalChapters}`} accent />
         <StatTile label="Time reading" value={formatDuration(agg.activeMs)} />
-        <StatTile label="Avg speed" value={agg.avgWpm || '—'} unit={agg.avgWpm ? 'WPM' : ''} />
         <StatTile label="Current streak" value={streak.current} unit={streak.current === 1 ? 'day' : 'days'} accent />
       </Box>
 
@@ -461,10 +411,6 @@ export default function DashboardPage() {
       {/* Minutes per day */}
       <SectionHeading>Minutes read · last 14 days</SectionHeading>
       <MinutesBarChart series={last14} theme={theme} />
-
-      {/* Reading speed */}
-      <SectionHeading>Reading speed · last 14 days</SectionHeading>
-      <SpeedLineChart series={last14} theme={theme} />
 
       {/* Badges */}
       <SectionHeading>Badges</SectionHeading>

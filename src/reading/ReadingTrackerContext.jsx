@@ -103,31 +103,29 @@ export function ReadingTrackerProvider({ children }) {
       const ch = getChapter(chapterNumber)
       const now = Date.now()
 
-      let addedWords = 0
+      let addedNewBlock = false
       if (newReadBlocks.length) {
         const seen = new Set(ch.readBlockIds)
-        for (const b of newReadBlocks) {
-          if (seen.has(b.id)) continue
-          seen.add(b.id)
-          ch.readBlockIds.push(b.id)
-          ch.wordsRead += b.words
-          addedWords += b.words
+        for (const id of newReadBlocks) {
+          if (seen.has(id)) continue
+          seen.add(id)
+          ch.readBlockIds.push(id)
+          addedNewBlock = true
         }
       }
 
       if (addActiveMs > 0) ch.activeMs += addActiveMs
       if (lastBlockId) ch.lastBlockId = lastBlockId
       if (typeof lastScrollRatio === 'number') ch.lastScrollRatio = lastScrollRatio
-      if (addActiveMs > 0 || addedWords > 0) ch.lastReadAt = now
+      if (addActiveMs > 0 || addedNewBlock) ch.lastReadAt = now
 
       // Daily rollup — a day "counts" (for the streak) whenever activeMs > 0.
-      if (addActiveMs > 0 || addedWords > 0) {
+      if (addActiveMs > 0 || addedNewBlock) {
         const key = todayKey()
         const daily = stateRef.current.daily
-        if (!daily[key]) daily[key] = { activeMs: 0, wordsRead: 0, chapters: [] }
+        if (!daily[key]) daily[key] = { activeMs: 0, chapters: [] }
         const rec = daily[key]
         rec.activeMs += addActiveMs
-        rec.wordsRead += addedWords
         if (!rec.chapters.includes(chapterNumber)) rec.chapters.push(chapterNumber)
       }
 
