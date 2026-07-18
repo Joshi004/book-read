@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useLocation, useSearchParams } from 'react-router-dom'
 import { Fab, Zoom } from '@mui/material'
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp'
@@ -10,6 +10,7 @@ export default function ScrollToTop({ scroller }) {
   const { pathname } = location
   const [searchParams] = useSearchParams()
   const [show, setShow] = useState(false)
+  const mounted = useRef(false)
 
   const getEl = () => (typeof scroller === 'function' ? scroller() : null)
 
@@ -18,6 +19,14 @@ export default function ScrollToTop({ scroller }) {
   const hasPendingTarget = Boolean(location.state?.blockId || searchParams.get('block'))
 
   useEffect(() => {
+    // Skip the initial mount — a fresh page load (including a mobile OS
+    // reviving a discarded/idle tab on the same URL) should leave the scroll
+    // position to ChapterReader's resume logic, not get force-reset to the
+    // top. Only real in-session route changes should reset.
+    if (!mounted.current) {
+      mounted.current = true
+      return
+    }
     if (hasPendingTarget) return
     const el = getEl()
     if (el) el.scrollTo({ top: 0 })

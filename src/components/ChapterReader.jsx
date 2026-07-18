@@ -8,12 +8,20 @@ import { stripLeadingH1 } from '../content/markdownPipeline.js'
 import { loadChapterBody } from '../content/chapters.js'
 import { highlightOccurrence } from './highlightBlock.js'
 import { useReadingTracker } from '../reading/useReadingTracker.js'
+import { useReadingTrackerContext } from '../reading/ReadingTrackerContext.jsx'
+
+// Set once per page-load. A mobile OS reviving a discarded/idle tab
+// re-evaluates this module from scratch, so the flag naturally distinguishes
+// "we just booted on this exact chapter" (resume last position) from
+// ordinary in-session navigation between chapters (start at top, as before).
+let coldBootPending = true
 
 export default function ChapterReader({ chapter, onHeadings }) {
   const ref = useRef(null)
   const [rawBody, setRawBody] = useState(null)
   const location = useLocation()
   const [searchParams] = useSearchParams()
+  const { snapshot } = useReadingTrackerContext()
 
   useEffect(() => {
     let alive = true
@@ -71,6 +79,31 @@ export default function ChapterReader({ chapter, onHeadings }) {
     return () => clearTimeout(timer)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [chapter.number, body, pending?.blockId, pending?.matchedTerm, pending?.occurrenceInBlock])
+
+  // Resume the reader's last known position on a cold boot of this chapter
+  // (a fresh page load, or a mobile browser reviving a discarded idle tab on
+  // the same URL) — but only then, so ordinary chapter-to-chapter navigation
+  // keeps starting at the top via ScrollToTop.
+  useEffect(() => {
+    if (body == null) return
+    if (!coldBootPending) return
+    coldBootPending = false
+    if (pending) return // the search deep-link effect above owns this case
+    const chapterState = snapshot.chapters[String(chapter.number)]
+    if (!chapterState) return
+    const el = chapterState.lastBlockId
+      ? ref.current?.querySelector(`[data-block-id="${CSS.escape(chapterState.lastBlockId)}"]`)
+      : null
+    if (el) {
+      el.scrollIntoView({ block: 'start' })
+      return
+    }
+    if (chapterState.lastScrollRatio > 0) {
+      const max = document.documentElement.scrollHeight - window.innerHeight
+      if (max > 0) window.scrollTo({ top: chapterState.lastScrollRatio * max })
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [chapter.number, body])
 
   return (
     <article>
