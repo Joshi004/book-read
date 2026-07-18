@@ -21,6 +21,8 @@ import SearchDialog from './SearchDialog.jsx'
 import ScrollToTop from './ScrollToTop.jsx'
 import UpdatePrompt from './UpdatePrompt.jsx'
 import ReadingPrefsPanel from './ReadingPrefsPanel.jsx'
+import AutoReadControls from './AutoReadControls.jsx'
+import { useReadingSpeed } from '../reading/readingSpeed.jsx'
 import { SERIF } from '../theme.js'
 
 const DRAWER_WIDTH = 280
@@ -31,6 +33,7 @@ export default function Layout() {
   const [focusMode, setFocusMode] = useState(false)
   const [toastOpen, setToastOpen] = useState(false)
   const [prefsAnchor, setPrefsAnchor] = useState(null)
+  const { autoRead, stop: stopAutoRead } = useReadingSpeed()
 
   const closeMobile = () => setMobileOpen(false)
 
@@ -45,6 +48,11 @@ export default function Layout() {
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
   }, [focusMode])
+
+  // Auto Read only exists inside full-screen focus mode — leaving focus stops it.
+  useEffect(() => {
+    if (!focusMode && autoRead) stopAutoRead()
+  }, [focusMode, autoRead, stopAutoRead])
 
   return (
     <Box sx={{ display: 'flex' }}>
@@ -184,6 +192,7 @@ export default function Layout() {
 
       <SearchDialog open={searchOpen} onClose={() => setSearchOpen(false)} />
       <ReadingPrefsPanel anchorEl={prefsAnchor} onClose={() => setPrefsAnchor(null)} />
+      {focusMode && <AutoReadControls />}
       <ScrollToTop />
       <Snackbar
         open={toastOpen}

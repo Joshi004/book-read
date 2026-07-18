@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
-import { useLocation, useSearchParams } from 'react-router-dom'
-import { Skeleton } from '@mui/material'
+import { useLocation, useSearchParams, useNavigate } from 'react-router-dom'
+import { Skeleton, Snackbar, Button } from '@mui/material'
 import ChapterOpener from './ChapterOpener.jsx'
 import BookProse from './BookProse.jsx'
 import MarkdownContent from '../content/markdown.jsx'
@@ -9,6 +9,8 @@ import { loadChapterBody } from '../content/chapters.js'
 import { highlightOccurrence } from './highlightBlock.js'
 import { useReadingTracker } from '../reading/useReadingTracker.js'
 import { useReadingTrackerContext } from '../reading/ReadingTrackerContext.jsx'
+import { useReadingSpeed } from '../reading/readingSpeed.jsx'
+import { useAutoScroll } from '../reading/useAutoScroll.js'
 
 // Set once per page-load. A mobile OS reviving a discarded/idle tab
 // re-evaluates this module from scratch, so the flag naturally distinguishes
@@ -16,12 +18,15 @@ import { useReadingTrackerContext } from '../reading/ReadingTrackerContext.jsx'
 // ordinary in-session navigation between chapters (start at top, as before).
 let coldBootPending = true
 
-export default function ChapterReader({ chapter, onHeadings }) {
+export default function ChapterReader({ chapter, next, onHeadings }) {
   const ref = useRef(null)
   const [rawBody, setRawBody] = useState(null)
   const location = useLocation()
   const [searchParams] = useSearchParams()
+  const navigate = useNavigate()
   const { snapshot } = useReadingTrackerContext()
+  const { active, wpm, setPlaying, setEtaSec } = useReadingSpeed()
+  const [atEnd, setAtEnd] = useState(false)
 
   useEffect(() => {
     let alive = true
@@ -38,6 +43,26 @@ export default function ChapterReader({ chapter, onHeadings }) {
 
   // Track genuine reading of this chapter once its prose is in the DOM.
   useReadingTracker(chapter.number, ref, body != null)
+
+  // Auto Read: drive the scroll from the reader's chosen speed (focus mode only).
+  useAutoScroll(chapter.number, ref, body != null, {
+    active,
+    wpm,
+    onManualPause: () => setPlaying(false), // reader took over — pause, stay armed
+    onReachedEnd: () => {
+      setPlaying(false)
+      setAtEnd(true)
+    },
+    onProgress: ({ etaSec }) => setEtaSec(etaSec),
+  })
+
+  const continueToNext = () => {
+    setAtEnd(false)
+    if (next) {
+      setPlaying(true) // resume auto-scroll in the next chapter
+      navigate(`/chapter/${next.number}`)
+    }
+  }
 
   // After the Markdown renders, read the real heading ids (assigned by
   // rehype-slug) so the on-this-page nav anchors always match. `body` is a
@@ -126,6 +151,25 @@ export default function ChapterReader({ chapter, onHeadings }) {
           <MarkdownContent body={body} />
         )}
       </BookProse>
+
+      <Snackbar
+        open={atEnd}
+        onClose={() => setAtEnd(false)}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+        sx={{ bottom: { xs: 96, sm: 96 } }}
+        message={next ? `Finished “${chapter.title}”.` : 'You’ve reached the end.'}
+        action={
+          next ? (
+            <Button color="secondary" size="small" onClick={continueToNext} sx={{ textTransform: 'none' }}>
+              Continue to next chapter
+            </Button>
+          ) : (
+            <Button color="secondary" size="small" onClick={() => setAtEnd(false)} sx={{ textTransform: 'none' }}>
+              Done
+            </Button>
+          )
+        }
+      />
     </article>
   )
 }

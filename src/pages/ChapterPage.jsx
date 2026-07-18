@@ -30,6 +30,7 @@ export default function ChapterPage() {
         <ChapterReader
           key={chapter.number}
           chapter={chapter}
+          next={next}
           onHeadings={setHeadings}
         />
         <PrevNextNav prev={prev} next={next} />
