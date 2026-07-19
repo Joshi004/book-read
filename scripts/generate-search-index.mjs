@@ -81,6 +81,10 @@ function extractChapter(filename) {
     }
     const blockId = node.properties?.['data-block-id']
     if (!blockId) return
+    // Media/diagram/whole-table blocks now carry a data-block-id purely so
+    // reader highlights can anchor to them — they aren't searchable text.
+    // (Table cells keep their own ids and are indexed individually below.)
+    if (node.tagName === 'img' || node.tagName === 'pre' || node.tagName === 'code' || node.tagName === 'table') return
     const bodyText = hastToString(node).trim().replace(/\s+/g, ' ')
     if (!bodyText) return // e.g. an image-only paragraph — nothing to search
     docs.push({

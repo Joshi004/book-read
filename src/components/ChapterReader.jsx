@@ -1,9 +1,10 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { useLocation, useSearchParams, useNavigate } from 'react-router-dom'
 import { Skeleton, Snackbar, Button } from '@mui/material'
 import ChapterOpener from './ChapterOpener.jsx'
 import BookProse from './BookProse.jsx'
 import MarkdownContent from '../content/markdown.jsx'
+import ChapterHighlightLayer from './ChapterHighlightLayer.jsx'
 import { stripLeadingH1 } from '../content/markdownPipeline.js'
 import { loadChapterBody } from '../content/chapters.js'
 import { highlightOccurrence } from './highlightBlock.js'
@@ -40,6 +41,15 @@ export default function ChapterReader({ chapter, next, onHeadings }) {
   }, [chapter.number])
 
   const body = rawBody == null ? null : stripLeadingH1(rawBody)
+
+  // Memoize the rendered Markdown so it only re-renders when the chapter body
+  // changes — not on every parent re-render (reading-tracker snapshots, theme,
+  // etc.). This keeps the DOM stable so the persistent highlight <mark>s that
+  // ChapterHighlightLayer injects into it aren't reconciled away by React.
+  const renderedBody = useMemo(() => (body == null ? null : <MarkdownContent body={body} />), [body])
+
+  // A Highlights-page deep link asks a specific highlight to flash on arrival.
+  const flashId = location.state?.flashId || searchParams.get('hl') || null
 
   // Track genuine reading of this chapter once its prose is in the DOM.
   useReadingTracker(chapter.number, ref, body != null)
@@ -148,9 +158,16 @@ export default function ChapterReader({ chapter, next, onHeadings }) {
             <Skeleton variant="text" height={20} width="80%" />
           </>
         ) : (
-          <MarkdownContent body={body} />
+          renderedBody
         )}
       </BookProse>
+
+      <ChapterHighlightLayer
+        containerRef={ref}
+        chapterNumber={chapter.number}
+        bodyReady={body != null}
+        flashId={flashId}
+      />
 
       <Snackbar
         open={atEnd}

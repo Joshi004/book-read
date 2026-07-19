@@ -9,6 +9,7 @@ import {
 } from '@mui/material'
 import MenuBookIcon from '@mui/icons-material/MenuBook'
 import InsightsIcon from '@mui/icons-material/Insights'
+import BookmarksIcon from '@mui/icons-material/Bookmarks'
 import { chapters } from '../content/chapters.js'
 import { SANS, SERIF } from '../theme.js'
 import ReadingBadge from '../reading/ReadingBadge.jsx'
@@ -67,6 +68,18 @@ export default function Sidebar({ onNavigate }) {
           <InsightsIcon fontSize="small" sx={{ mr: 1.25, color: 'text.secondary' }} />
           <ListItemText
             primary="Reading Dashboard"
+            primaryTypographyProps={{ fontFamily: SANS, fontWeight: 600 }}
+          />
+        </ListItemButton>
+        <ListItemButton
+          component={NavLink}
+          to="/highlights"
+          onClick={onNavigate}
+          sx={linkSx}
+        >
+          <BookmarksIcon fontSize="small" sx={{ mr: 1.25, color: 'text.secondary' }} />
+          <ListItemText
+            primary="Highlights"
             primaryTypographyProps={{ fontFamily: SANS, fontWeight: 600 }}
           />
         </ListItemButton>

@@ -9,7 +9,7 @@ let counter = 0
 // Renders a ```mermaid block live in the browser. Replaces the old build-time
 // mmdc/headless-Chrome PNG pre-render. Re-renders when the color mode changes so
 // diagrams follow light/dark theming. Theme variables port mermaid-config.json.
-export default function Mermaid({ chart }) {
+export default function Mermaid({ chart, blockId }) {
   const theme = useTheme()
   const b = theme.palette.book
   const [svg, setSvg] = useState('')
@@ -64,6 +64,7 @@ export default function Mermaid({ chart }) {
     return (
       <Box
         component="pre"
+        data-block-id={blockId}
         sx={{
           overflow: 'auto',
           p: 1.5,
@@ -82,6 +83,7 @@ export default function Mermaid({ chart }) {
     <Box
       component="figure"
       className="figure-diagram"
+      data-block-id={blockId}
       sx={{ '& svg': { maxWidth: '100%', height: 'auto' } }}
       dangerouslySetInnerHTML={{ __html: svg }}
     />

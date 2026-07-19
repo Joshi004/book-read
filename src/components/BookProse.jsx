@@ -60,6 +60,50 @@ const BookProse = styled('div')(({ theme }) => {
       padding: '0.05em 0.15em',
       borderRadius: 2,
     },
+
+    // --- Persistent reader highlights (a warm highlighter wash, distinct from
+    // the solid-accent search flash above). Text keeps its ink color so it
+    // reads like a marker over the prose. Clickable to open its note popover. ---
+    '& mark.reader-highlight': {
+      background: dark ? 'rgba(255,209,102,0.26)' : 'rgba(255,213,79,0.45)',
+      color: 'inherit',
+      borderRadius: 2,
+      cursor: 'pointer',
+      transition: 'background 120ms ease',
+      '&:hover': { background: dark ? 'rgba(255,209,102,0.38)' : 'rgba(255,213,79,0.62)' },
+    },
+    // A highlight that has a note: dotted accent underline signals "more here".
+    '& mark.reader-highlight--noted': {
+      borderBottom: `2px dotted ${b.accent}`,
+    },
+    // One small marker at the end of a noted highlight.
+    '& mark.reader-highlight--note-end::after': {
+      content: '"\\1F5D2\\FE0E"', // 🗒 (text presentation) — a little note glyph
+      fontFamily: SANS,
+      fontSize: '0.62em',
+      verticalAlign: 'super',
+      marginLeft: '0.15em',
+      color: b.accent,
+      cursor: 'pointer',
+    },
+    // Briefly emphasize a highlight arrived at via a Highlights-page deep link.
+    '& mark.reader-highlight.reader-highlight--flash': {
+      animation: 'bopsHighlightFlash 1.6s ease',
+    },
+    '@keyframes bopsHighlightFlash': {
+      '0%, 100%': { background: dark ? 'rgba(255,209,102,0.26)' : 'rgba(255,213,79,0.45)' },
+      '25%, 60%': { background: dark ? 'rgba(255,209,102,0.7)' : 'rgba(255,199,0,0.85)' },
+    },
+
+    // --- Element highlights: a whole diagram / image / table marked as one
+    // unit. An accent frame + soft tint, without touching the media itself. ---
+    '& figure.figure-diagram.reader-highlight-element, & table.reader-highlight-element': {
+      outline: `2px solid ${b.accent}`,
+      outlineOffset: '3px',
+      borderRadius: 4,
+      background: b.accentSoft,
+      cursor: 'pointer',
+    },
     '& h2': {
       fontSize: '1.4rem',
       fontWeight: 700,

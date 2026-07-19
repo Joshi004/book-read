@@ -28,10 +28,14 @@ const components = {
   definition: ({ node, ...props }) => <Callout variant="definition" {...props} />,
   warning: ({ node, ...props }) => <Callout variant="warning" {...props} />,
 
-  // Fenced ```mermaid blocks → live client-side diagram.
+  // Fenced ```mermaid blocks → live client-side diagram. The block id (for
+  // reader highlights) is assigned by blockIdPlugin onto the inner <code> node.
   pre: ({ node, children, ...props }) => {
     const chart = mermaidFromPre(node)
-    if (chart != null) return <Mermaid chart={chart} />
+    if (chart != null) {
+      const blockId = node?.children?.[0]?.properties?.['data-block-id']
+      return <Mermaid chart={chart} blockId={blockId} />
+    }
     return <pre {...props}>{children}</pre>
   },
 
@@ -42,17 +46,22 @@ const components = {
     if (kids.length === 1 && kids[0].tagName === 'img') return <>{children}</>
     return <p {...props}>{children}</p>
   },
-  img: ({ node, src, alt, ...props }) => (
-    <figure className="figure-diagram">
-      <img src={resolveAsset(src)} alt={alt || ''} loading="lazy" {...props} />
-      {alt ? <figcaption>{alt}</figcaption> : null}
-    </figure>
-  ),
+  img: ({ node, src, alt, ...props }) => {
+    // Carry the block id onto the <figure> so a whole diagram is one
+    // highlightable unit (blockIdPlugin puts it on the image node).
+    const blockId = node?.properties?.['data-block-id']
+    return (
+      <figure className="figure-diagram" data-block-id={blockId}>
+        <img src={resolveAsset(src)} alt={alt || ''} loading="lazy" {...props} />
+        {alt ? <figcaption>{alt}</figcaption> : null}
+      </figure>
+    )
+  },
 
   // Wide tables scroll horizontally instead of overflowing into the sidebar.
   table: ({ node, children, ...props }) => (
     <div style={{ overflowX: 'auto', width: '100%' }}>
-      <table {...props}>{children}</table>
+      <table {...props} data-block-id={node?.properties?.['data-block-id']}>{children}</table>
     </div>
   ),
 
