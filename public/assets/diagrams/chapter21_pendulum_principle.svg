@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 700 440" width="700" height="440"
+     font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">
+
+  <!-- Mount bracket + pivot -->
+  <rect x="320" y="18" width="60" height="10" rx="3" fill="#1E3D5C"/>
+  <circle cx="350" cy="40" r="7" fill="#1E3D5C"/>
+
+  <!-- Dashed swing path -->
+  <path d="M 151 207 A 260 260 0 0 1 549 207" fill="none"
+        stroke="#5B5B5B" stroke-width="2" stroke-dasharray="5 6" opacity="0.55"/>
+
+  <!-- Pendulum arms -->
+  <line x1="350" y1="40" x2="151" y2="207" stroke="#B23A48" stroke-width="3"/>
+  <line x1="350" y1="40" x2="350" y2="300" stroke="#2E5A87" stroke-width="3.5"/>
+  <line x1="350" y1="40" x2="549" y2="207" stroke="#C4536B" stroke-width="3"/>
+
+  <!-- Collapse bob -->
+  <circle cx="151" cy="207" r="26" fill="#B23A48" stroke="#1E3D5C" stroke-width="1.5"/>
+  <text x="151" y="257" text-anchor="middle" fill="#B23A48" font-size="19" font-weight="bold" letter-spacing="0.5">COLLAPSE</text>
+  <text x="151" y="279" text-anchor="middle" fill="#5B5B5B" font-size="12.5">Shrinks to please —</text>
+  <text x="151" y="296" text-anchor="middle" fill="#5B5B5B" font-size="12.5">or avoid being hurt</text>
+
+  <!-- Composure bob (rest position) -->
+  <circle cx="350" cy="300" r="32" fill="#2E5A87" stroke="#1E3D5C" stroke-width="1.5"/>
+  <text x="350" y="356" text-anchor="middle" fill="#2E5A87" font-size="21" font-weight="bold" letter-spacing="0.5">COMPOSURE</text>
+  <text x="350" y="378" text-anchor="middle" fill="#5B5B5B" font-size="13">Full control of self —</text>
+  <text x="350" y="396" text-anchor="middle" fill="#5B5B5B" font-size="13">nothing hidden, nothing to prove</text>
+
+  <!-- Posturing bob -->
+  <circle cx="549" cy="207" r="26" fill="#C4536B" stroke="#1E3D5C" stroke-width="1.5"/>
+  <text x="549" y="257" text-anchor="middle" fill="#C4536B" font-size="19" font-weight="bold" letter-spacing="0.5">POSTURING</text>
+  <text x="549" y="279" text-anchor="middle" fill="#5B5B5B" font-size="12.5">Inflates to impress —</text>
+  <text x="549" y="296" text-anchor="middle" fill="#5B5B5B" font-size="12.5">or to intimidate</text>
+
+  <!-- Small trait callouts on the bobs -->
+  <text x="151" y="213" text-anchor="middle" fill="white" font-size="11" font-weight="bold">−</text>
+  <text x="549" y="213" text-anchor="middle" fill="white" font-size="11" font-weight="bold">+</text>
+</svg>
