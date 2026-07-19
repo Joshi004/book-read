@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 640 380" width="640" height="380"
+     font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">
+
+  <!-- Title -->
+  <text x="320" y="28" text-anchor="middle" font-size="18" font-weight="700" fill="#1A1A1A">Two Ways to Be Rich</text>
+  <text x="320" y="48" text-anchor="middle" font-size="12.5" fill="#5B5B5B">"You are rich if you have enough money to satisfy all your desires."</text>
+
+  <!-- Start node -->
+  <rect x="220" y="66" width="200" height="46" rx="8" fill="#1E3D5C"/>
+  <text x="320" y="94" text-anchor="middle" font-size="13.5" font-weight="700" fill="white">Enough Money</text>
+
+  <!-- Connector lines from start to two paths -->
+  <path d="M 260 112 L 150 150" stroke="#5B5B5B" stroke-width="1.5" fill="none"/>
+  <path d="M 380 112 L 490 150" stroke="#5B5B5B" stroke-width="1.5" fill="none"/>
+
+  <!-- Path A: chase money -->
+  <rect x="40" y="150" width="220" height="88" rx="8" fill="#B23A48"/>
+  <text x="150" y="176" text-anchor="middle" font-size="13" font-weight="700" fill="white">Earn, inherit, borrow,</text>
+  <text x="150" y="194" text-anchor="middle" font-size="13" font-weight="700" fill="white">beg, or steal enough</text>
+  <text x="150" y="212" text-anchor="middle" font-size="13" font-weight="700" fill="white">to meet endless desires</text>
+  <text x="150" y="230" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.78)">Desires keep growing</text>
+
+  <!-- Path B: cultivate few desires -->
+  <rect x="380" y="150" width="220" height="88" rx="8" fill="#2E5A87"/>
+  <text x="490" y="176" text-anchor="middle" font-size="13" font-weight="700" fill="white">Cultivate a simple</text>
+  <text x="490" y="194" text-anchor="middle" font-size="13" font-weight="700" fill="white">lifestyle of few</text>
+  <text x="490" y="212" text-anchor="middle" font-size="13" font-weight="700" fill="white">desires</text>
+  <text x="490" y="230" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.78)">Desires stay small</text>
+
+  <!-- Connectors down to shared outcome -->
+  <path d="M 150 238 L 150 280 Q 150 292 165 292 L 300 292" stroke="#5B5B5B" stroke-width="1.5" fill="none"/>
+  <path d="M 490 238 L 490 280 Q 490 292 475 292 L 340 292" stroke="#5B5B5B" stroke-width="1.5" fill="none"/>
+  <path d="M 320 292 L 320 300" stroke="#5B5B5B" stroke-width="1.5" fill="none"/>
+
+  <!-- Outcome node -->
+  <rect x="180" y="300" width="280" height="56" rx="8" fill="#F4F1EA" stroke="#2E5A87" stroke-width="1.5"/>
+  <text x="320" y="323" text-anchor="middle" font-size="13" font-weight="700" fill="#1A1A1A">"That way you always</text>
+  <text x="320" y="341" text-anchor="middle" font-size="13" font-weight="700" fill="#1A1A1A">have enough money."</text>
+
+</svg>
