@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 600 520" width="600" height="520"
+     font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">
+
+  <!-- Top caption -->
+  <text x="300" y="30" text-anchor="middle" fill="#5B5B5B" font-size="11" font-weight="600" letter-spacing="1.2">THE PART EVERY SCHOOL DIAGRAM SHOWS</text>
+
+  <!-- Stem -->
+  <line x1="300" y1="208" x2="300" y2="122" stroke="#2E5A87" stroke-width="7" stroke-linecap="round"/>
+
+  <!-- Leaves -->
+  <ellipse cx="266" cy="128" rx="32" ry="15" fill="#2E5A87" transform="rotate(-32 266 128)"/>
+  <ellipse cx="334" cy="128" rx="32" ry="15" fill="#2E5A87" transform="rotate(32 334 128)"/>
+  <ellipse cx="300" cy="100" rx="27" ry="14" fill="#4A7BAD" transform="rotate(0 300 100)"/>
+
+  <!-- Stem/leaves label -->
+  <text x="430" y="112" text-anchor="middle" fill="#2E5A87" font-size="15" font-weight="bold" letter-spacing="0.4">STEM &amp; LEAVES</text>
+  <text x="430" y="131" text-anchor="middle" fill="#5B5B5B" font-size="11.5">What everyone can see</text>
+
+  <!-- Ground line -->
+  <line x1="30" y1="208" x2="570" y2="208" stroke="#C9C2B2" stroke-width="2"/>
+  <text x="570" y="200" text-anchor="end" fill="#5B5B5B" font-size="10" letter-spacing="0.8">GROUND LEVEL</text>
+
+  <!-- Root zone band -->
+  <rect x="30" y="208" width="540" height="118" fill="#4A7BAD"/>
+
+  <!-- Soil zone band (deeper, larger — holds everything up) -->
+  <rect x="30" y="326" width="540" height="164" fill="#1E3D5C"/>
+
+  <!-- Divider between roots and soil -->
+  <line x1="30" y1="326" x2="570" y2="326" stroke="white" stroke-width="1" opacity="0.25"/>
+
+  <!-- Root branches, drawn within the root band -->
+  <path d="M 300 208 C 280 240, 250 250, 225 300" fill="none" stroke="white" stroke-width="3" opacity="0.55" stroke-linecap="round"/>
+  <path d="M 300 208 C 310 245, 300 265, 300 318" fill="none" stroke="white" stroke-width="3" opacity="0.55" stroke-linecap="round"/>
+  <path d="M 300 208 C 320 240, 350 250, 378 300" fill="none" stroke="white" stroke-width="3" opacity="0.55" stroke-linecap="round"/>
+  <path d="M 300 208 C 265 230, 240 220, 200 260" fill="none" stroke="white" stroke-width="2.2" opacity="0.4" stroke-linecap="round"/>
+  <path d="M 300 208 C 335 230, 360 220, 400 260" fill="none" stroke="white" stroke-width="2.2" opacity="0.4" stroke-linecap="round"/>
+
+  <!-- Roots label -->
+  <text x="70" y="240" fill="white" font-size="18" font-weight="bold" letter-spacing="0.5">ROOTS</text>
+  <text x="70" y="260" fill="rgba(255,255,255,0.82)" font-size="12">Your subconscious mind</text>
+
+  <!-- Soil label, centered — the part left out -->
+  <text x="300" y="400" text-anchor="middle" fill="white" font-size="28" font-weight="bold" letter-spacing="0.5">THE SOIL</text>
+  <text x="300" y="424" text-anchor="middle" fill="rgba(255,255,255,0.85)" font-size="15">Your beliefs</text>
+  <text x="300" y="449" text-anchor="middle" fill="rgba(255,255,255,0.72)" font-size="11.5">Location &#183; Nutrients &#183; Growth &#183; Stability &#183; Support</text>
+  <text x="300" y="472" text-anchor="middle" fill="rgba(255,255,255,0.62)" font-size="11" font-style="italic">The part almost every diagram leaves out</text>
+</svg>
