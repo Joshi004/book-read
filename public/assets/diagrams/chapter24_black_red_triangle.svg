@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 820 460" width="820" height="460"
+     font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">
+
+  <!-- ============ BLACK TRIANGLE (psychology) ============ -->
+  <polygon points="195,100 65,355 325,355" fill="#EEE9DF" stroke="#1A1A1A" stroke-width="2.5" stroke-linejoin="round"/>
+
+  <text x="195" y="22" text-anchor="middle" fill="#1A1A1A" font-size="15" font-weight="700" letter-spacing="1">THE BLACK TRIANGLE</text>
+  <text x="195" y="40" text-anchor="middle" fill="#5B5B5B" font-size="10.5">Psychology — the lever most experts pull</text>
+
+  <!-- T — apex -->
+  <circle cx="195" cy="100" r="34" fill="#1A1A1A"/>
+  <text x="195" y="95" text-anchor="middle" fill="white" font-size="19" font-weight="700">T</text>
+  <text x="195" y="112" text-anchor="middle" fill="rgba(255,255,255,0.82)" font-size="8" letter-spacing="0.5">THOUGHTS</text>
+
+  <!-- I — base left -->
+  <circle cx="65" cy="355" r="34" fill="#5B5B5B"/>
+  <text x="65" y="350" text-anchor="middle" fill="white" font-size="19" font-weight="700">I</text>
+  <text x="65" y="367" text-anchor="middle" fill="rgba(255,255,255,0.85)" font-size="8" letter-spacing="0.5">IDEAS</text>
+
+  <!-- D — base right -->
+  <circle cx="325" cy="355" r="34" fill="#1A1A1A"/>
+  <text x="325" y="350" text-anchor="middle" fill="white" font-size="19" font-weight="700">D</text>
+  <text x="325" y="367" text-anchor="middle" fill="rgba(255,255,255,0.82)" font-size="8" letter-spacing="0.5">DESIRES</text>
+
+  <text x="195" y="405" text-anchor="middle" fill="#1A1A1A" font-size="10.5" font-weight="600">Thoughts · Ideas · Desires</text>
+  <text x="195" y="421" text-anchor="middle" fill="#5B5B5B" font-size="9">What most coaching, therapy, and self-help target</text>
+
+  <!-- ============ RED TRIANGLE (physiology) ============ -->
+  <polygon points="625,100 495,355 755,355" fill="#EEE9DF" stroke="#B23A48" stroke-width="2.5" stroke-linejoin="round"/>
+
+  <text x="625" y="22" text-anchor="middle" fill="#B23A48" font-size="15" font-weight="700" letter-spacing="1">THE RED TRIANGLE</text>
+  <text x="625" y="40" text-anchor="middle" fill="#5B5B5B" font-size="10.5">Physiology — the lever that actually works</text>
+
+  <!-- H — apex -->
+  <circle cx="625" cy="100" r="34" fill="#B23A48"/>
+  <text x="625" y="95" text-anchor="middle" fill="white" font-size="19" font-weight="700">H</text>
+  <text x="625" y="112" text-anchor="middle" fill="rgba(255,255,255,0.85)" font-size="8" letter-spacing="0.5">HABITS</text>
+
+  <!-- V — base left -->
+  <circle cx="495" cy="355" r="34" fill="#C4536B"/>
+  <text x="495" y="350" text-anchor="middle" fill="white" font-size="19" font-weight="700">V</text>
+  <text x="495" y="367" text-anchor="middle" fill="rgba(255,255,255,0.9)" font-size="7.5" letter-spacing="0.3">DOPAMINE / VTA</text>
+
+  <!-- R — base right -->
+  <circle cx="755" cy="355" r="34" fill="#B23A48"/>
+  <text x="755" y="350" text-anchor="middle" fill="white" font-size="19" font-weight="700">R</text>
+  <text x="755" y="367" text-anchor="middle" fill="rgba(255,255,255,0.85)" font-size="7.5" letter-spacing="0.3">RAS SEARCH</text>
+
+  <text x="625" y="405" text-anchor="middle" fill="#B23A48" font-size="10.5" font-weight="600">Habits · Dopamine (VTA) · RAS Search</text>
+  <text x="625" y="421" text-anchor="middle" fill="#5B5B5B" font-size="9">What must be targeted to actually change behavior</text>
+
+  <!-- ============ Connecting arrow ============ -->
+  <defs>
+    <marker id="arrowAccent24" viewBox="0 0 10 10" refX="8" refY="5"
+            markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2E5A87"/>
+    </marker>
+  </defs>
+  <line x1="280" y1="227" x2="538" y2="227" stroke="#2E5A87" stroke-width="3" marker-end="url(#arrowAccent24)"/>
+  <text x="409" y="210" text-anchor="middle" fill="#2E5A87" font-size="11" font-weight="700" letter-spacing="0.3">HUNDREDS OF REPETITIONS</text>
+  <text x="409" y="248" text-anchor="middle" fill="#5B5B5B" font-size="9.5" font-style="italic">wires the brain</text>
+
+</svg>
