@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 680 460" width="680" height="460"
+     font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">
+
+  <text x="340" y="26" text-anchor="middle" fill="#5B5B5B" font-size="16" font-weight="700" letter-spacing="0.5">THE TWO AXES OF THE BTE</text>
+  <text x="340" y="44" text-anchor="middle" fill="#5B5B5B" font-size="11">Vertical — region of the body &#183; Horizontal — stress and deception likelihood</text>
+
+  <defs>
+    <marker id="vArrow25" viewBox="0 0 10 10" refX="5" refY="9" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0,0 L10,0 L5,10 z" fill="#2E5A87"/>
+    </marker>
+    <linearGradient id="hGrad25" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2E5A87"/>
+      <stop offset="100%" stop-color="#B23A48"/>
+    </linearGradient>
+  </defs>
+
+  <!-- vertical axis -->
+  <line x1="70" y1="72" x2="70" y2="330" stroke="#2E5A87" stroke-width="2.5" marker-end="url(#vArrow25)"/>
+  <text x="70" y="64" text-anchor="middle" fill="#1E3D5C" font-size="11" font-weight="700">HEAD</text>
+  <text x="70" y="345" text-anchor="middle" fill="#1E3D5C" font-size="11" font-weight="700">FEET</text>
+
+  <!-- body-region band with a faint cell grid -->
+  <rect x="100" y="72" width="520" height="200" fill="#F4F1EA" stroke="#C9C2B2" stroke-width="1.5"/>
+  <line x1="100" y1="122" x2="620" y2="122" stroke="#C9C2B2" stroke-width="1"/>
+  <line x1="100" y1="172" x2="620" y2="172" stroke="#C9C2B2" stroke-width="1"/>
+  <line x1="100" y1="222" x2="620" y2="222" stroke="#C9C2B2" stroke-width="1"/>
+  <line x1="204" y1="72" x2="204" y2="272" stroke="#C9C2B2" stroke-width="1"/>
+  <line x1="308" y1="72" x2="308" y2="272" stroke="#C9C2B2" stroke-width="1"/>
+  <line x1="412" y1="72" x2="412" y2="272" stroke="#C9C2B2" stroke-width="1"/>
+  <line x1="516" y1="72" x2="516" y2="272" stroke="#C9C2B2" stroke-width="1"/>
+  <text x="360" y="176" text-anchor="middle" fill="#5B5B5B" font-size="12" font-weight="600" opacity="0.6">BODY REGIONS &#183; HEAD &#8594; FEET</text>
+
+  <!-- the two out-of-body rows -->
+  <rect x="100" y="278" width="520" height="42" fill="#EEF2F6" stroke="#C9C2B2" stroke-width="1.5"/>
+  <text x="360" y="303" text-anchor="middle" fill="#1A1A1A" font-size="12" font-weight="600">INTERACTION WITH OBJECTS &amp; ENVIRONMENT</text>
+
+  <rect x="100" y="326" width="520" height="42" fill="#EEF2F6" stroke="#C9C2B2" stroke-width="1.5"/>
+  <text x="360" y="351" text-anchor="middle" fill="#1A1A1A" font-size="12" font-weight="600">VERBAL EXPRESSION &amp; SYNTAX</text>
+
+  <!-- horizontal axis -->
+  <line x1="100" y1="400" x2="620" y2="400" stroke="url(#hGrad25)" stroke-width="10" stroke-linecap="round"/>
+  <text x="100" y="424" text-anchor="start" fill="#1E3D5C" font-size="10.5" font-weight="700">LOW STRESS / LOW DECEPTION</text>
+  <text x="620" y="424" text-anchor="end" fill="#8C2430" font-size="10.5" font-weight="700">HIGH STRESS / HIGH DECEPTION</text>
+
+</svg>

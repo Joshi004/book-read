@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 640 580" width="640" height="580"
+     font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">
+
+  <text x="320" y="24" text-anchor="middle" fill="#5B5B5B" font-size="16" font-weight="700" letter-spacing="0.5">ANATOMY OF A BTE CELL</text>
+  <text x="320" y="42" text-anchor="middle" fill="#5B5B5B" font-size="10.5">Every cell carries the same fourteen data points — shown here on Arm Cross (ACC)</text>
+
+  <rect x="40" y="64" width="560" height="470" rx="12" fill="#F4F1EA" stroke="#2E5A87" stroke-width="2.5"/>
+
+  <!-- (1) reference number, top-left corner -->
+  <rect x="54" y="78" width="54" height="28" rx="4" fill="#1E3D5C"/>
+  <text x="81" y="97" text-anchor="middle" fill="white" font-size="14" font-weight="700">07</text>
+  <text x="81" y="119" text-anchor="middle" fill="#5B5B5B" font-size="8.5">&#9312; Reference #</text>
+
+  <!-- (2)(3) symbol + name -->
+  <text x="340" y="110" text-anchor="middle" fill="#2E5A87" font-size="28" font-weight="800" letter-spacing="1">ACC</text>
+  <text x="340" y="126" text-anchor="middle" fill="#5B5B5B" font-size="8.5">&#9313; Symbol</text>
+  <text x="340" y="150" text-anchor="middle" fill="#1A1A1A" font-size="15" font-weight="600">Arm Cross</text>
+  <text x="340" y="164" text-anchor="middle" fill="#5B5B5B" font-size="8.5">&#9314; Name</text>
+
+  <line x1="60" y1="180" x2="580" y2="180" stroke="#C9C2B2" stroke-width="1"/>
+
+  <!-- field grid: 4-8 left column, 9-13 right column -->
+  <!-- column 1 -->
+  <g font-size="9.5" fill="#1A1A1A">
+    <rect x="60" y="196" width="250" height="40" rx="4" fill="#FFFFFF" stroke="#C9C2B2"/>
+    <text x="185" y="220" text-anchor="middle">&#9315; Confirming Gestures</text>
+
+    <rect x="60" y="244" width="250" height="40" rx="4" fill="#FFFFFF" stroke="#C9C2B2"/>
+    <text x="185" y="268" text-anchor="middle">&#9316; Amplifying Gestures</text>
+
+    <rect x="60" y="292" width="250" height="40" rx="4" fill="#FFFFFF" stroke="#C9C2B2"/>
+    <text x="185" y="311" text-anchor="middle">&#9317; Microphysiological</text>
+    <text x="185" y="324" text-anchor="middle">Amplifiers</text>
+
+    <rect x="60" y="340" width="250" height="40" rx="4" fill="#FFFFFF" stroke="#C9C2B2"/>
+    <text x="185" y="364" text-anchor="middle">&#9318; Variable Factors</text>
+
+    <rect x="60" y="388" width="250" height="40" rx="4" fill="#FFFFFF" stroke="#C9C2B2"/>
+    <text x="185" y="412" text-anchor="middle">&#9319; Cultural Prevalence</text>
+  </g>
+
+  <!-- column 2 -->
+  <g font-size="9.5" fill="#1A1A1A">
+    <rect x="330" y="196" width="250" height="40" rx="4" fill="#FFFFFF" stroke="#C9C2B2"/>
+    <text x="455" y="220" text-anchor="middle">&#9320; Sexual Propensity</text>
+
+    <rect x="330" y="244" width="250" height="40" rx="4" fill="#FFFFFF" stroke="#C9C2B2"/>
+    <text x="455" y="268" text-anchor="middle">&#9321; Gesture Type</text>
+
+    <rect x="330" y="292" width="250" height="40" rx="4" fill="#FFFFFF" stroke="#C9C2B2"/>
+    <text x="455" y="316" text-anchor="middle">&#9322; Conflicting Behaviors</text>
+
+    <rect x="330" y="340" width="250" height="40" rx="4" fill="#FFFFFF" stroke="#C9C2B2"/>
+    <text x="455" y="364" text-anchor="middle">&#9323; Body Region</text>
+
+    <rect x="330" y="388" width="250" height="40" rx="4" fill="#FFFFFF" stroke="#C9C2B2"/>
+    <text x="455" y="412" text-anchor="middle">&#9324; Deception Rating</text>
+  </g>
+
+  <!-- (14) deception time frame, bottom-right corner -->
+  <rect x="486" y="452" width="104" height="46" rx="6" fill="#B23A48"/>
+  <text x="538" y="474" text-anchor="middle" fill="white" font-size="13" font-weight="700">B / D / A</text>
+  <text x="538" y="488" text-anchor="middle" fill="rgba(255,255,255,0.85)" font-size="7.5">&#9325; Time Frame</text>
+
+  <text x="320" y="560" text-anchor="middle" fill="#5B5B5B" font-size="10" font-style="italic">A minus sign (&#8211;) in any field means the behavior is absent from the cell.</text>
+
+</svg>
