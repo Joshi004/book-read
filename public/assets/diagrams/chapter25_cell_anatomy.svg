@@ -1,68 +1,83 @@
 <svg xmlns="http://www.w3.org/2000/svg"
-     viewBox="0 0 640 580" width="640" height="580"
+     viewBox="0 0 640 610" width="640" height="610"
      font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">
 
   <text x="320" y="24" text-anchor="middle" fill="#5B5B5B" font-size="16" font-weight="700" letter-spacing="0.5">ANATOMY OF A BTE CELL</text>
-  <text x="320" y="42" text-anchor="middle" fill="#5B5B5B" font-size="10.5">Every cell carries the same fourteen data points — shown here on Arm Cross (ACC)</text>
+  <text x="320" y="42" text-anchor="middle" fill="#5B5B5B" font-size="10.5">Every cell carries the same fourteen data points — shown here on the real Arm Cross cell</text>
 
-  <rect x="40" y="64" width="560" height="470" rx="12" fill="#F4F1EA" stroke="#2E5A87" stroke-width="2.5"/>
+  <!-- (1) reference position, shown as a badge above the cell — matching how the real table frames position outside each cell -->
+  <rect x="228" y="54" width="184" height="26" rx="13" fill="#EEF2F6" stroke="#C9C2B2" stroke-width="1"/>
+  <text x="320" y="71" text-anchor="middle" fill="#1E3D5C" font-size="10.5" font-weight="700">&#9312; ROW A, COLUMN 2</text>
 
-  <!-- (1) reference number, top-left corner -->
-  <rect x="54" y="78" width="54" height="28" rx="4" fill="#1E3D5C"/>
-  <text x="81" y="97" text-anchor="middle" fill="white" font-size="14" font-weight="700">07</text>
-  <text x="81" y="119" text-anchor="middle" fill="#5B5B5B" font-size="8.5">&#9312; Reference #</text>
+  <rect x="40" y="92" width="560" height="470" rx="12" fill="#F4F1EA" stroke="#2E5A87" stroke-width="2.5"/>
 
   <!-- (2)(3) symbol + name -->
-  <text x="340" y="110" text-anchor="middle" fill="#2E5A87" font-size="28" font-weight="800" letter-spacing="1">ACC</text>
-  <text x="340" y="126" text-anchor="middle" fill="#5B5B5B" font-size="8.5">&#9313; Symbol</text>
-  <text x="340" y="150" text-anchor="middle" fill="#1A1A1A" font-size="15" font-weight="600">Arm Cross</text>
-  <text x="340" y="164" text-anchor="middle" fill="#5B5B5B" font-size="8.5">&#9314; Name</text>
+  <text x="220" y="145" text-anchor="middle" fill="#2E5A87" font-size="34" font-weight="800" letter-spacing="1">ACC</text>
+  <text x="220" y="161" text-anchor="middle" fill="#5B5B5B" font-size="8.5">&#9313; Symbol</text>
+  <text x="220" y="186" text-anchor="middle" fill="#1A1A1A" font-size="15" font-weight="600">Arm Cross</text>
+  <text x="220" y="200" text-anchor="middle" fill="#5B5B5B" font-size="8.5">&#9314; Name</text>
 
-  <line x1="60" y1="180" x2="580" y2="180" stroke="#C9C2B2" stroke-width="1"/>
+  <!-- real corner glyph stack, upper-right of the cell: (7) Variable Factors / (8) Cultural Prevalence / (9) Sexual Propensity -->
+  <g text-anchor="middle">
+    <text x="530" y="120" fill="#1A1A1A" font-size="20" font-weight="800">4</text>
+    <text x="530" y="140" fill="#2E5A87" font-size="13" font-weight="700">U</text>
+    <text x="530" y="158" fill="#8C8C8C" font-size="13" font-weight="700">&#8211;</text>
+  </g>
+  <text x="530" y="176" text-anchor="middle" fill="#5B5B5B" font-size="7.5">&#9318;&#9319;&#9320; Variable / Cultural / Sexual</text>
 
-  <!-- field grid: 4-8 left column, 9-13 right column -->
-  <!-- column 1 -->
-  <g font-size="9.5" fill="#1A1A1A">
-    <rect x="60" y="196" width="250" height="40" rx="4" fill="#FFFFFF" stroke="#C9C2B2"/>
-    <text x="185" y="220" text-anchor="middle">&#9315; Confirming Gestures</text>
+  <line x1="60" y1="206" x2="580" y2="206" stroke="#C9C2B2" stroke-width="1"/>
 
-    <rect x="60" y="244" width="250" height="40" rx="4" fill="#FFFFFF" stroke="#C9C2B2"/>
-    <text x="185" y="268" text-anchor="middle">&#9316; Amplifying Gestures</text>
+  <!-- field grid, left column: (4)(5)(6) confirming/amplifying/microphysiological -->
+  <g font-size="9.5">
+    <rect x="60" y="222" width="250" height="42" rx="4" fill="#FFFFFF" stroke="#C9C2B2"/>
+    <text x="185" y="240" text-anchor="middle" fill="#5B5B5B" font-size="8">&#9315; Confirming Gestures</text>
+    <text x="185" y="256" text-anchor="middle" fill="#1A1A1A" font-weight="700">Df — Digital Flexion</text>
 
-    <rect x="60" y="292" width="250" height="40" rx="4" fill="#FFFFFF" stroke="#C9C2B2"/>
-    <text x="185" y="311" text-anchor="middle">&#9317; Microphysiological</text>
-    <text x="185" y="324" text-anchor="middle">Amplifiers</text>
+    <rect x="60" y="272" width="250" height="42" rx="4" fill="#FFFFFF" stroke="#C9C2B2"/>
+    <text x="185" y="290" text-anchor="middle" fill="#5B5B5B" font-size="8">&#9316; Amplifying Gestures</text>
+    <text x="185" y="306" text-anchor="middle" fill="#1A1A1A" font-weight="700">Ct — Chin Thrust</text>
 
-    <rect x="60" y="340" width="250" height="40" rx="4" fill="#FFFFFF" stroke="#C9C2B2"/>
-    <text x="185" y="364" text-anchor="middle">&#9318; Variable Factors</text>
+    <rect x="60" y="322" width="250" height="42" rx="4" fill="#FFFFFF" stroke="#C9C2B2"/>
+    <text x="185" y="340" text-anchor="middle" fill="#5B5B5B" font-size="8">&#9317; Microphysiological Amplifiers</text>
+    <text x="185" y="356" text-anchor="middle" fill="#1A1A1A" font-weight="700">Capillary pressure (fingertips)</text>
 
-    <rect x="60" y="388" width="250" height="40" rx="4" fill="#FFFFFF" stroke="#C9C2B2"/>
-    <text x="185" y="412" text-anchor="middle">&#9319; Cultural Prevalence</text>
+    <rect x="60" y="372" width="250" height="42" rx="4" fill="#FFFFFF" stroke="#C9C2B2"/>
+    <text x="185" y="390" text-anchor="middle" fill="#5B5B5B" font-size="8">&#9321; Gesture Type</text>
+    <text x="185" y="406" text-anchor="middle" fill="#1A1A1A" font-weight="700">Closed</text>
+
+    <rect x="60" y="422" width="250" height="42" rx="4" fill="#FFFFFF" stroke="#C9C2B2"/>
+    <text x="185" y="440" text-anchor="middle" fill="#5B5B5B" font-size="8">&#9322; Conflicting Behaviors</text>
+    <text x="185" y="456" text-anchor="middle" fill="#1A1A1A" font-weight="700">Ht — Head Tilt</text>
   </g>
 
-  <!-- column 2 -->
-  <g font-size="9.5" fill="#1A1A1A">
-    <rect x="330" y="196" width="250" height="40" rx="4" fill="#FFFFFF" stroke="#C9C2B2"/>
-    <text x="455" y="220" text-anchor="middle">&#9320; Sexual Propensity</text>
+  <!-- field grid, right column -->
+  <g font-size="9.5">
+    <rect x="330" y="222" width="250" height="42" rx="4" fill="#FFFFFF" stroke="#C9C2B2"/>
+    <text x="455" y="240" text-anchor="middle" fill="#5B5B5B" font-size="8">&#9318; Variable Factors</text>
+    <text x="455" y="256" text-anchor="middle" fill="#1A1A1A" font-weight="700">4 (ACC1&#8211;ACC4)</text>
 
-    <rect x="330" y="244" width="250" height="40" rx="4" fill="#FFFFFF" stroke="#C9C2B2"/>
-    <text x="455" y="268" text-anchor="middle">&#9321; Gesture Type</text>
+    <rect x="330" y="272" width="250" height="42" rx="4" fill="#FFFFFF" stroke="#C9C2B2"/>
+    <text x="455" y="290" text-anchor="middle" fill="#5B5B5B" font-size="8">&#9319; Cultural Prevalence</text>
+    <text x="455" y="306" text-anchor="middle" fill="#1A1A1A" font-weight="700">U — Universal</text>
 
-    <rect x="330" y="292" width="250" height="40" rx="4" fill="#FFFFFF" stroke="#C9C2B2"/>
-    <text x="455" y="316" text-anchor="middle">&#9322; Conflicting Behaviors</text>
+    <rect x="330" y="322" width="250" height="42" rx="4" fill="#FFFFFF" stroke="#C9C2B2"/>
+    <text x="455" y="340" text-anchor="middle" fill="#5B5B5B" font-size="8">&#9320; Sexual Propensity</text>
+    <text x="455" y="356" text-anchor="middle" fill="#1A1A1A" font-weight="700">&#8211; (no gender skew)</text>
 
-    <rect x="330" y="340" width="250" height="40" rx="4" fill="#FFFFFF" stroke="#C9C2B2"/>
-    <text x="455" y="364" text-anchor="middle">&#9323; Body Region</text>
+    <rect x="330" y="372" width="250" height="42" rx="4" fill="#FFFFFF" stroke="#C9C2B2"/>
+    <text x="455" y="390" text-anchor="middle" fill="#5B5B5B" font-size="8">&#9323; Body Region</text>
+    <text x="455" y="406" text-anchor="middle" fill="#1A1A1A" font-weight="700">Arms</text>
 
-    <rect x="330" y="388" width="250" height="40" rx="4" fill="#FFFFFF" stroke="#C9C2B2"/>
-    <text x="455" y="412" text-anchor="middle">&#9324; Deception Rating</text>
+    <rect x="330" y="422" width="250" height="42" rx="4" fill="#FFFFFF" stroke="#C9C2B2"/>
+    <text x="455" y="440" text-anchor="middle" fill="#5B5B5B" font-size="8">&#9324; Deception Rating</text>
+    <text x="455" y="456" text-anchor="middle" fill="#1A1A1A" font-weight="700">2.0</text>
   </g>
 
-  <!-- (14) deception time frame, bottom-right corner -->
-  <rect x="486" y="452" width="104" height="46" rx="6" fill="#B23A48"/>
-  <text x="538" y="474" text-anchor="middle" fill="white" font-size="13" font-weight="700">B / D / A</text>
-  <text x="538" y="488" text-anchor="middle" fill="rgba(255,255,255,0.85)" font-size="7.5">&#9325; Time Frame</text>
-
-  <text x="320" y="560" text-anchor="middle" fill="#5B5B5B" font-size="10" font-style="italic">A minus sign (&#8211;) in any field means the behavior is absent from the cell.</text>
+  <!-- (14) deception time frame, bottom-right corner, matching the real cell's presentation -->
+  <rect x="60" y="480" width="520" height="46" rx="8" fill="#FFFFFF" stroke="#C9C2B2" stroke-width="1"/>
+  <text x="80" y="509" text-anchor="start" fill="#5B5B5B" font-size="9" font-style="italic">A minus sign (&#8211;) in any field means the behavior is absent from the cell.</text>
+  <rect x="486" y="480" width="94" height="46" rx="8" fill="#B23A48"/>
+  <text x="533" y="502" text-anchor="middle" fill="white" font-size="13" font-weight="700">A</text>
+  <text x="533" y="516" text-anchor="middle" fill="rgba(255,255,255,0.85)" font-size="7.5">&#9325; Time Frame — After</text>
 
 </svg>

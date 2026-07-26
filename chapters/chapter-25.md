@@ -51,7 +51,7 @@ The **horizontal axis** represents stress and deception likelihood — lowest on
 
 ![Figure 25.1 — The two axes of the BTE. Vertically, cells run from head-region behaviors down through the feet, then below the body entirely into object interaction and verbal expression. Horizontally, cells run from low stress and low deception likelihood on the left to high stress and high deception likelihood on the right.](../assets/diagrams/chapter25_bte_axes.svg)
 
-The reference number in the upper-left corner of each cell exists only to give a fixed reference to its position within the table — it doesn't encode anything about the gesture itself. The rest of the data within each cell represents the qualities associated with that behavior. The table can be used in almost any scenario. This field guide, while serving as the reference text for the table, is also intended for use by the analyst who performs systematic analysis of interviews and interrogations.
+The reference position of each cell — its row letter and column number — exists only to give a fixed reference to its location within the table; it doesn't encode anything about the gesture itself. The rest of the data within each cell represents the qualities associated with that behavior. The table can be used in almost any scenario. This field guide, while serving as the reference text for the table, is also intended for use by the analyst who performs systematic analysis of interviews and interrogations.
 
 ## The Key
 
@@ -80,11 +80,15 @@ Just like a key on a map, the Key enables the user to identify the specific data
 
 *Table 25.1 — The fourteen data points contained in every BTE cell, in reading order.*
 
-![Figure 25.2 — Anatomy of a BTE cell. The reference number always sits in the upper-left corner; the deception time frame letter always sits in the lower-right. The remaining twelve data points fill the body of the cell.](../assets/diagrams/chapter25_cell_anatomy.svg)
+![Figure 25.2 — Anatomy of a BTE cell, shown on the real Arm Cross (ACC) cell. The cell's grid position (row and column) is fixed by its place on the table, not printed inside the cell; the small number in a cell's own upper-right corner is its Variable Factors count. The deception time frame letter always sits in the lower-right. The remaining data points fill the body of the cell.](../assets/diagrams/chapter25_cell_anatomy.svg)
 
 ### 1 — Reference Number
 
-Each cell contains a number in the upper-left corner. This number identifies the behavior's location on the table — not the gesture itself. The table will continue to evolve on a monthly basis, but the reference numbers remain constant in presentation and location. As the table evolves and new cells are added or removed, the numbering system stays the same. Reference numbers can only be used to identify a location within the table, never a specific behavior.
+Every cell's location on the table is fixed by its row and column — row letters (A through G, running top to bottom for body region) across the left margin, and column numbers (1 through 18, running left to right for stress and deception likelihood) across the top, the same way a spreadsheet or a map grid works. Arm Cross, for instance, sits at row A, column 2. This reference identifies the behavior's location on the table — not the gesture itself. The table will continue to evolve, but a cell's grid position remains constant in presentation and location. As the table evolves and cells are added or removed elsewhere, an existing cell's position stays the same. The reference position can only be used to identify a location within the table, never a specific behavior on its own.
+
+::: callout
+**Don't confuse it with the small number inside the cell.** Every cell also carries its own small number in the upper-right corner, next to the Symbol — that's the Variable Factors count (data point 7, below), not a location reference.
+:::
 
 ### 2 — Symbol
 
@@ -106,7 +110,7 @@ This field shows other behaviors within the table that can also confirm the inte
 
 ### 6 — Microphysiological Amplifiers
 
-This field contains smaller, more subtle cues that either confirm a gesture or help measure its intensity during an interaction. Some microphysiological references point to a different gesture elsewhere on the table; others simply contain a small bit of data. In the arm-cross example (**ACC**), the microphysiological reference is something as small as grip quality<!-- ASR? verify: source audio reads "Hillary quality" — reconstructed as "grip quality," the most plausible reading given the arm-cross context (the tightness of the hands' grip on the opposite arm is a known intensity cue), but the exact original term is unconfirmed --> — a detail covered in depth later. Anything in this field is easy to miss, but plays an important role in measuring the meaning and/or intensity of the gesture in question.
+This field contains smaller, more subtle cues that either confirm a gesture or help measure its intensity during an interaction. Some microphysiological references point to a different gesture elsewhere on the table; others simply contain a small bit of data. In the arm-cross example (**ACC**), the microphysiological reference is capillary pressure in the fingertips — a detail covered in depth later. Anything in this field is easy to miss, but plays an important role in measuring the meaning and/or intensity of the gesture in question.
 
 ### 7 — Variable Factors
 
@@ -173,7 +177,7 @@ Earlier in this chapter, the shape of the table was explained, then the Key and 
 **Principle.** An observed behavior is only as valuable as the stimulus that causes it.
 :::
 
-For example, a **chronology statement (CRS)** — an interview subject describing a course of events in a seemingly memorized and rehearsed fashion, in perfect chronological order — is rated **4.0** on the deception scale. But if the interviewer pointedly *asks* that the events be described in their actual order of occurrence, the chronology statement carries no weight in the analysis of deception at all. The stimulus changes the meaning of the response.
+For example, a **chronology statement (Chr)** — an interview subject describing a course of events in a seemingly memorized and rehearsed fashion, in perfect chronological order — is rated **4.0** on the deception scale. But if the interviewer pointedly *asks* that the events be described in their actual order of occurrence, the chronology statement carries no weight in the analysis of deception at all. The stimulus changes the meaning of the response.
 
 ---
 
@@ -361,7 +365,7 @@ Since the effects of these behaviors are non-measurable by the naked eye, we wil
 - **The first principle of interrogation is the suspension of judgment.** Opinions about a subject can distort a profile and get someone hurt — stay open to the subject's self-image throughout.
 - **The table has two axes**: vertically, body region from head to feet, then object interaction and verbal expression below the body; horizontally, stress and deception likelihood from low (left) to high (right).
 - **Every cell carries fourteen data points** — Reference Number, Symbol, Name, Confirming Gestures, Amplifying Gestures, Microphysiological Amplifiers, Variable Factors, Cultural Prevalence, Sexual Propensity, Gesture Type, Conflicting Behaviors, Body Region, Deception Rating, and Deception Time Frame — plus the dash (–), which marks an absent behavior.
-- **An observed behavior is only as valuable as the stimulus that causes it.** A chronology statement (CRS) rates 4.0 for deception — unless the interviewer explicitly asked for the events in chronological order, in which case it carries no weight at all.
+- **An observed behavior is only as valuable as the stimulus that causes it.** A chronology statement (Chr) rates 4.0 for deception — unless the interviewer explicitly asked for the events in chronological order, in which case it carries no weight at all.
 - **Behaviors cluster into groups** — several gestures performed in a small time frame, usually in response to a single stimulus. The Mr. Phillips walkthrough shows a full group, scored in the "before," "during," and "after" time frames, totaling 17.5 against a 12.0 threshold for "extremely deceptive."
 - **The BTE process baselines every subject whenever possible**, despite real objections to baselining — because even imperfect nonverbal data is still valuable, and deliberately faked baseline behavior tends to trip its own Conflicting Gestures red flags.
 - **Six observation influencing factors** — Temperature, Interviewer Behavior, Emotional State of the Subject, Proxemics, Handicap or Missing Limbs, and Presence of Others — can shift a cell's numeric value and must be accounted for before a score is trusted.
@@ -380,7 +384,9 @@ Since the effects of these behaviors are non-measurable by the naked eye, we wil
 | "Central propensity. In this field, data is displayed to indicate whether the gesture is more common in women or men." | "Sexual Propensity..." | ASR mishearing; matches item 9's name in the chapter's own opening list of the fourteen fields. |
 | "Gesture time. Within this body of research, behaviors are divided into 4 types of gestures." | "Gesture Type..." | ASR mishearing; matches item 10's name in the opening list. |
 | "Bolsnia and Croatia" | "Bulgaria and Croatia" | Factual correction, verified via web search — the reversed head-shake (nod for no, shake for yes) is documented in Bulgaria (and, to a lesser extent, Albania, Greece, and Turkey); "Bolsnia" is not a country. |
-| "Sometimes, as in the example of arm crossing, ACC, Hillary quality... is the microphysiological reference" | "...the microphysiological reference is something as small as grip quality" | ASR mishearing, flagged inline; "grip quality" is the most plausible reading in context (arm-cross grip tightness as an intensity cue), but unconfirmed. |
+| "Sometimes, as in the example of arm crossing, ACC, Hillary quality... is the microphysiological reference" | "...the microphysiological reference is capillary pressure in the fingertips" | Resolved during the Chapter 26 build, which hand-verified the real table at high resolution: the ACC cell's microphysiological field literally reads "Capill" (Capillary). "Hillary" is a close phonetic ASR mishearing of "Capillary." Previously flagged as uncertain ("grip quality"); now confirmed and corrected. |
+| "Each cell contains a number in the upper-left corner. This number identifies the behavior's location..." | Reframed as row + column grid position (e.g., Arm Cross = row A, column 2); clarified that the small in-cell number is the Variable Factors count, not a location reference | Resolved during the Chapter 26 build: a hand-verified, pixel-zoomed read of the real table (multiple cells cross-checked) showed no location-identifying number printed inside any cell — only a Variable Factors count in the upper-right corner. The table's actual location reference is its row-letter/column-number grid position, shown in the margins framing the whole table. |
+| "a chronology statement (CRS)" (×2, main prose and Key Takeaways) | "a chronology statement (Chr)" | Resolved during the Chapter 26 build: the real table's symbol for Chronology is "Chr," verified via high-resolution table read and cross-referenced against the transcript's own "Direct technology / C H" garbling in Chapter 26. "CRS" does not appear anywhere on the actual table. |
 | "Selection, in this case, is caused by the anger, not stress" | "the flexion, in this case, is caused by anger, not stress" | ASR mishearing — "Selection" has no referent in the sentence; "the flexion" (digital flexion) is the subject under discussion. |
 | "Ace lining behavior" (section header) | "Baselining Behavior" | ASR mishearing; confirmed by the entire section's content, which is about baselining. |
 | "For the BT interview process, we will baseline all subjects when possible" | "For the BTE interview process, we will baseline all subjects whenever possible" | ASR truncation ("BT" for "BTE"). |
