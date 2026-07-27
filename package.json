@@ -6,8 +6,9 @@
   "description": "Behavior Ops by Charles Huge — book presented as a React single-page web app.",
   "scripts": {
     "generate:search-index": "node scripts/generate-search-index.mjs",
-    "dev": "npm run generate:search-index && vite",
-    "build": "npm run generate:search-index && vite build",
+    "generate:bte-data": "node scripts/generate-bte-data.mjs",
+    "dev": "npm run generate:search-index && npm run generate:bte-data && vite",
+    "build": "npm run generate:search-index && npm run generate:bte-data && vite build",
     "preview": "vite preview"
   },
   "dependencies": {

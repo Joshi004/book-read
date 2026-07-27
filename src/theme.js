@@ -24,6 +24,26 @@ const TOKENS = {
     bg: '#FBFAF6',
     surface: '#FFFFFF',
     definitionBg: '#FBFAF7',
+    // Behavior Elements page — the 6 color bands from chapter 26's "Reading
+    // the Colors" legend. Chosen and validated with the dataviz skill
+    // (scripts/validate_palette.js) for lightness band, CVD-safe pairwise
+    // separation, and contrast; `bteOnFill` is the text color for symbols
+    // printed on top of these fills (deliberately not `ink` — these are
+    // mid-toned swatches, not pale tints, so white text reads better than
+    // dark ink here even in light mode). One documented exception: `grey`
+    // sits below the strict chroma floor the validator wants — reading as
+    // genuinely desaturated is the whole point of that band (the chapter's
+    // own "highest-stress, rated 4.0" color), mitigated by every cell always
+    // showing its symbol/name/DRS as text, never color alone.
+    bte: {
+      green: '#1F8F5E',
+      tan: '#B8631F',
+      yellow: '#B8890A',
+      grey: '#7A5F3E',
+      turquoise: '#0A9186',
+      blue: '#3E5CA8',
+    },
+    bteOnFill: '#FFFFFF',
   },
   dark: {
     ink: '#E9E4D8',
@@ -38,6 +58,18 @@ const TOKENS = {
     bg: '#17160F',
     surface: '#201E18',
     definitionBg: '#23211B',
+    // See TOKENS.light.bte for the derivation/validation notes. Same 6 bands,
+    // stepped for the dark surface (OKLCH L 0.48-0.67) — `bteOnFill` flips to
+    // near-black here since these fills stay mid-bright even in dark mode.
+    bte: {
+      green: '#4CA46E',
+      tan: '#B85A18',
+      yellow: '#B08A1E',
+      grey: '#8C7550',
+      turquoise: '#2EA398',
+      blue: '#4A78B0',
+    },
+    bteOnFill: '#141310',
   },
 }
 

@@ -48,6 +48,10 @@ And the two axes, as Chapter 25 covered: **vertically**, cells run from head-reg
 ![Figure 26.1 — The complete Behavioral Table of Elements, high-resolution reference. Every cell referenced throughout this chapter appears here in its original position, with its full fourteen-point data set.](../assets/diagrams/chapter26_bte_full_table.png)
 
 ::: callout
+**Explore it live.** Every cell in the table below is interactive — hover to see a behavior's related gestures light up, click for the full write-up. [Launch the Interactive Behavior Elements Table →](#/elements)
+:::
+
+::: callout
 **Deception scoring, as a reminder.** Deception is rated per question-and-answer scenario. If a subject's behaviors tally more than 11 points on the Deception Rating Scale during a single question-and-answer window, deception is highly likely — the Chapter 25 walkthrough of Mr. Phillips is the worked example to revisit if you need a refresher on how the math comes together.
 :::
 

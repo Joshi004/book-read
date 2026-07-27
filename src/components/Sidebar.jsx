@@ -10,6 +10,7 @@ import {
 import MenuBookIcon from '@mui/icons-material/MenuBook'
 import InsightsIcon from '@mui/icons-material/Insights'
 import BookmarksIcon from '@mui/icons-material/Bookmarks'
+import GridViewIcon from '@mui/icons-material/GridView'
 import { chapters } from '../content/chapters.js'
 import { SANS, SERIF } from '../theme.js'
 import ReadingBadge from '../reading/ReadingBadge.jsx'
@@ -80,6 +81,18 @@ export default function Sidebar({ onNavigate }) {
           <BookmarksIcon fontSize="small" sx={{ mr: 1.25, color: 'text.secondary' }} />
           <ListItemText
             primary="Highlights"
+            primaryTypographyProps={{ fontFamily: SANS, fontWeight: 600 }}
+          />
+        </ListItemButton>
+        <ListItemButton
+          component={NavLink}
+          to="/elements"
+          onClick={onNavigate}
+          sx={linkSx}
+        >
+          <GridViewIcon fontSize="small" sx={{ mr: 1.25, color: 'text.secondary' }} />
+          <ListItemText
+            primary="Behavior Elements"
             primaryTypographyProps={{ fontFamily: SANS, fontWeight: 600 }}
           />
         </ListItemButton>

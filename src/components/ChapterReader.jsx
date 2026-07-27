@@ -115,6 +115,16 @@ export default function ChapterReader({ chapter, next, onHeadings }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [chapter.number, body, pending?.blockId, pending?.matchedTerm, pending?.occurrenceInBlock])
 
+  // A Behavior Elements page "Read in Chapter 26" link asks a specific
+  // heading (its rehype-slug id) to scroll into view on arrival.
+  const pendingHeadingId = searchParams.get('heading')
+  useEffect(() => {
+    if (!pendingHeadingId || !ref.current || body == null) return
+    const el = ref.current.querySelector(`#${CSS.escape(pendingHeadingId)}`)
+    if (!el) return // content changed since this link was generated
+    el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }, [chapter.number, body, pendingHeadingId])
+
   // Resume the reader's last known position on a cold boot of this chapter
   // (a fresh page load, or a mobile browser reviving a discarded idle tab on
   // the same URL) — but only then, so ordinary chapter-to-chapter navigation

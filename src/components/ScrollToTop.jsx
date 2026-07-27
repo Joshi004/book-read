@@ -14,9 +14,12 @@ export default function ScrollToTop({ scroller }) {
 
   const getEl = () => (typeof scroller === 'function' ? scroller() : null)
 
-  // A search result hands a chapter route a specific block to scroll to
-  // (ChapterReader.jsx) — don't fight that with an unconditional reset-to-top.
-  const hasPendingTarget = Boolean(location.state?.blockId || searchParams.get('block'))
+  // A search result hands a chapter route a specific block to scroll to, or
+  // the Behavior Elements page hands it a specific heading (ChapterReader.jsx)
+  // — don't fight either with an unconditional reset-to-top.
+  const hasPendingTarget = Boolean(
+    location.state?.blockId || searchParams.get('block') || searchParams.get('heading')
+  )
 
   useEffect(() => {
     // Skip the initial mount — a fresh page load (including a mobile OS

@@ -4,6 +4,7 @@ import HomePage from './pages/HomePage.jsx'
 import ChapterPage from './pages/ChapterPage.jsx'
 import DashboardPage from './pages/DashboardPage.jsx'
 import HighlightsPage from './pages/HighlightsPage.jsx'
+import ElementsPage from './pages/ElementsPage.jsx'
 import NotFound from './pages/NotFound.jsx'
 
 export default function App() {
@@ -14,6 +15,7 @@ export default function App() {
         <Route path="chapter/:number" element={<ChapterPage />} />
         <Route path="dashboard" element={<DashboardPage />} />
         <Route path="highlights" element={<HighlightsPage />} />
+        <Route path="elements" element={<ElementsPage />} />
         <Route path="404" element={<NotFound />} />
         <Route path="*" element={<NotFound />} />
       </Route>

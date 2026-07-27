@@ -10,6 +10,17 @@ import { ReadingTrackerProvider } from './reading/ReadingTrackerContext.jsx'
 import { ReadingSpeedProvider } from './reading/readingSpeed.jsx'
 import { HighlightsProvider } from './reading/HighlightsContext.jsx'
 
+// The app manages its own scroll on route change (ScrollToTop.jsx, plus
+// ChapterReader's deep-link/resume logic) — the browser's default automatic
+// scroll restoration on pushState-based navigation fights that (it was the
+// actual cause of the Behavior Elements "Read in Chapter 26" link landing
+// thousands of pixels short of its target: the app's scroll would land
+// correctly, then the browser would silently restore its own remembered
+// position moments later).
+if (typeof history !== 'undefined' && 'scrollRestoration' in history) {
+  history.scrollRestoration = 'manual'
+}
+
 const STORAGE_KEY = 'behavior-ops-color-mode'
 
 function getInitialMode() {
