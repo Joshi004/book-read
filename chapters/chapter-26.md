@@ -25,7 +25,7 @@ Each entry below follows the same shape:
 >
 > The cleaned-up explanation of what the behavior means, why it happens, and what to look for — including every variation, caveat, and research citation Charles gives for it.
 
-The italic line under each heading is a compressed version of that cell's data straight from the table — read it the same way you'd read a spec sheet. If a field is blank, it means that field doesn't apply to that particular behavior (a facial expression has no "gesture type" in the Open/Closed sense, for instance, and a handful of cells — like Blink Rate or Breathing Rate — are rated on their own variable scale rather than a fixed DRS number).
+The italic line under each heading is a compressed version of that cell's data straight from the table — read it the same way you'd read a spec sheet. If a field is blank, it means that field doesn't apply to that particular behavior (a facial expression has no "gesture type" in the Open/Closed sense, for instance, and a handful of cells — like Blink Rate or Breathing Rate — are rated on their own variable scale rather than a fixed DRS (Deception Rating Scale) number).
 
 ### The Table at a Glance
 
@@ -215,7 +215,7 @@ The arm cross is used universally and carries four variations that matter greatl
 
 When observing this behavior, note the closeness of the palms to the body, the direction the thumbs are pointing, the tightness of the cross, the flexion of the fingers, and the distance from the humerus, a paran,<!-- ASR? verify: source audio reads "a paran" immediately after "humerus" — possibly a parenthetical gloss for the term (e.g., "the upper arm bone"); exact original wording uncertain --> to the torso. These variations all broadcast small but significant details about the gesture's true meaning. Crossing the arms is something we do when we need reassurance, or when we feel threatened.
 
-Here are a few generalized rules to follow when observing arm-crossing behavior. The tighter the grip, the stronger the need for reassurance. When we need reassurance, the arms pull in toward the body, almost as though we're hugging ourselves. Thumbs protruding upward is an almost certain sign of confidence, despite the crossed arms. Digital flexion increases in sync with the level of anger being experienced. Arm crossing, when grouped with posture and facial expression, can be a clear sign of pride. Hands wrapped around the upper arms, together with an associated display of AG (Anger) or CO (Contempt), is an intimidation attempt. When women do this during socially stressful situations, it's almost always accompanied by SH. When the fingers wrap around the arms and pull toward the sternum, look for AG — this is a warning sign. If you see this alongside WD, your subject is about to become violent. The dominant hand is almost always the one on top, or — put another way — the non-dominant arm is the one on the bottom.
+Here are a few generalized rules to follow when observing arm-crossing behavior. The tighter the grip, the stronger the need for reassurance. When we need reassurance, the arms pull in toward the body, almost as though we're hugging ourselves. Thumbs protruding upward is an almost certain sign of confidence, despite the crossed arms. Digital flexion increases in sync with the level of anger being experienced. Arm crossing, when grouped with posture and facial expression, can be a clear sign of pride. Hands wrapped around the upper arms, together with an associated display of AG (Anger) or CO (Contempt), is an intimidation attempt. When women do this during socially stressful situations, it's almost always accompanied by SH (Shoulder Shrug). When the fingers wrap around the arms and pull toward the sternum, look for AG — this is a warning sign. If you see this alongside WD (Wing Dilation), your subject is about to become violent. The dominant hand is almost always the one on top, or — put another way — the non-dominant arm is the one on the bottom.
 
 Four variable factors should be annotated in the notebook for every arm-cross observation:
 
@@ -228,9 +228,9 @@ Variations:
 ### Head Tilt — HT
 *Gesture Type: Open · Body Region: Head · Deception Rating: DNL*
 
-Head tilt is an open and vulnerable gesture. We tilt our heads when we are curious, flirtatious, or attempting to appear innocent — this is why this gesture is listed alongside SQ, YE, and IP as confirming behaviors. You'll see PE (Palm Exposure) appear when someone is explaining a point they haven't communicated very clearly, in a friendly environment.
+Head tilt is an open and vulnerable gesture. We tilt our heads when we are curious, flirtatious, or attempting to appear innocent — this is why this gesture is listed alongside SQ (Squint), YE (Vertical Headshake), and IP (Inward Toe Pointing) as confirming behaviors. You'll see PE (Palm Exposure) appear when someone is explaining a point they haven't communicated very clearly, in a friendly environment.
 
-The first conflicting behavior listed is JC. This behavior could indicate that the gesture was actually a sign of anger, aggression, or a challenge — males, and sometimes females, will expose vital parts of the body in order to appear fearless to an adversary. The second conflicting behavior is TP, since head tilt is sometimes associated with boredom. Feigned boredom is far more likely to present with a head tilt than actual boredom is.
+The first conflicting behavior listed is JC (Jaw Clench). This behavior could indicate that the gesture was actually a sign of anger, aggression, or a challenge — males, and sometimes females, will expose vital parts of the body in order to appear fearless to an adversary. The second conflicting behavior is TP (Tapping), since head tilt is sometimes associated with boredom. Feigned boredom is far more likely to present with a head tilt than actual boredom is.
 
 Some research, including that of Desmond Morris, details the possible or observed differences between the leftward and rightward tilt of the head. Thus far, no significant study has been conducted to validate these observations, and the direction of tilt is irrelevant in the BTE.
 
@@ -274,7 +274,7 @@ Variations:
 
 The downcast head has multiple meanings depending on contextual reference, but the majority of these gestures are used when a subject is experiencing shame, guilt, submissiveness, or personal anger. The tilde symbol before the U in the sexual propensity field indicates that both sexes perform this action, though it is sometimes used more often by women, especially during the early stages of flirtation and courtship.
 
-GPR is listed here as a conflicting behavior, since its presence indicates the downward head behavior is displaying a meaning contrary to its typical one. This is seen regularly in abused spouses, sexually abused children, and children who are frequently bullied in school.
+GPR (Groin Protecting) is listed here as a conflicting behavior, since its presence indicates the downward head behavior is displaying a meaning contrary to its typical one. This is seen regularly in abused spouses, sexually abused children, and children who are frequently bullied in school.
 
 ### Lip Compression — LC
 *Gesture Type: Closed · Body Region: Face · Deception Rating: 2.0 · Timeframe: B*

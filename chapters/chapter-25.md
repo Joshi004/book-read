@@ -92,7 +92,7 @@ Every cell's location on the table is fixed by its row and column — row letter
 
 ### 2 — Symbol
 
-Each cell contains an abbreviation of the behavior's name, used to identify it quickly. To refer to an arm cross on a report, for example, the letters **ACC** are used to annotate it on the interview timeline. When referring verbally to the gesture, the same abbreviation is used. Every effort was made during development to ensure each symbol is easy to memorize and intuitive in both its written and spoken forms.
+Each cell contains an abbreviation of the behavior's name, used to identify it quickly. To refer to an arm cross on a report, for example, the letters **ACC** (Arm Cross) are used to annotate it on the interview timeline. When referring verbally to the gesture, the same abbreviation is used. Every effort was made during development to ensure each symbol is easy to memorize and intuitive in both its written and spoken forms.
 
 In training scenarios, symbols should be presented to trainees as standalone objects — without the whole cell — as often as possible, to facilitate rapid absorption of the symbols and their associated behaviors.
 
