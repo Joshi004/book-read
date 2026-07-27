@@ -44,6 +44,17 @@ const TOKENS = {
       blue: '#3E5CA8',
     },
     bteOnFill: '#FFFFFF',
+    // Hover cross-highlight ring/glow colors, one per stated relation type
+    // (confirming/amplifying/conflicting). Lives outside the cell on the page
+    // background, so validated as its own 3-color categorical set against
+    // `bg` rather than against the 6 fills above. `conflicting` happens to
+    // match `warn` here, but dark mode does not reuse `warn`'s dark value —
+    // this is its own validated token set, not an alias.
+    relation: {
+      conflicting: '#B23A48',
+      confirming: '#1D6FB8',
+      amplifying: '#8A6A16',
+    },
   },
   dark: {
     ink: '#E9E4D8',
@@ -70,6 +81,12 @@ const TOKENS = {
       blue: '#4A78B0',
     },
     bteOnFill: '#141310',
+    // See TOKENS.light.relation for the derivation/validation notes.
+    relation: {
+      conflicting: '#D9707E',
+      confirming: '#4A8CC7',
+      amplifying: '#B88A34',
+    },
   },
 }
 

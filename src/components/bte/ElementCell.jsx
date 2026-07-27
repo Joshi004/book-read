@@ -1,4 +1,5 @@
 import { Box, Typography } from '@mui/material'
+import { alpha } from '@mui/material/styles'
 // Typography defaults to theme.palette.text.primary regardless of an
 // ancestor's `color` — every label here must opt into inheriting the fill's
 // validated on-color (see theme.js TOKENS.*.bteOnFill) via color="inherit".
@@ -10,7 +11,7 @@ import { SANS, MONO } from '../../theme.js'
 const CAN_HOVER =
   typeof window !== 'undefined' && window.matchMedia?.('(hover: hover)').matches
 
-export default function ElementCell({ entry, dimmed, related, onHover, onSelect }) {
+export default function ElementCell({ entry, dimmed, relationType, onHover, onSelect }) {
   const hoverHandlers = CAN_HOVER
     ? {
         onMouseEnter: () => onHover(entry.id),
@@ -24,26 +25,34 @@ export default function ElementCell({ entry, dimmed, related, onHover, onSelect 
       type="button"
       onClick={(e) => onSelect(entry, e.currentTarget)}
       {...hoverHandlers}
-      sx={(theme) => ({
-        all: 'unset',
-        cursor: 'pointer',
-        boxSizing: 'border-box',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-        width: 86,
-        height: 72,
-        p: 0.75,
-        borderRadius: 1,
-        bgcolor: theme.palette.book.bte[entry.colorBand],
-        color: theme.palette.book.bteOnFill,
-        opacity: dimmed ? 0.28 : 1,
-        outline: related ? `2px solid ${theme.palette.book.ink}` : '2px solid transparent',
-        outlineOffset: 1,
-        transition: 'opacity 120ms ease, outline-color 120ms ease, transform 80ms ease',
-        '&:hover': CAN_HOVER ? { transform: 'scale(1.04)' } : undefined,
-        '&:focus-visible': { outline: `2px solid ${theme.palette.book.accent}` },
-      })}
+      sx={(theme) => {
+        const relColor = relationType ? theme.palette.book.relation[relationType] : null
+        return {
+          all: 'unset',
+          cursor: 'pointer',
+          boxSizing: 'border-box',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'space-between',
+          width: 86,
+          height: 72,
+          p: 0.75,
+          borderRadius: 1,
+          bgcolor: theme.palette.book.bte[entry.colorBand],
+          color: theme.palette.book.bteOnFill,
+          opacity: dimmed ? 0.28 : 1,
+          // A page-background gap (outlineOffset) sits between the cell's own
+          // fill and the ring, so the relation color reads against the
+          // neutral page rather than blending into whichever of the 6 fills
+          // this cell happens to have.
+          outline: relColor ? `2px solid ${relColor}` : '2px solid transparent',
+          outlineOffset: 3,
+          boxShadow: relColor ? `0 0 10px 2px ${alpha(relColor, 0.55)}` : 'none',
+          transition: 'opacity 120ms ease, outline-color 120ms ease, box-shadow 120ms ease, transform 80ms ease',
+          '&:hover': CAN_HOVER ? { transform: 'scale(1.04)' } : undefined,
+          '&:focus-visible': { outline: `2px solid ${theme.palette.book.accent}` },
+        }
+      }}
       aria-label={`${entry.name} (${entry.symbol})`}
     >
       <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>

@@ -1,13 +1,19 @@
-import { useMemo, useState } from 'react'
+import { useMemo, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Box, Typography, Stack, Button } from '@mui/material'
 import bteData from '../generated/bte-data.json'
 import ElementCell from '../components/bte/ElementCell.jsx'
 import ElementDetailPopover from '../components/bte/ElementDetailPopover.jsx'
 import ElementsLegend from '../components/bte/ElementsLegend.jsx'
+import RelationshipPanel from '../components/bte/RelationshipPanel.jsx'
 import { SERIF, SANS } from '../theme.js'
 
 const { categories, entries } = bteData
+
+// When a symbol pair somehow carries more than one stated relation type,
+// the rarer, more alerting relation wins the glow color/panel ranking.
+const RELATION_PRIORITY = { conflicting: 3, amplifying: 2, confirming: 1 }
+const HOVER_CLEAR_DELAY_MS = 150
 
 function drsSortKey(entry) {
   if (entry.drsValue != null) return entry.drsValue
@@ -33,26 +39,60 @@ export default function ElementsPage() {
 
   // Reverse index so hovering a cell also lights up cells that name *it* as a
   // relation, not just the ones it names — the relationship graph the prose
-  // only states from one side becomes visible from both.
+  // only states from one side becomes visible from both. Keeps the stated
+  // relation type too (not just symbol membership) so the reverse direction
+  // still gets the right ring color and panel label.
   const incomingBySymbol = useMemo(() => {
     const map = new Map()
     for (const e of entries) {
       for (const rel of e.relations) {
         if (!map.has(rel.symbol)) map.set(rel.symbol, [])
-        map.get(rel.symbol).push(e.symbol)
+        map.get(rel.symbol).push({ symbol: e.symbol, type: rel.type })
       }
     }
     return map
   }, [])
 
-  const relatedSymbols = useMemo(() => {
+  const hoverInfo = useMemo(() => {
     if (!hoveredId) return null
     const hovered = entries.find((e) => e.id === hoveredId)
     if (!hovered) return null
-    const set = new Set(hovered.relations.map((r) => r.symbol))
-    for (const s of incomingBySymbol.get(hovered.symbol) || []) set.add(s)
-    return set
-  }, [hoveredId, incomingBySymbol])
+    const related = new Map()
+    const consider = (symbol, type) => {
+      const existing = related.get(symbol)
+      if (!existing || RELATION_PRIORITY[type] > RELATION_PRIORITY[existing]) related.set(symbol, type)
+    }
+    for (const rel of hovered.relations) consider(rel.symbol, rel.type)
+    for (const inc of incomingBySymbol.get(hovered.symbol) || []) consider(inc.symbol, inc.type)
+    const list = [...related.entries()]
+      .map(([symbol, type]) => ({ type, entry: entriesBySymbol.get(symbol) }))
+      .filter((r) => r.entry)
+      .sort((a, b) => RELATION_PRIORITY[b.type] - RELATION_PRIORITY[a.type])
+    return { entry: hovered, related, list }
+  }, [hoveredId, incomingBySymbol, entriesBySymbol])
+
+  // Hovering a cell shows a colored glow + the relationship panel; leaving it
+  // clears both after a short grace period so moving the pointer from the
+  // cell into the panel itself doesn't flicker it closed.
+  const hoverTimeoutRef = useRef(null)
+  const cancelHoverClear = () => {
+    if (hoverTimeoutRef.current) {
+      clearTimeout(hoverTimeoutRef.current)
+      hoverTimeoutRef.current = null
+    }
+  }
+  const clearHoverSoon = () => {
+    cancelHoverClear()
+    hoverTimeoutRef.current = setTimeout(() => setHoveredId(null), HOVER_CLEAR_DELAY_MS)
+  }
+  const handleHover = (id) => {
+    if (id) {
+      cancelHoverClear()
+      setHoveredId(id)
+    } else {
+      clearHoverSoon()
+    }
+  }
 
   const byCategory = useMemo(() => {
     const groups = new Map(categories.map((c) => [c, []]))
@@ -130,8 +170,8 @@ export default function ElementsPage() {
                     key={entry.id}
                     entry={entry}
                     dimmed={isDimmed(entry)}
-                    related={relatedSymbols?.has(entry.symbol) ?? false}
-                    onHover={setHoveredId}
+                    relationType={hoverInfo?.related.get(entry.symbol) ?? null}
+                    onHover={handleHover}
                     onSelect={selectEntry}
                   />
                 ))}
@@ -148,6 +188,14 @@ export default function ElementsPage() {
         onSelectRelated={selectRelated}
         onReadInChapter={readInChapter}
         onClose={() => setSelected(null)}
+      />
+
+      <RelationshipPanel
+        hoveredEntry={hoverInfo?.entry ?? null}
+        relations={hoverInfo?.list ?? []}
+        onSelect={selectEntry}
+        onMouseEnter={cancelHoverClear}
+        onMouseLeave={clearHoverSoon}
       />
     </Box>
   )
