@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 375" width="600" height="375" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">
+
+  <!-- Band 1: Safety (base) -->
+  <polygon points="40,355 560,355 484,242 116,242" fill="#B23A48"/>
+
+  <!-- Band 2: Belonging (middle) -->
+  <polygon points="116,242 484,242 406,128 194,128" fill="#2E5A87"/>
+
+  <!-- Band 3: Reward (apex) -->
+  <polygon points="194,128 406,128 330,15 270,15" fill="#1E3D5C"/>
+
+  <!-- Subtle dividers between bands -->
+  <line x1="116" y1="242" x2="484" y2="242" stroke="white" stroke-width="1" opacity="0.25"/>
+  <line x1="194" y1="128" x2="406" y2="128" stroke="white" stroke-width="1" opacity="0.25"/>
+
+  <!-- Outer triangle outline — visible on both light and dark backgrounds -->
+  <polygon points="270,15 330,15 560,355 40,355" fill="none" stroke="rgba(0,0,0,0.12)" stroke-width="1.5" stroke-linejoin="round"/>
+
+  <!-- Order markers -->
+  <text x="70" y="335" fill="white" font-size="13" font-weight="700">1</text>
+  <text x="145" y="222" fill="white" font-size="13" font-weight="700">2</text>
+  <text x="215" y="108" fill="white" font-size="13" font-weight="700">3</text>
+
+  <!-- Reward label (band center y ~78) -->
+  <text x="300" y="72" text-anchor="middle" fill="white" font-size="13" font-weight="700">Reward</text>
+  <text x="300" y="88" text-anchor="middle" fill="rgba(255,255,255,0.78)" font-size="8.5">Different for every child</text>
+
+  <!-- Belonging label (band center y ~185) -->
+  <text x="300" y="178" text-anchor="middle" fill="white" font-size="14" font-weight="700">Belonging</text>
+  <text x="300" y="196" text-anchor="middle" fill="rgba(255,255,255,0.78)" font-size="10">Get along — stay accepted by the family or group</text>
+
+  <!-- Safety label (band center y ~298) -->
+  <text x="300" y="291" text-anchor="middle" fill="white" font-size="15" font-weight="700">Safety</text>
+  <text x="300" y="310" text-anchor="middle" fill="rgba(255,255,255,0.85)" font-size="10.5">Stay safe — the non-negotiable first priority</text>
+
+</svg>
