@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 420" width="600" height="420" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">
+
+  <!-- Outer ring: Neocortex -->
+  <circle cx="300" cy="205" r="170" fill="#1E3D5C"/>
+
+  <!-- Middle ring: Mammalian Brain -->
+  <circle cx="300" cy="205" r="112" fill="#4A7BAD"/>
+
+  <!-- Inner core: Reptilian Brain -->
+  <circle cx="300" cy="205" r="54" fill="#B23A48"/>
+
+  <!-- Ring dividers -->
+  <circle cx="300" cy="205" r="170" fill="none" stroke="white" stroke-width="1" opacity="0.25"/>
+  <circle cx="300" cy="205" r="112" fill="none" stroke="white" stroke-width="1" opacity="0.25"/>
+  <circle cx="300" cy="205" r="54" fill="none" stroke="rgba(0,0,0,0.12)" stroke-width="1"/>
+
+  <!-- Neocortex label (outer band, near top) -->
+  <text x="300" y="60" text-anchor="middle" fill="white" font-size="14" font-weight="700">Neocortex</text>
+  <text x="300" y="77" text-anchor="middle" fill="rgba(255,255,255,0.78)" font-size="9.5">Logic, creativity, language</text>
+  <text x="300" y="89" text-anchor="middle" fill="rgba(255,255,255,0.78)" font-size="9.5">newest — a few million years old</text>
+
+  <!-- Mammalian Brain label (middle band) -->
+  <text x="300" y="120" text-anchor="middle" fill="white" font-size="12.5" font-weight="700">Mammalian Brain</text>
+  <text x="300" y="136" text-anchor="middle" fill="rgba(255,255,255,0.82)" font-size="9">Limbic system — emotion,</text>
+  <text x="300" y="148" text-anchor="middle" fill="rgba(255,255,255,0.82)" font-size="9">implicit memory, gut feelings</text>
+
+  <!-- Reptilian Brain label (core) -->
+  <text x="300" y="200" text-anchor="middle" fill="white" font-size="11.5" font-weight="700">Reptilian</text>
+  <text x="300" y="214" text-anchor="middle" fill="rgba(255,255,255,0.82)" font-size="8">Brain stem &amp;</text>
+  <text x="300" y="225" text-anchor="middle" fill="rgba(255,255,255,0.82)" font-size="8">basal ganglia</text>
+
+  <!-- Directional annotation -->
+  <text x="300" y="402" text-anchor="middle" fill="#5B5B5B" font-size="9" font-style="italic" letter-spacing="0.3">core → outer ring = oldest → newest</text>
+
+</svg>

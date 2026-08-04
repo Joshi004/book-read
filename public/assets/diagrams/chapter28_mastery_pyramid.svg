@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 375" width="600" height="375" font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">
+
+  <!-- Layer 1: Grey's Anatomy Guy (bottom, widest, most common) -->
+  <polygon points="94,270 506,270 560,355 40,355" fill="#B23A48"/>
+
+  <!-- Layer 2: Paramedic -->
+  <polygon points="148,185 452,185 506,270 94,270" fill="#C4536B"/>
+
+  <!-- Layer 3: Nurse -->
+  <polygon points="201,100 399,100 452,185 148,185" fill="#4A7BAD"/>
+
+  <!-- Layer 4: Surgeon (top, narrowest, rarest) -->
+  <polygon points="255,15 345,15 399,100 201,100" fill="#1E3D5C"/>
+
+  <!-- Subtle dividers between layers -->
+  <line x1="94"  y1="270" x2="506" y2="270" stroke="white" stroke-width="1" opacity="0.25"/>
+  <line x1="148" y1="185" x2="452" y2="185" stroke="white" stroke-width="1" opacity="0.25"/>
+  <line x1="201" y1="100" x2="399" y2="100" stroke="white" stroke-width="1" opacity="0.25"/>
+
+  <!-- Outer pyramid outline — visible on both light and dark backgrounds -->
+  <polygon points="255,15 345,15 560,355 40,355" fill="none" stroke="rgba(0,0,0,0.12)" stroke-width="1.5" stroke-linejoin="round"/>
+
+  <!-- Surgeon label (layer center y=57) -->
+  <text x="300" y="55" text-anchor="middle" fill="white" font-size="12" font-weight="700">Surgeon</text>
+  <text x="300" y="72" text-anchor="middle" fill="rgba(255,255,255,0.78)" font-size="8">Level 4 — thousands of hours</text>
+
+  <!-- Nurse label (layer center y=142) -->
+  <text x="300" y="136" text-anchor="middle" fill="white" font-size="13" font-weight="700">Nurse</text>
+  <text x="300" y="153" text-anchor="middle" fill="rgba(255,255,255,0.78)" font-size="9.5">Level 3 — educated, but never the surgeon's instinct</text>
+
+  <!-- Paramedic label (layer center y=227) -->
+  <text x="300" y="221" text-anchor="middle" fill="white" font-size="14" font-weight="700">Paramedic</text>
+  <text x="300" y="239" text-anchor="middle" fill="rgba(255,255,255,0.78)" font-size="10">Level 2 — trained, but limited</text>
+
+  <!-- Grey's Anatomy Guy label (layer center y=312) -->
+  <text x="300" y="304" text-anchor="middle" fill="white" font-size="15" font-weight="700">"Grey's Anatomy Guy"</text>
+  <text x="300" y="323" text-anchor="middle" fill="rgba(255,255,255,0.78)" font-size="10">Level 1 — the Dunning-Kruger zone</text>
+  <text x="300" y="338" text-anchor="middle" fill="rgba(255,255,255,0.65)" font-size="9">most common</text>
+
+</svg>
