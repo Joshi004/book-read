@@ -233,6 +233,163 @@ function classifyColorBand(entry) {
   return 'yellow'
 }
 
+// --- grid position (the "real" printed layout) -----------------------------
+// Row letters A-G run top to bottom for body region (per Chapter 25's own
+// account of the axes); Object Interaction and Direct Verbal Behavior are
+// unlettered single rows below the main grid. Columns 1-18 run left to right
+// for stress/deception likelihood, mirroring the real printed table (see
+// public/assets/diagrams/The-Behavioral-Table-of-Elements-2018.pdf) --
+// hand-extracted from that PDF's embedded text coordinates, cross-checked
+// against every symbol's category with zero collisions, since no per-cell
+// grid position exists in the chapter 26 prose itself. Keyed by symbol; BC
+// (Barrier Cr. vs Carelessness) collides on symbol alone so it's keyed by
+// `SYMBOL::category` instead.
+const GRID_POSITION_BY_SYMBOL = {
+  4: { row: 'F', col: 2 },
+  AA: { row: 'C', col: 18 },
+  ACC: { row: 'A', col: 2 },
+  AG: { row: 'D', col: 14 },
+  AGG: { row: 'G', col: 3 },
+  AH: { row: 'E', col: 11 },
+  AM: { row: 'DV', col: 13 },
+  BAR: { row: 'F', col: 14 },
+  BB: { row: 'E', col: 13 },
+  'BC::Torso, Pelvis & Legs': { row: 'F', col: 15 },
+  'BC::Object Interaction': { row: 'OI', col: 7 },
+  BG: { row: 'D', col: 2 },
+  BH: { row: 'E', col: 10 },
+  BI: { row: 'G', col: 9 },
+  BN: { row: 'C', col: 16 },
+  BON: { row: 'F', col: 11 },
+  BR: { row: 'D', col: 6 },
+  BRE: { row: 'G', col: 4 },
+  BS: { row: 'OI', col: 14 },
+  CA: { row: 'OI', col: 12 },
+  CC: { row: 'OI', col: 10 },
+  CG: { row: 'B', col: 18 },
+  CHR: { row: 'DV', col: 18 },
+  CL: { row: 'OI', col: 18 },
+  CO: { row: 'D', col: 13 },
+  CR: { row: 'E', col: 14 },
+  CS: { row: 'E', col: 3 },
+  CT: { row: 'A', col: 18 },
+  DC: { row: 'F', col: 7 },
+  DE: { row: 'E', col: 1 },
+  DF: { row: 'G', col: 8 },
+  DG: { row: 'D', col: 11 },
+  EC: { row: 'D', col: 17 },
+  EF: { row: 'B', col: 1 },
+  EO: { row: 'E', col: 5 },
+  ER: { row: 'G', col: 15 },
+  EXC: { row: 'DV', col: 17 },
+  FC: { row: 'G', col: 5 },
+  FF: { row: 'F', col: 4 },
+  FI: { row: 'F', col: 9 },
+  FL: { row: 'C', col: 12 },
+  FNS: { row: 'G', col: 18 },
+  FR: { row: 'D', col: 12 },
+  FT: { row: 'E', col: 17 },
+  FTB: { row: 'OI', col: 15 },
+  FW: { row: 'G', col: 17 },
+  FZ: { row: 'E', col: 16 },
+  GA: { row: 'A', col: 17 },
+  GE: { row: 'G', col: 1 },
+  GG: { row: 'D', col: 1 },
+  GM: { row: 'G', col: 11 },
+  GPR: { row: 'F', col: 17 },
+  GRS: { row: 'F', col: 10 },
+  GS: { row: 'OI', col: 13 },
+  HA: { row: 'C', col: 2 },
+  HB: { row: 'C', col: 13 },
+  HD: { row: 'B', col: 2 },
+  HES: { row: 'DV', col: 4 },
+  HS: { row: 'D', col: 4 },
+  HT: { row: 'A', col: 1 },
+  HU: { row: 'F', col: 18 },
+  IA: { row: 'F', col: 1 },
+  IP: { row: 'G', col: 14 },
+  JB: { row: 'OI', col: 9 },
+  JC: { row: 'B', col: 16 },
+  JP: { row: 'OI', col: 17 },
+  KC: { row: 'G', col: 16 },
+  KH: { row: 'G', col: 7 },
+  LA: { row: 'G', col: 10 },
+  LC: { row: 'B', col: 12 },
+  LF: { row: 'E', col: 8 },
+  LG: { row: 'G', col: 2 },
+  LP: { row: 'F', col: 12 },
+  LR: { row: 'C', col: 14 },
+  MC: { row: 'DV', col: 16 },
+  NA: { row: 'DV', col: 8 },
+  NC: { row: 'DV', col: 11 },
+  NO: { row: 'E', col: 7 },
+  OA: { row: 'DV', col: 15 },
+  OB: { row: 'OI', col: 11 },
+  OC: { row: 'OI', col: 16 },
+  OI: { row: 'OI', col: 5 },
+  OM: { row: 'B', col: 15 },
+  OPI: { row: 'OI', col: 4 },
+  OT: { row: 'C', col: 15 },
+  PC: { row: 'E', col: 4 },
+  PD: { row: 'D', col: 7 },
+  PDN: { row: 'F', col: 16 },
+  PE: { row: 'E', col: 2 },
+  PO: { row: 'F', col: 5 },
+  POL: { row: 'DV', col: 14 },
+  PR: { row: 'D', col: 15 },
+  PRN: { row: 'DV', col: 9 },
+  PS: { row: 'E', col: 6 },
+  PSD: { row: 'DV', col: 5 },
+  PT: { row: 'G', col: 6 },
+  QR: { row: 'DV', col: 12 },
+  RES: { row: 'DV', col: 10 },
+  RIP: { row: 'DV', col: 6 },
+  SA: { row: 'D', col: 10 },
+  SH: { row: 'D', col: 9 },
+  SHG: { row: 'E', col: 12 },
+  SP: { row: 'D', col: 5 },
+  SPD: { row: 'DV', col: 7 },
+  SQ: { row: 'D', col: 8 },
+  SR: { row: 'OI', col: 6 },
+  SS: { row: 'D', col: 18 },
+  ST: { row: 'E', col: 9 },
+  SW: { row: 'D', col: 16 },
+  TCH: { row: 'F', col: 6 },
+  THC: { row: 'G', col: 12 },
+  TLT: { row: 'F', col: 3 },
+  TP: { row: 'F', col: 8 },
+  TS: { row: 'B', col: 13 },
+  TTC: { row: 'E', col: 18 },
+  TU: { row: 'B', col: 14 },
+  VH: { row: 'C', col: 17 },
+  WC: { row: 'OI', col: 8 },
+  WD: { row: 'B', col: 17 },
+  WF: { row: 'F', col: 13 },
+  WP: { row: 'E', col: 15 },
+  WT: { row: 'G', col: 13 },
+  YE: { row: 'D', col: 3 },
+  YN: { row: 'C', col: 1 },
+}
+
+function gridPositionFor(entry) {
+  return GRID_POSITION_BY_SYMBOL[`${entry.symbol}::${entry.category}`] || GRID_POSITION_BY_SYMBOL[entry.symbol] || null
+}
+
+// Row order top to bottom, as printed on the real table -- letter is null for
+// the two unlettered category rows below the main A-G body-region grid.
+const GRID_ROWS = [
+  { key: 'A', letter: 'A', category: 'Arm Cross, Head, Face & Neck' },
+  { key: 'B', letter: 'B', category: 'Arm Cross, Head, Face & Neck' },
+  { key: 'C', letter: 'C', category: 'Arm Cross, Head, Face & Neck' },
+  { key: 'D', letter: 'D', category: 'Arms, Hands & Shoulders' },
+  { key: 'E', letter: 'E', category: 'Arms, Hands & Shoulders' },
+  { key: 'F', letter: 'F', category: 'Torso, Pelvis & Legs' },
+  { key: 'G', letter: 'G', category: 'Torso, Pelvis & Legs' },
+  { key: 'OI', letter: null, category: 'Object Interaction' },
+  { key: 'DV', letter: null, category: 'Direct Verbal Behavior' },
+]
+const GRID_COLUMNS = 18
+
 // --- entry parsing ----------------------------------------------------------
 
 function parseSummaryLine(text) {
@@ -334,6 +491,15 @@ function main() {
     entry.redLetter = flags.redLetter
     entry.blueLetter = flags.blueLetter
     entry.colorBand = classifyColorBand(entry)
+    const gridPosition = gridPositionFor(entry)
+    if (gridPosition) {
+      entry.row = gridPosition.row
+      entry.col = gridPosition.col
+    } else {
+      entry.row = null
+      entry.col = null
+      warnings.push(`No grid position for ${entry.symbol} (${entry.name}) — omitted from the classic table view`)
+    }
   }
 
   // Cross-check against the Quick-Reference Index tables.
@@ -361,7 +527,7 @@ function main() {
   const dupIds = entries.map((e) => e.id).filter((id, i, arr) => arr.indexOf(id) !== i)
   if (dupIds.length) warnings.push(`Duplicate ids (should be impossible — rehype-slug dedupes): ${dupIds.join(', ')}`)
 
-  const output = { categories: CATEGORIES, entries }
+  const output = { categories: CATEGORIES, entries, gridRows: GRID_ROWS, gridColumns: GRID_COLUMNS }
 
   mkdirSync(dirname(OUT_PATH), { recursive: true })
   writeFileSync(OUT_PATH, JSON.stringify(output, null, 2))

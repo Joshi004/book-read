@@ -1,14 +1,17 @@
 import { useMemo, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Box, Typography, Stack, Button } from '@mui/material'
+import { Box, Typography, Stack, Button, ToggleButton, ToggleButtonGroup } from '@mui/material'
+import GridViewIcon from '@mui/icons-material/GridView'
+import ViewListIcon from '@mui/icons-material/ViewList'
 import bteData from '../generated/bte-data.json'
 import ElementCell from '../components/bte/ElementCell.jsx'
 import ElementDetailPopover from '../components/bte/ElementDetailPopover.jsx'
 import ElementsLegend from '../components/bte/ElementsLegend.jsx'
 import RelationshipPanel from '../components/bte/RelationshipPanel.jsx'
+import ElementsClassicGrid from '../components/bte/ElementsClassicGrid.jsx'
 import { SERIF, SANS } from '../theme.js'
 
-const { categories, entries } = bteData
+const { categories, entries, gridRows, gridColumns } = bteData
 
 // When a symbol pair somehow carries more than one stated relation type,
 // the rarer, more alerting relation wins the glow color/panel ranking.
@@ -34,6 +37,7 @@ export default function ElementsPage() {
   const [activeTypes, setActiveTypes] = useState(() => new Set())
   const [hoveredId, setHoveredId] = useState(null)
   const [selected, setSelected] = useState(null) // { entry, anchorEl }
+  const [viewMode, setViewMode] = useState('grouped') // 'grouped' | 'classic'
 
   const entriesBySymbol = useMemo(() => new Map(entries.map((e) => [e.symbol, e])), [])
 
@@ -129,57 +133,86 @@ export default function ElementsPage() {
   const readInChapter = (entry) => navigate(`/chapter/26?heading=${entry.id}`)
 
   return (
-    <Box sx={{ maxWidth: 1100, mx: 'auto', px: { xs: 2, md: 4 }, py: 4 }}>
+    <Box sx={{ maxWidth: viewMode === 'classic' ? 'none' : 1100, mx: 'auto', px: { xs: 2, md: 4 }, py: 4 }}>
       <Typography sx={{ fontFamily: SERIF, fontWeight: 700, fontSize: { xs: '1.6rem', md: '2rem' }, mb: 1 }}>
         The Behavior Elements
       </Typography>
       <Typography sx={{ fontFamily: SANS, color: 'text.secondary', maxWidth: 720, mb: 1.5 }}>
-        An interactive version of the Behavioral Table of Elements from Chapter 26. Each
-        group below is one body region, ordered left-to-right by deception rating — the
-        same low-stress-to-high-stress logic the printed table uses. On a mouse, hover a
-        cell to see its related behaviors light up; on any device, tap or click a cell
-        for the full write-up.
+        An interactive version of the Behavioral Table of Elements from Chapter 26. Hover a
+        cell to see its related behaviors light up; tap or click a cell for the full write-up.
+        {viewMode === 'grouped'
+          ? ' Each group below is one body region, ordered left-to-right by deception rating — the same low-stress-to-high-stress logic the printed table uses.'
+          : ' Laid out exactly like the printed table (Chapter 25): row letters A-G run top to bottom by body region, unlettered rows below hold Object Interaction and Direct Verbal Behavior, and columns 1-18 run low-to-high stress and deception likelihood, left to right.'}
       </Typography>
 
-      <ElementsLegend
-        activeBands={activeBands}
-        onToggleBand={toggleInSet(setActiveBands)}
-        activeTypes={activeTypes}
-        onToggleType={toggleInSet(setActiveTypes)}
-        search={search}
-        onSearchChange={setSearch}
-      />
+      <Stack direction="row" alignItems="center" justifyContent="space-between" sx={{ flexWrap: 'wrap', gap: 1.5, mb: 1.5 }}>
+        <ElementsLegend
+          activeBands={activeBands}
+          onToggleBand={toggleInSet(setActiveBands)}
+          activeTypes={activeTypes}
+          onToggleType={toggleInSet(setActiveTypes)}
+          search={search}
+          onSearchChange={setSearch}
+        />
+        <ToggleButtonGroup
+          value={viewMode}
+          exclusive
+          onChange={(e, next) => next && setViewMode(next)}
+          size="small"
+          aria-label="Table layout"
+          sx={{ flexShrink: 0 }}
+        >
+          <ToggleButton value="grouped" sx={{ textTransform: 'none', fontFamily: SANS, gap: 0.5, px: 1.25 }}>
+            <ViewListIcon fontSize="small" /> Grouped
+          </ToggleButton>
+          <ToggleButton value="classic" sx={{ textTransform: 'none', fontFamily: SANS, gap: 0.5, px: 1.25 }}>
+            <GridViewIcon fontSize="small" /> Classic table
+          </ToggleButton>
+        </ToggleButtonGroup>
+      </Stack>
       {hasFilters && (
-        <Button size="small" onClick={clearFilters} sx={{ textTransform: 'none', fontFamily: SANS, mb: 2, mt: -2 }}>
+        <Button size="small" onClick={clearFilters} sx={{ textTransform: 'none', fontFamily: SANS, mb: 2, mt: -1 }}>
           Clear filters
         </Button>
       )}
 
-      <Stack spacing={4}>
-        {categories.map((category) => {
-          const list = byCategory.get(category) || []
-          if (list.length === 0) return null
-          return (
-            <Box key={category}>
-              <Typography sx={{ fontFamily: SANS, fontWeight: 700, fontSize: '0.95rem', mb: 1.25, pb: 0.5, borderBottom: '1px solid', borderColor: 'divider' }}>
-                {category}
-              </Typography>
-              <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
-                {list.map((entry) => (
-                  <ElementCell
-                    key={entry.id}
-                    entry={entry}
-                    dimmed={isDimmed(entry)}
-                    relationType={hoverInfo?.related.get(entry.symbol) ?? null}
-                    onHover={handleHover}
-                    onSelect={selectEntry}
-                  />
-                ))}
+      {viewMode === 'grouped' ? (
+        <Stack spacing={4}>
+          {categories.map((category) => {
+            const list = byCategory.get(category) || []
+            if (list.length === 0) return null
+            return (
+              <Box key={category}>
+                <Typography sx={{ fontFamily: SANS, fontWeight: 700, fontSize: '0.95rem', mb: 1.25, pb: 0.5, borderBottom: '1px solid', borderColor: 'divider' }}>
+                  {category}
+                </Typography>
+                <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
+                  {list.map((entry) => (
+                    <ElementCell
+                      key={entry.id}
+                      entry={entry}
+                      dimmed={isDimmed(entry)}
+                      relationType={hoverInfo?.related.get(entry.symbol) ?? null}
+                      onHover={handleHover}
+                      onSelect={selectEntry}
+                    />
+                  ))}
+                </Box>
               </Box>
-            </Box>
-          )
-        })}
-      </Stack>
+            )
+          })}
+        </Stack>
+      ) : (
+        <ElementsClassicGrid
+          entries={entries}
+          gridRows={gridRows}
+          gridColumns={gridColumns}
+          isDimmed={isDimmed}
+          relationTypeFor={(entry) => hoverInfo?.related.get(entry.symbol) ?? null}
+          onHover={handleHover}
+          onSelect={selectEntry}
+        />
+      )}
 
       <ElementDetailPopover
         entry={selected?.entry ?? null}
