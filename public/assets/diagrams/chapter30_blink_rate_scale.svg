@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 720 440" width="720" height="440"
+     font-family="'Avenir Next','Helvetica Neue',Arial,sans-serif">
+
+  <!-- title + subtitle, on a light chip for legibility in dark mode -->
+  <rect x="90" y="6" width="540" height="42" rx="6" fill="#F4F1EA" stroke="#C9C2B2" stroke-width="1"/>
+  <text x="360" y="22" text-anchor="middle" fill="#1A1A1A" font-size="16" font-weight="700" letter-spacing="0.5">BLINK RATE (BR) — A BEHAVIORAL SCALE</text>
+  <text x="360" y="40" text-anchor="middle" fill="#5B5B5B" font-size="11">Blinks per minute, calm on the left to acute stress on the right &#8212; illustrative, not a linear axis</text>
+
+  <!-- vertical axis label, also on a light chip (rect is wide-and-short in local
+       coordinates, same as the text row it backs, before the -90 rotation turns
+       both into a tall-and-narrow strip) -->
+  <rect x="-32" y="189" width="120" height="22" rx="6" fill="#F4F1EA" stroke="#C9C2B2" stroke-width="1" transform="rotate(-90 28 200)"/>
+  <text x="28" y="200" text-anchor="middle" fill="#1A1A1A" font-size="10.5" font-weight="700" transform="rotate(-90 28 200)">BLINKS PER MINUTE</text>
+
+  <!-- baseline -->
+  <line x1="85" y1="300" x2="635" y2="300" stroke="#C9C2B2" stroke-width="1.5"/>
+
+  <!-- Bar 1: Calm / Focused, ~3/min -->
+  <rect x="100" y="260" width="100" height="40" rx="4" fill="#6B9EC7"/>
+  <rect x="104" y="226" width="92" height="26" rx="6" fill="#F4F1EA" stroke="#C9C2B2" stroke-width="1"/>
+  <text x="150" y="244" text-anchor="middle" fill="#1A1A1A" font-size="13" font-weight="700">~3/min</text>
+
+  <!-- Bar 2: Typical Baseline, ~9/min -->
+  <rect x="240" y="220" width="100" height="80" rx="4" fill="#4A7BAD"/>
+  <rect x="244" y="186" width="92" height="26" rx="6" fill="#F4F1EA" stroke="#C9C2B2" stroke-width="1"/>
+  <text x="290" y="204" text-anchor="middle" fill="#1A1A1A" font-size="13" font-weight="700">~9/min</text>
+
+  <!-- Bar 3: Elevated, ~20/min -->
+  <rect x="380" y="155" width="100" height="145" rx="4" fill="#C4536B"/>
+  <rect x="382" y="121" width="96" height="26" rx="6" fill="#F4F1EA" stroke="#C9C2B2" stroke-width="1"/>
+  <text x="430" y="139" text-anchor="middle" fill="#1A1A1A" font-size="13" font-weight="700">~20/min</text>
+
+  <!-- Bar 4: High Stress, up to ~70/min -->
+  <rect x="520" y="95" width="100" height="205" rx="4" fill="#B23A48"/>
+  <rect x="518" y="61" width="104" height="26" rx="6" fill="#F4F1EA" stroke="#C9C2B2" stroke-width="1"/>
+  <text x="570" y="79" text-anchor="middle" fill="#1A1A1A" font-size="13" font-weight="700">up to ~70/min</text>
+
+  <!-- Zone labels below baseline, each on its own light chip for legibility in dark mode -->
+  <rect x="84" y="316" width="132" height="72" rx="6" fill="#F4F1EA" stroke="#C9C2B2" stroke-width="1"/>
+  <text x="150" y="333" text-anchor="middle" fill="#1A1A1A" font-size="11" font-weight="700">CALM / FOCUSED</text>
+  <text x="150" y="349" text-anchor="middle" fill="#5B5B5B" font-size="9" font-style="italic">a captivating movie or</text>
+  <text x="150" y="361" text-anchor="middle" fill="#5B5B5B" font-size="9" font-style="italic">a fascinating conversation</text>
+
+  <rect x="224" y="316" width="132" height="72" rx="6" fill="#F4F1EA" stroke="#C9C2B2" stroke-width="1"/>
+  <text x="290" y="333" text-anchor="middle" fill="#1A1A1A" font-size="11" font-weight="700">TYPICAL BASELINE</text>
+  <text x="290" y="349" text-anchor="middle" fill="#5B5B5B" font-size="9" font-style="italic">the norm in most</text>
+  <text x="290" y="361" text-anchor="middle" fill="#5B5B5B" font-size="9" font-style="italic">everyday conversations</text>
+
+  <rect x="364" y="316" width="132" height="72" rx="6" fill="#F4F1EA" stroke="#C9C2B2" stroke-width="1"/>
+  <text x="430" y="333" text-anchor="middle" fill="#1A1A1A" font-size="11" font-weight="700">ELEVATED</text>
+  <text x="430" y="349" text-anchor="middle" fill="#5B5B5B" font-size="9" font-style="italic">can happen with</text>
+  <text x="430" y="361" text-anchor="middle" fill="#5B5B5B" font-size="9" font-style="italic">no real stress at all</text>
+
+  <rect x="504" y="316" width="132" height="72" rx="6" fill="#F4F1EA" stroke="#C9C2B2" stroke-width="1"/>
+  <text x="570" y="333" text-anchor="middle" fill="#1A1A1A" font-size="11" font-weight="700">HIGH STRESS</text>
+  <text x="570" y="349" text-anchor="middle" fill="#5B5B5B" font-size="9" font-style="italic">e.g., the math section</text>
+  <text x="570" y="361" text-anchor="middle" fill="#5B5B5B" font-size="9" font-style="italic">of the SAT</text>
+
+  <!-- field method note, also on a light chip -->
+  <rect x="140" y="400" width="440" height="26" rx="6" fill="#F4F1EA" stroke="#C9C2B2" stroke-width="1"/>
+  <text x="360" y="417" text-anchor="middle" fill="#5B5B5B" font-size="10" font-style="italic">Field method: count blinks for 15 seconds, then multiply by four.</text>
+
+</svg>
